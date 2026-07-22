@@ -7,591 +7,272 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 <style>
-  * {
-    box-sizing: border-box;
+  :root {
+    --brand-navy: #16254d;
+    --brand-navy-dark: #000f37;
   }
 
   body {
-    margin: 0;
-    background: #fff;
     font-family: "Inter", -apple-system, Roboto, Helvetica, sans-serif;
   }
 
-  a {
-    text-decoration: none;
-  }
+  a { text-decoration: none; }
 
-  /* Navbar */
-  .navbar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 72px;
-    padding: 0 53px;
-    border-bottom: 1px solid #e4e4e7;
-  }
-
-  .navbar-brand {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-
-  .brand-mark {
-    display: flex;
-    width: 32px;
-    height: 32px;
-    align-items: center;
-    justify-content: center;
-    border-radius: 8px;
-    background: #16254d;
-    color: #fff;
-    font-size: 16px;
-    font-weight: 700;
-  }
-
-  .brand-name {
-    color: #000f37;
-    font-size: 18px;
-    font-weight: 700;
-  }
-
-  .navbar-nav {
-    display: flex;
-    align-items: center;
-    gap: 32px;
-  }
-
-  .nav-link {
-    padding-bottom: 4px;
-    color: #45464e;
-    font-size: 15px;
-    font-weight: 500;
-    border-bottom: 2px solid transparent;
-  }
-
-  .nav-link:hover {
-    color: #16254d;
-  }
-
-  .nav-link.active {
-    color: #16254d;
-    font-weight: 700;
-    border-bottom-color: #16254d;
-  }
-
-  .navbar-actions {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-  }
-
-  .icon-button {
-    display: flex;
-    width: 36px;
-    height: 36px;
-    align-items: center;
-    justify-content: center;
-    border: none;
-    border-radius: 9999px;
-    background: none;
-    color: #45464e;
-    cursor: pointer;
-  }
-
-  .icon-button:hover {
-    background: #f0f3ff;
-  }
-
-  .navbar-divider {
-    width: 1px;
-    height: 24px;
-    background: #c5c6cf;
-  }
-
-  .avatar {
-    display: flex;
-    width: 32px;
-    height: 32px;
-    align-items: center;
-    justify-content: center;
-    border-radius: 9999px;
-    border: 1px solid #c5c6cf;
-    background: #16254d;
-    color: #fff;
-    font-size: 13px;
-    font-weight: 700;
-    letter-spacing: 0.13px;
-  }
-
-  /* Main content */
-  .main-content {
+  .brand-shell {
     max-width: 1280px;
     margin: 0 auto;
-    padding: 32px 53px;
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
+    padding-left: 53px;
+    padding-right: 53px;
   }
 
-  /* Header section */
-  .page-header {
-    display: flex;
-    flex-direction: column;
-    gap: 3px;
+  @media (max-width: 576px) {
+    .brand-shell { padding-left: 16px; padding-right: 16px; }
   }
 
-  .eyebrow {
-    color: #000f37;
-    font-size: 13px;
+  .text-brand-navy-dark { color: var(--brand-navy-dark) !important; }
+  .bg-brand-navy { background-color: var(--brand-navy) !important; }
+
+  .nav-link {
+    color: #45464e;
+    font-weight: 500;
+    border-bottom: 2px solid transparent;
+    padding-bottom: 4px;
+  }
+
+  .nav-link:hover { color: var(--brand-navy-dark); }
+
+  .nav-link.active {
+    color: var(--brand-navy-dark) !important;
     font-weight: 700;
-    letter-spacing: 0.65px;
-    text-transform: uppercase;
+    border-bottom-color: var(--brand-navy-dark);
   }
 
-  .page-header h1 {
-    margin: 0;
-    color: #151c27;
-    font-size: 32px;
-    font-weight: 600;
-    line-height: 120%;
-    letter-spacing: -0.64px;
+  .icon-btn {
+    width: 36px;
+    height: 36px;
   }
 
-  /* Search & filter bar */
-  .filter-bar {
-    display: flex;
-    align-items: center;
-    gap: 24px;
-  }
+  .form-control::placeholder { color: #6b7280; }
 
-  .search-field {
-    position: relative;
-    flex: 1 0 0;
-  }
-
-  .search-field svg {
-    position: absolute;
-    left: 16px;
-    top: 50%;
-    transform: translateY(-50%);
-  }
-
-  .search-input {
-    width: 100%;
-    padding: 18px 16px 18px 44px;
-    border-radius: 12px;
-    border: 1px solid #c5c6cf;
-    background: #fff;
-    font-family: inherit;
+  .form-control-lg-custom {
+    padding-top: 18px;
+    padding-bottom: 18px;
     font-size: 16px;
-    color: #151c27;
   }
 
-  .search-input::placeholder {
-    color: #6b7280;
-  }
-
-  .status-select {
-    position: relative;
+  .form-select-custom {
+    padding-top: 16px;
+    padding-bottom: 16px;
+    font-size: 16px;
     min-width: 200px;
   }
 
-  .status-select select {
-    appearance: none;
-    width: 100%;
-    padding: 16px 44px 16px 16px;
-    border-radius: 12px;
-    border: 1px solid #c5c6cf;
-    background: #fff;
-    font-family: inherit;
-    font-size: 16px;
-    color: #151c27;
-    cursor: pointer;
-  }
+  .table thead tr { background: #f0f3ff; }
 
-  .status-select svg {
-    position: absolute;
-    right: 16px;
-    top: 50%;
-    transform: translateY(-50%);
-    pointer-events: none;
-  }
-
-  /* Table card */
-  .table-card {
-    border-radius: 14px;
-    border: 1px solid #e5e7eb;
-    background: #fff;
-    box-shadow: 0 4px 20px -4px rgba(22, 37, 77, 0.08);
-    overflow: hidden;
-  }
-
-  .reports-table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-
-  .reports-table thead tr {
-    background: #f0f3ff;
-    border-bottom: 1px solid #c5c6cf;
-  }
-
-  .reports-table th {
-    padding: 16px 24px;
-    text-align: left;
+  .table thead th {
     color: #75767f;
     font-size: 13px;
     font-weight: 500;
     letter-spacing: 0.65px;
     text-transform: uppercase;
+    border-bottom-color: #c5c6cf;
   }
 
-  .reports-table th.col-action {
-    text-align: right;
-  }
+  .report-id { color: var(--brand-navy-dark); font-weight: 700; }
 
-  .reports-table tbody tr {
-    border-bottom: 1px solid #e5e7eb;
-  }
-
-  .reports-table tbody tr:last-child {
-    border-bottom: none;
-  }
-
-  .reports-table td {
-    padding: 16px 24px;
-    color: #151c27;
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 150%;
-  }
-
-  .reports-table td.col-action {
-    text-align: right;
-  }
-
-  .report-id {
-    color: #000f37;
-    font-weight: 700;
-  }
-
-  .status-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    padding: 4px 12px;
-    border-radius: 9999px;
-    font-size: 12px;
-    font-weight: 700;
-    line-height: 150%;
-  }
-
-  .status-dot {
+  .dot {
     width: 6px;
     height: 6px;
-    border-radius: 9999px;
+    border-radius: 50%;
+    display: inline-block;
   }
 
-  .dot-amber {
-    background: #d38a00;
-  }
+  .dot-amber { background: #d38a00; }
+  .dot-green { background: #1e7b34; }
+  .dot-red { background: #b42318; }
 
-  .dot-green {
-    background: #1e7b34;
-  }
-
-  .dot-red {
-    background: #b42318;
-  }
-
-  .status-diproses {
-    background: #fff8e1;
-    color: #7e5700;
-  }
-
-  .status-selesai {
-    background: #e7f8ed;
-    color: #1e7b34;
-  }
-
-  .status-ditolak {
-    background: #fdeceb;
-    color: #b42318;
-  }
+  .badge-diproses { background: #fff8e1; color: #7e5700; }
+  .badge-selesai { background: #e7f8ed; color: #1e7b34; }
+  .badge-ditolak { background: #fdeceb; color: #b42318; }
 
   .btn-detail {
-    display: inline-flex;
-    align-items: center;
-    padding: 8px 20px;
-    border-radius: 9999px;
     border: 1px solid #c5c6cf;
-    background: #fff;
-    color: #000f37;
-    font-family: inherit;
-    font-size: 14px;
+    color: var(--brand-navy-dark);
     font-weight: 700;
-  }
-
-  .btn-detail:hover {
-    background: #f0f3ff;
-  }
-
-  /* Pagination */
-  .table-footer {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 16px 24px;
-  }
-
-  .table-footer-info {
-    color: #75767f;
     font-size: 14px;
   }
 
-  .pagination {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
+  .btn-detail:hover { background: #f0f3ff; color: var(--brand-navy-dark); }
 
-  .page-btn {
-    display: flex;
-    width: 32px;
-    height: 32px;
-    align-items: center;
-    justify-content: center;
-    border-radius: 8px;
-    border: 1px solid #c5c6cf;
-    background: #fff;
-    color: #151c27;
-    font-family: inherit;
-    font-size: 16px;
-    cursor: pointer;
-  }
+  .page-link { color: #151c27; }
 
-  .page-btn:hover {
-    background: #f0f3ff;
-  }
-
-  .page-btn.active {
-    border: none;
-    background: #000f37;
-    color: #fff;
-    font-size: 13px;
-    font-weight: 700;
-    letter-spacing: 0.13px;
-  }
-
-  /* Footer */
-  .site-footer {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 24px 53px;
-    border-top: 1px solid #e4e4e7;
-  }
-
-  .footer-copy {
-    display: flex;
-    align-items: center;
-    gap: 12.5px;
-  }
-
-  .footer-brand {
-    color: #000f37;
-    font-size: 13px;
-    font-weight: 700;
-    letter-spacing: 0.13px;
-  }
-
-  .footer-copy span:last-child {
-    color: #45464e;
-    font-size: 13px;
-    font-weight: 500;
-    letter-spacing: 0.13px;
-  }
-
-  .footer-links {
-    display: flex;
-    align-items: center;
-    gap: 24px;
-  }
-
-  .footer-links a {
-    color: #45464e;
-    font-size: 13px;
-    font-weight: 500;
-    letter-spacing: 0.13px;
-  }
-
-  .footer-links a:hover {
-    color: #16254d;
+  .page-item.active .page-link {
+    background-color: var(--brand-navy-dark);
+    border-color: var(--brand-navy-dark);
   }
 </style>
 </head>
-<body>
-  <header class="navbar">
-    <div class="navbar-brand">
-      <div class="brand-mark">C</div>
-      <span class="brand-name">CampusCare</span>
-    </div>
+<body class="bg-white">
 
-    <nav class="navbar-nav">
-      <a href="beranda.html" class="nav-link">Beranda</a>
-      <a href="riwayat.html" class="nav-link active">Riwayat</a>
-      <a href="buatlaporan.html" class="nav-link">Buat Laporan</a>
-    </nav>
+  <header class="border-bottom">
+    <div class="brand-shell d-flex align-items-center justify-content-between" style="height:72px;">
+      <a href="beranda.html" class="navbar-brand d-flex align-items-center gap-2 m-0">
+        <span class="d-flex align-items-center justify-content-center rounded-2 bg-brand-navy text-white fw-bold" style="width:32px;height:32px;font-size:16px;">C</span>
+        <span class="text-brand-navy-dark fw-bold" style="font-size:18px;">CampusCare</span>
+      </a>
 
-    <div class="navbar-actions">
-      <button class="icon-button" aria-label="Notifikasi">
-        <svg width="18" height="20" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M0 17V15H2V8C2 6.61667 2.41667 5.3875 3.25 4.3125C4.08333 3.2375 5.16667 2.53333 6.5 2.2V1.5C6.5 1.08333 6.64583 0.729167 6.9375 0.4375C7.22917 0.145833 7.58333 0 8 0C8.41667 0 8.77083 0.145833 9.0625 0.4375C9.35417 0.729167 9.5 1.08333 9.5 1.5V2.2C10.8333 2.53333 11.9167 3.2375 12.75 4.3125C13.5833 5.3875 14 6.61667 14 8V15H16V17H0ZM8 20C7.45 20 6.97917 19.8042 6.5875 19.4125C6.19583 19.0208 6 18.55 6 18H10C10 18.55 9.80417 19.0208 9.4125 19.4125C9.02083 19.8042 8.55 20 8 20ZM4 15H12V8C12 6.9 11.6083 5.95833 10.825 5.175C10.0417 4.39167 9.1 4 8 4C6.9 4 5.95833 4.39167 5.175 5.175C4.39167 5.95833 4 6.9 4 8V15Z" fill="#45464E"/>
-        </svg>
-      </button>
-      <div class="navbar-divider"></div>
-      <div class="avatar">WN</div>
+      <nav class="d-none d-lg-flex align-items-center gap-4">
+        <a href="beranda.html" class="nav-link">Beranda</a>
+        <a href="riwayat.html" class="nav-link active">Riwayat</a>
+        <a href="buatlaporan.html" class="nav-link">Buat Laporan</a>
+      </nav>
+
+      <div class="d-flex align-items-center gap-3">
+        <button class="btn btn-light icon-btn rounded-circle d-flex align-items-center justify-content-center p-0" aria-label="Notifikasi" id="notifBtn">
+          <svg width="18" height="20" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0 17V15H2V8C2 6.61667 2.41667 5.3875 3.25 4.3125C4.08333 3.2375 5.16667 2.53333 6.5 2.2V1.5C6.5 1.08333 6.64583 0.729167 6.9375 0.4375C7.22917 0.145833 7.58333 0 8 0C8.41667 0 8.77083 0.145833 9.0625 0.4375C9.35417 0.729167 9.5 1.08333 9.5 1.5V2.2C10.8333 2.53333 11.9167 3.2375 12.75 4.3125C13.5833 5.3875 14 6.61667 14 8V15H16V17H0ZM8 20C7.45 20 6.97917 19.8042 6.5875 19.4125C6.19583 19.0208 6 18.55 6 18H10C10 18.55 9.80417 19.0208 9.4125 19.4125C9.02083 19.8042 8.55 20 8 20ZM4 15H12V8C12 6.9 11.6083 5.95833 10.825 5.175C10.0417 4.39167 9.1 4 8 4C6.9 4 5.95833 4.39167 5.175 5.175C4.39167 5.95833 4 6.9 4 8V15Z" fill="#45464E"/>
+          </svg>
+        </button>
+        <div class="vr" style="height:24px;"></div>
+        <div class="rounded-circle d-flex align-items-center justify-content-center bg-brand-navy text-white fw-bold" style="width:32px;height:32px;font-size:13px;border:1px solid #c5c6cf;">WN</div>
+      </div>
     </div>
   </header>
 
-  <main class="main-content">
-    <div class="page-header">
-      <span class="eyebrow">Semua Laporan</span>
-      <h1>Riwayat Laporan</h1>
+  <main class="brand-shell d-flex flex-column gap-4 py-4">
+    <div>
+      <div class="text-uppercase text-brand-navy-dark fw-bold" style="font-size:13px;letter-spacing:0.65px;">Semua Laporan</div>
+      <h1 class="fw-semibold mb-0" style="font-size:32px;color:#151c27;letter-spacing:-0.64px;">Riwayat Laporan</h1>
     </div>
 
-    <div class="filter-bar">
-      <div class="search-field">
-        <svg width="18" height="24" viewBox="0 0 18 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M16.6 18L10.3 11.7C9.8 12.1 9.225 12.4167 8.575 12.65C7.925 12.8833 7.23333 13 6.5 13C4.68333 13 3.14583 12.3708 1.8875 11.1125C0.629167 9.85417 0 8.31667 0 6.5C0 4.68333 0.629167 3.14583 1.8875 1.8875C3.14583 0.629167 4.68333 0 6.5 0C8.31667 0 9.85417 0.629167 11.1125 1.8875C12.3708 3.14583 13 4.68333 13 6.5C13 7.23333 12.8833 7.925 12.65 8.575C12.4167 9.225 12.1 9.8 11.7 10.3L18 16.6L16.6 18ZM6.5 11C7.75 11 8.8125 10.5625 9.6875 9.6875C10.5625 8.8125 11 7.75 11 6.5C11 5.25 10.5625 4.1875 9.6875 3.3125C8.8125 2.4375 7.75 2 6.5 2C5.25 2 4.1875 2.4375 3.3125 3.3125C2.4375 4.1875 2 5.25 2 6.5C2 7.75 2.4375 8.8125 3.3125 9.6875C4.1875 10.5625 5.25 11 6.5 11Z" fill="#75767F"/>
-        </svg>
-        <input type="text" class="search-input" placeholder="Cari berdasarkan ID atau kategori..." />
+    <div class="d-flex align-items-center gap-3 flex-wrap">
+      <div class="input-group flex-grow-1" style="min-width:240px;">
+        <span class="input-group-text bg-white">
+          <svg width="18" height="24" viewBox="0 0 18 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M16.6 18L10.3 11.7C9.8 12.1 9.225 12.4167 8.575 12.65C7.925 12.8833 7.23333 13 6.5 13C4.68333 13 3.14583 12.3708 1.8875 11.1125C0.629167 9.85417 0 8.31667 0 6.5C0 4.68333 0.629167 3.14583 1.8875 1.8875C3.14583 0.629167 4.68333 0 6.5 0C8.31667 0 9.85417 0.629167 11.1125 1.8875C12.3708 3.14583 13 4.68333 13 6.5C13 7.23333 12.8833 7.925 12.65 8.575C12.4167 9.225 12.1 9.8 11.7 10.3L18 16.6L16.6 18ZM6.5 11C7.75 11 8.8125 10.5625 9.6875 9.6875C10.5625 8.8125 11 7.75 11 6.5C11 5.25 10.5625 4.1875 9.6875 3.3125C8.8125 2.4375 7.75 2 6.5 2C5.25 2 4.1875 2.4375 3.3125 3.3125C2.4375 4.1875 2 5.25 2 6.5C2 7.75 2.4375 8.8125 3.3125 9.6875C4.1875 10.5625 5.25 11 6.5 11Z" fill="#75767F"/>
+          </svg>
+        </span>
+        <input type="text" class="form-control form-control-lg-custom" placeholder="Cari berdasarkan ID atau kategori..." id="searchInput">
       </div>
 
-      <div class="status-select">
-        <select>
-          <option>Semua Status</option>
-          <option>Diproses</option>
-          <option>Selesai</option>
-          <option>Ditolak</option>
-        </select>
-        <svg width="12" height="24" viewBox="0 0 12 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M6 7.4L0 1.4L1.4 0L6 4.6L10.6 0L12 1.4L6 7.4Z" fill="#75767F"/>
-        </svg>
-      </div>
+      <select class="form-select form-select-custom" id="statusSelect" style="width:auto;">
+        <option>Semua Status</option>
+        <option>Diproses</option>
+        <option>Selesai</option>
+        <option>Ditolak</option>
+      </select>
     </div>
 
-    <div class="table-card">
-      <table class="reports-table">
-        <thead>
-          <tr>
-            <th>No</th>
-            <th>Tanggal</th>
-            <th>ID</th>
-            <th>Kategori</th>
-            <th>Status</th>
-            <th class="col-action">Aksi</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>1</td>
-            <td>23/04/24</td>
-            <td class="report-id">LP-0738</td>
-            <td>IT Support</td>
-            <td>
-              <span class="status-badge status-diproses">
-                <span class="status-dot dot-amber"></span>
-                Diproses
-              </span>
-            </td>
-            <td class="col-action"><a href="detaillaporan.html" class="btn-detail">Detail</a></td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td>22/04/24</td>
-            <td class="report-id">LP-0737</td>
-            <td>HR</td>
-            <td>
-              <span class="status-badge status-selesai">
-                <span class="status-dot dot-green"></span>
-                Selesai
-              </span>
-            </td>
-            <td class="col-action"><a href="detaillaporan.html" class="btn-detail">Detail</a></td>
-          </tr>
-          <tr>
-            <td>3</td>
-            <td>21/04/24</td>
-            <td class="report-id">LP-0736</td>
-            <td>General</td>
-            <td>
-              <span class="status-badge status-ditolak">
-                <span class="status-dot dot-red"></span>
-                Ditolak
-              </span>
-            </td>
-            <td class="col-action"><a href="detaillaporan.html" class="btn-detail">Detail</a></td>
-          </tr>
-          <tr>
-            <td>4</td>
-            <td>20/04/24</td>
-            <td class="report-id">LP-0735</td>
-            <td>IT Support</td>
-            <td>
-              <span class="status-badge status-diproses">
-                <span class="status-dot dot-amber"></span>
-                Diproses
-              </span>
-            </td>
-            <td class="col-action"><a href="detaillaporan.html" class="btn-detail">Detail</a></td>
-          </tr>
-        </tbody>
-      </table>
+    <div class="card border rounded-4 shadow-sm overflow-hidden">
+      <div class="table-responsive">
+        <table class="table table-hover align-middle mb-0">
+          <thead>
+            <tr>
+              <th>No</th>
+              <th>Tanggal</th>
+              <th>ID</th>
+              <th>Kategori</th>
+              <th>Status</th>
+              <th class="text-end">Aksi</th>
+            </tr>
+          </thead>
+          <tbody id="reportsBody">
+            <tr>
+              <td>1</td>
+              <td>23/04/24</td>
+              <td class="report-id">LP-0738</td>
+              <td>IT Support</td>
+              <td>
+                <span class="badge rounded-pill badge-diproses fw-bold d-inline-flex align-items-center gap-2">
+                  <span class="dot dot-amber"></span>Diproses
+                </span>
+              </td>
+              <td class="text-end"><a href="detaillaporan.html" class="btn btn-outline-secondary btn-sm rounded-pill btn-detail">Detail</a></td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>22/04/24</td>
+              <td class="report-id">LP-0737</td>
+              <td>HR</td>
+              <td>
+                <span class="badge rounded-pill badge-selesai fw-bold d-inline-flex align-items-center gap-2">
+                  <span class="dot dot-green"></span>Selesai
+                </span>
+              </td>
+              <td class="text-end"><a href="detaillaporan.html" class="btn btn-outline-secondary btn-sm rounded-pill btn-detail">Detail</a></td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>21/04/24</td>
+              <td class="report-id">LP-0736</td>
+              <td>General</td>
+              <td>
+                <span class="badge rounded-pill badge-ditolak fw-bold d-inline-flex align-items-center gap-2">
+                  <span class="dot dot-red"></span>Ditolak
+                </span>
+              </td>
+              <td class="text-end"><a href="detaillaporan.html" class="btn btn-outline-secondary btn-sm rounded-pill btn-detail">Detail</a></td>
+            </tr>
+            <tr>
+              <td>4</td>
+              <td>20/04/24</td>
+              <td class="report-id">LP-0735</td>
+              <td>IT Support</td>
+              <td>
+                <span class="badge rounded-pill badge-diproses fw-bold d-inline-flex align-items-center gap-2">
+                  <span class="dot dot-amber"></span>Diproses
+                </span>
+              </td>
+              <td class="text-end"><a href="detaillaporan.html" class="btn btn-outline-secondary btn-sm rounded-pill btn-detail">Detail</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
 
-      <div class="table-footer">
-        <span class="table-footer-info">Menampilkan 1-4 dari 15 laporan</span>
-        <div class="pagination">
-          <button class="page-btn" aria-label="Halaman sebelumnya">
-            <svg width="5" height="10" viewBox="0 0 5 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M5 10L0 5L5 0L6.16667 1.16667L2.33333 5L6.16667 8.83333L5 10Z" fill="#75767F"/>
-            </svg>
-          </button>
-          <button class="page-btn active">1</button>
-          <button class="page-btn">2</button>
-          <button class="page-btn">3</button>
-          <button class="page-btn" aria-label="Halaman berikutnya">
-            <svg width="7" height="10" viewBox="0 0 7 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M3.83333 5L0 1.16667L1.16667 0L6.16667 5L1.16667 10L0 8.83333L3.83333 5Z" fill="#75767F"/>
-            </svg>
-          </button>
-        </div>
+      <div class="d-flex align-items-center justify-content-between flex-wrap gap-2 p-3">
+        <span class="text-secondary small">Menampilkan 1-4 dari 15 laporan</span>
+        <nav aria-label="Navigasi halaman">
+          <ul class="pagination pagination-sm mb-0">
+            <li class="page-item">
+              <button class="page-link" aria-label="Halaman sebelumnya">&laquo;</button>
+            </li>
+            <li class="page-item active"><button class="page-link">1</button></li>
+            <li class="page-item"><button class="page-link">2</button></li>
+            <li class="page-item"><button class="page-link">3</button></li>
+            <li class="page-item">
+              <button class="page-link" aria-label="Halaman berikutnya">&raquo;</button>
+            </li>
+          </ul>
+        </nav>
       </div>
     </div>
   </main>
 
-  <footer class="site-footer">
-    <div class="footer-copy">
-      <span class="footer-brand">CampusCare</span>
-      <span>© 2024 CampusCare University Facility Management</span>
-    </div>
-    <div class="footer-links">
-      <a href="#">Bantuan</a>
-      <a href="#">Kebijakan Privasi</a>
-      <a href="#">Kontak Kami</a>
+  <footer class="border-top">
+    <div class="brand-shell d-flex align-items-center justify-content-between flex-wrap gap-2 py-3">
+      <div class="d-flex align-items-center gap-2">
+        <span class="fw-bold text-brand-navy-dark" style="font-size:13px;">CampusCare</span>
+        <span class="text-secondary" style="font-size:13px;">© 2024 CampusCare University Facility Management</span>
+      </div>
+      <div class="d-flex align-items-center gap-4">
+        <a href="#" class="text-secondary" style="font-size:13px;">Bantuan</a>
+        <a href="#" class="text-secondary" style="font-size:13px;">Kebijakan Privasi</a>
+        <a href="#" class="text-secondary" style="font-size:13px;">Kontak Kami</a>
+      </div>
     </div>
   </footer>
 
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script>
-    document.querySelector('.icon-button[aria-label="Notifikasi"]').addEventListener('click', function () {
+    document.getElementById('notifBtn').addEventListener('click', function () {
       window.location.href = 'notifikasi.html';
     });
 
-    var searchInput = document.querySelector('.search-input');
-    var statusSelect = document.querySelector('.status-select select');
-    var rows = document.querySelectorAll('.reports-table tbody tr');
+    var searchInput = document.getElementById('searchInput');
+    var statusSelect = document.getElementById('statusSelect');
+    var rows = document.querySelectorAll('#reportsBody tr');
 
     function applyFilters() {
       var query = searchInput.value.trim().toLowerCase();
@@ -600,7 +281,7 @@
       rows.forEach(function (row) {
         var id = row.querySelector('.report-id').textContent.toLowerCase();
         var kategori = row.children[3].textContent.toLowerCase();
-        var rowStatus = row.querySelector('.status-badge').textContent.trim();
+        var rowStatus = row.querySelector('.badge').textContent.trim();
 
         var matchesQuery = !query || id.includes(query) || kategori.includes(query);
         var matchesStatus = status === 'Semua Status' || rowStatus === status;
@@ -612,12 +293,12 @@
     searchInput.addEventListener('input', applyFilters);
     statusSelect.addEventListener('change', applyFilters);
 
-    document.querySelectorAll('.page-btn:not([aria-label])').forEach(function (btn) {
+    document.querySelectorAll('.pagination .page-item .page-link:not([aria-label])').forEach(function (btn) {
       btn.addEventListener('click', function () {
-        document.querySelectorAll('.page-btn.active').forEach(function (b) {
-          b.classList.remove('active');
+        document.querySelectorAll('.pagination .page-item.active').forEach(function (li) {
+          li.classList.remove('active');
         });
-        btn.classList.add('active');
+        btn.closest('.page-item').classList.add('active');
       });
     });
   </script>

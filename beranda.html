@@ -7,358 +7,235 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
 <style>
-  * {
-    box-sizing: border-box;
+  :root {
+    --cc-navy: #16254d;
+    --cc-navy-dark: #000f37;
+    --cc-text: #45464e;
+    --cc-border: #c5c6cf;
+    --cc-border-light: #e4e4e7;
+    --cc-bg-soft: #f0f3ff;
+    --cc-amber: #f4be61;
+    --cc-green: #35b26a;
+    --cc-red: #e6483f;
   }
 
   body {
-    margin: 0;
-    background: #fff;
     font-family: "Inter", -apple-system, Roboto, Helvetica, sans-serif;
-  }
-
-  a {
-    text-decoration: none;
+    background: #fff;
   }
 
   /* Navbar */
-  .navbar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  .cc-navbar {
     height: 72px;
-    padding: 0 53px;
-    border-bottom: 1px solid #e4e4e7;
+    border-bottom: 1px solid var(--cc-border-light);
   }
 
-  .navbar-brand {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-
-  .brand-mark {
-    display: flex;
+  .cc-brand-mark {
     width: 32px;
     height: 32px;
-    align-items: center;
-    justify-content: center;
     border-radius: 8px;
-    background: #16254d;
+    background: var(--cc-navy);
     color: #fff;
     font-size: 16px;
     font-weight: 700;
   }
 
-  .brand-name {
-    color: #000f37;
+  .cc-brand-name {
+    color: var(--cc-navy-dark);
     font-size: 18px;
     font-weight: 700;
   }
 
-  .navbar-nav {
-    display: flex;
-    align-items: center;
-    gap: 32px;
-  }
-
-  .nav-link {
-    padding-bottom: 4px;
-    color: #45464e;
+  .cc-nav-link {
+    color: var(--cc-text) !important;
     font-size: 15px;
     font-weight: 500;
     border-bottom: 2px solid transparent;
+    padding-bottom: 4px !important;
   }
 
-  .nav-link:hover {
-    color: #16254d;
+  .cc-nav-link:hover {
+    color: var(--cc-navy) !important;
   }
 
-  .nav-link.active {
-    color: #16254d;
+  .cc-nav-link.active {
+    color: var(--cc-navy) !important;
     font-weight: 700;
-    border-bottom-color: #16254d;
+    border-bottom-color: var(--cc-navy);
   }
 
-  .navbar-actions {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-  }
-
-  .icon-button {
-    display: flex;
+  .cc-icon-button {
     width: 36px;
     height: 36px;
-    align-items: center;
-    justify-content: center;
     border: none;
     border-radius: 9999px;
     background: none;
-    color: #45464e;
-    cursor: pointer;
+    color: var(--cc-text);
   }
 
-  .icon-button:hover {
-    background: #f0f3ff;
+  .cc-icon-button:hover {
+    background: var(--cc-bg-soft);
   }
 
-  .navbar-divider {
-    width: 1px;
-    height: 24px;
-    background: #c5c6cf;
-  }
-
-  .avatar {
-    display: flex;
+  .cc-avatar {
     width: 32px;
     height: 32px;
-    align-items: center;
-    justify-content: center;
     border-radius: 9999px;
-    border: 1px solid #c5c6cf;
-    background: #16254d;
+    border: 1px solid var(--cc-border);
+    background: var(--cc-navy);
     color: #fff;
     font-size: 13px;
     font-weight: 700;
-    letter-spacing: 0.13px;
-  }
-
-  /* Main content */
-  .main-content {
-    max-width: 1280px;
-    margin: 0 auto;
-    padding: 32px 53px;
-    display: flex;
-    flex-direction: column;
-    gap: 32px;
   }
 
   /* Hero */
-  .hero-section {
-    display: flex;
-    padding: 32px;
-    align-items: center;
-    justify-content: space-between;
-    gap: 24px;
+  .cc-hero {
+    background: var(--cc-navy);
     border-radius: 14px;
-    background: #16254d;
     box-shadow: 0 4px 20px -2px rgba(22, 37, 77, 0.06);
     overflow: hidden;
     position: relative;
   }
 
-  .hero-decoration {
+  .cc-hero-decoration {
     position: absolute;
     right: -60px;
     top: 50%;
     transform: translateY(-50%);
     opacity: 0.1;
+    pointer-events: none;
   }
 
-  .hero-content {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    position: relative;
-  }
-
-  .hero-heading {
-    display: flex;
-    align-items: flex-end;
-    gap: 12px;
-  }
-
-  .hero-heading h1 {
-    margin: 0;
+  .cc-hero h1 {
     color: #fff;
     font-size: 32px;
     font-weight: 600;
-    line-height: 120%;
     letter-spacing: -0.64px;
   }
 
-  .wave-emoji {
-    font-size: 32px;
-    line-height: 120%;
-  }
-
-  .hero-subtitle {
-    margin: 0;
+  .cc-hero-subtitle {
     color: #7f8dbb;
     font-size: 16px;
-    font-weight: 400;
-    line-height: 150%;
     opacity: 0.9;
   }
 
-  .btn-buat-laporan {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 12px 24px;
-    border: none;
-    border-radius: 10px;
-    background: none;
+  .btn-cc-report {
+    background: transparent;
     color: #765100;
-    font-family: inherit;
-    font-size: 14px;
     font-weight: 600;
+    font-size: 14px;
     letter-spacing: 0.28px;
-    cursor: pointer;
-    position: relative;
+    border-radius: 10px;
     white-space: nowrap;
   }
 
-  .btn-buat-laporan:hover {
+  .btn-cc-report:hover {
     background: rgba(255, 255, 255, 0.08);
+    color: #765100;
   }
 
-  /* Stats grid */
-  .stats-grid {
-    display: flex;
-    align-items: flex-start;
-    gap: 24px;
-  }
-
-  .stat-card {
-    flex: 1 0 0;
-    padding: 24px;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
+  /* Stat cards */
+  .cc-stat-card {
     border-radius: 14px;
-    border: 1px solid #c5c6cf;
-    background: #fff;
+    border: 1px solid var(--cc-border);
     box-shadow: 0 4px 20px -2px rgba(22, 37, 77, 0.06);
   }
 
-  .stat-label {
-    color: #45464e;
+  .cc-stat-label {
+    color: var(--cc-text);
     font-size: 13px;
     font-weight: 500;
     letter-spacing: 0.65px;
     text-transform: uppercase;
   }
 
-  .stat-value-row {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-
-  .stat-value {
-    color: #000f37;
+  .cc-stat-value {
+    color: var(--cc-navy-dark);
     font-size: 32px;
     font-weight: 600;
-    line-height: 120%;
     letter-spacing: -0.64px;
   }
 
-  .stat-dot {
+  .cc-dot {
     width: 8px;
     height: 8px;
     border-radius: 9999px;
+    display: inline-block;
   }
 
-  .dot-amber {
-    background: #f4be61;
+  .cc-dot-sm {
+    width: 6px;
+    height: 6px;
   }
 
-  .dot-green {
-    background: #35b26a;
-  }
-
-  .dot-red {
-    background: #e6483f;
-  }
+  .dot-amber { background: var(--cc-amber); }
+  .dot-green { background: var(--cc-green); }
+  .dot-red { background: var(--cc-red); }
 
   /* Reports card */
-  .reports-card {
+  .cc-reports-card {
     border-radius: 14px;
-    border: 1px solid #e4e4e7;
+    border: 1px solid var(--cc-border-light);
     box-shadow: 0 4px 20px -2px rgba(22, 37, 77, 0.06);
     overflow: hidden;
   }
 
-  .reports-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  .cc-reports-header {
     padding: 24px 32px;
-    border-bottom: 1px solid #e4e4e7;
+    border-bottom: 1px solid var(--cc-border-light);
   }
 
-  .reports-header h2 {
-    margin: 0;
-    color: #000f37;
+  .cc-reports-header h2 {
+    color: var(--cc-navy-dark);
     font-size: 20px;
     font-weight: 700;
+    margin: 0;
   }
 
-  .see-all-link {
-    display: flex;
-    align-items: center;
-    gap: 4px;
-    color: #000f37;
+  .cc-see-all {
+    color: var(--cc-navy-dark) !important;
     font-size: 14px;
     font-weight: 700;
   }
 
-  .see-all-link:hover {
+  .cc-see-all:hover {
     text-decoration: underline;
   }
 
-  .reports-table {
-    width: 100%;
-    border-collapse: collapse;
+  .cc-table thead tr {
+    background: var(--cc-bg-soft);
   }
 
-  .reports-table thead tr {
-    background: #f0f3ff;
-  }
-
-  .reports-table th {
-    padding: 16px 32px;
-    text-align: left;
-    color: #45464e;
+  .cc-table th {
+    color: var(--cc-text);
     font-size: 13px;
     font-weight: 500;
     letter-spacing: 0.13px;
     text-transform: uppercase;
+    padding: 16px 32px;
+    border: none;
   }
 
-  .reports-table th.col-action {
-    text-align: right;
+  .cc-table td {
+    color: var(--cc-text);
+    font-size: 16px;
+    padding: 18px 32px;
+    vertical-align: middle;
+    border-bottom: 1px solid var(--cc-border-light);
   }
 
-  .reports-table tbody tr {
-    border-bottom: 1px solid #e4e4e7;
-  }
-
-  .reports-table tbody tr:last-child {
+  .cc-table tbody tr:last-child td {
     border-bottom: none;
   }
 
-  .reports-table td {
-    padding: 18px 32px;
-    color: #45464e;
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 150%;
-  }
-
-  .reports-table td.col-action {
-    text-align: right;
-  }
-
-  .report-id {
-    color: #000f37;
+  .cc-report-id {
+    color: var(--cc-navy-dark);
     font-weight: 700;
   }
 
-  .status-badge {
+  .cc-badge {
     display: inline-flex;
     align-items: center;
     gap: 6px;
@@ -366,86 +243,82 @@
     border-radius: 9999px;
     font-size: 12px;
     font-weight: 700;
-    line-height: 150%;
   }
 
-  .status-badge .stat-dot {
-    width: 6px;
-    height: 6px;
-  }
+  .badge-diproses { background: #fff8e1; color: #7e5700; }
+  .badge-selesai  { background: #e7f8ed; color: #1e7b34; }
+  .badge-ditolak  { color: #b42318; padding: 4px 0; }
 
-  .status-diproses {
-    background: #fff8e1;
-    color: #7e5700;
-  }
-
-  .status-selesai {
-    background: #e7f8ed;
-    color: #1e7b34;
-  }
-
-  .status-ditolak {
-    color: #b42318;
-    padding: 4px 0;
-  }
-
-  .btn-detail {
-    display: inline-flex;
-    align-items: center;
-    padding: 8px 20px;
+  .btn-cc-detail {
     border-radius: 9999px;
-    border: 1px solid #c5c6cf;
+    border: 1px solid var(--cc-border);
     background: #fff;
-    color: #000f37;
-    font-family: inherit;
+    color: var(--cc-navy-dark);
     font-size: 14px;
     font-weight: 700;
+    padding: 8px 20px;
   }
 
-  .btn-detail:hover {
-    background: #f0f3ff;
+  .btn-cc-detail:hover {
+    background: var(--cc-bg-soft);
   }
 </style>
 </head>
 <body>
-  <header class="navbar">
-    <div class="navbar-brand">
-      <div class="brand-mark">C</div>
-      <span class="brand-name">CampusCare</span>
-    </div>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg cc-navbar px-4 px-lg-5">
+    <div class="container-fluid p-0">
+      <a class="navbar-brand d-flex align-items-center gap-2" href="beranda.html">
+        <span class="cc-brand-mark d-flex align-items-center justify-content-center">C</span>
+        <span class="cc-brand-name">CampusCare</span>
+      </a>
 
-    <nav class="navbar-nav">
-      <a href="beranda.html" class="nav-link active">Beranda</a>
-      <a href="riwayat.html" class="nav-link">Riwayat</a>
-      <a href="buatlaporan.html" class="nav-link">Buat Laporan</a>
-    </nav>
-
-    <div class="navbar-actions">
-      <button class="icon-button" aria-label="Notifikasi">
-        <svg width="18" height="20" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M0 17V15H2V8C2 6.61667 2.41667 5.3875 3.25 4.3125C4.08333 3.2375 5.16667 2.53333 6.5 2.2V1.5C6.5 1.08333 6.64583 0.729167 6.9375 0.4375C7.22917 0.145833 7.58333 0 8 0C8.41667 0 8.77083 0.145833 9.0625 0.4375C9.35417 0.729167 9.5 1.08333 9.5 1.5V2.2C10.8333 2.53333 11.9167 3.2375 12.75 4.3125C13.5833 5.3875 14 6.61667 14 8V15H16V17H0ZM8 20C7.45 20 6.97917 19.8042 6.5875 19.4125C6.19583 19.0208 6 18.55 6 18H10C10 18.55 9.80417 19.0208 9.4125 19.4125C9.02083 19.8042 8.55 20 8 20ZM4 15H12V8C12 6.9 11.6083 5.95833 10.825 5.175C10.0417 4.39167 9.1 4 8 4C6.9 4 5.95833 4.39167 5.175 5.175C4.39167 5.95833 4 6.9 4 8V15Z" fill="#45464E"/>
-        </svg>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#ccNavbarNav">
+        <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="navbar-divider"></div>
-      <div class="avatar">WN</div>
-    </div>
-  </header>
 
-  <main class="main-content">
-    <section class="hero-section">
-      <svg class="hero-decoration" width="406" height="406" viewBox="0 0 406 406" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <div class="collapse navbar-collapse" id="ccNavbarNav">
+        <ul class="navbar-nav mx-auto gap-lg-4 mt-3 mt-lg-0">
+          <li class="nav-item">
+            <a class="nav-link cc-nav-link active" href="beranda.html">Beranda</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link cc-nav-link" href="riwayat.html">Riwayat</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link cc-nav-link" href="buatlaporan.html">Buat Laporan</a>
+          </li>
+        </ul>
+
+        <div class="d-flex align-items-center gap-3 mt-3 mt-lg-0">
+          <button class="cc-icon-button d-flex align-items-center justify-content-center" aria-label="Notifikasi" id="btnNotifikasi">
+            <svg width="18" height="20" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M0 17V15H2V8C2 6.61667 2.41667 5.3875 3.25 4.3125C4.08333 3.2375 5.16667 2.53333 6.5 2.2V1.5C6.5 1.08333 6.64583 0.729167 6.9375 0.4375C7.22917 0.145833 7.58333 0 8 0C8.41667 0 8.77083 0.145833 9.0625 0.4375C9.35417 0.729167 9.5 1.08333 9.5 1.5V2.2C10.8333 2.53333 11.9167 3.2375 12.75 4.3125C13.5833 5.3875 14 6.61667 14 8V15H16V17H0ZM8 20C7.45 20 6.97917 19.8042 6.5875 19.4125C6.19583 19.0208 6 18.55 6 18H10C10 18.55 9.80417 19.0208 9.4125 19.4125C9.02083 19.8042 8.55 20 8 20ZM4 15H12V8C12 6.9 11.6083 5.95833 10.825 5.175C10.0417 4.39167 9.1 4 8 4C6.9 4 5.95833 4.39167 5.175 5.175C4.39167 5.95833 4 6.9 4 8V15Z" fill="#45464E"/>
+            </svg>
+          </button>
+          <div class="vr"></div>
+          <div class="cc-avatar d-flex align-items-center justify-content-center">WN</div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container py-4 py-lg-5" style="max-width: 1280px;">
+    <!-- Hero -->
+    <section class="cc-hero d-flex flex-column flex-md-row align-items-md-center justify-content-md-between gap-3 p-4 mb-4">
+      <svg class="cc-hero-decoration" width="406" height="406" viewBox="0 0 406 406" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M299.336 76.2021C327.101 92.618 347.976 122.004 359.528 153.823C371.282 185.439 373.714 219.486 360.338 247.049C346.963 274.409 317.779 295.283 287.987 310.888C258.195 326.493 227.593 336.627 196.788 344.733C165.983 352.84 134.772 358.92 107.818 346.963C80.8634 335.005 57.9623 305.011 48.0317 272.99C38.1011 240.969 40.9384 207.124 53.909 178.548C66.6769 149.77 89.578 126.058 114.506 108.629C139.636 91.1994 166.793 79.8501 200.03 83.4981C233.267 87.1461 271.571 87.1461 299.336 76.2021Z" fill="white"/>
       </svg>
 
-      <div class="hero-content">
-        <div class="hero-heading">
-          <h1>Halo, Alexis!</h1>
-          <span class="wave-emoji">👋</span>
+      <div class="position-relative">
+        <div class="d-flex align-items-end gap-2">
+          <h1 class="mb-0">Halo, Alexis!</h1>
+          <span style="font-size: 32px; line-height: 120%;">👋</span>
         </div>
-        <p class="hero-subtitle">Ringkasan laporan fasilitas kampus</p>
+        <p class="cc-hero-subtitle mb-0">Ringkasan laporan fasilitas kampus</p>
       </div>
 
-      <a href="buatlaporan.html" class="btn-buat-laporan">
+      <a href="buatlaporan.html" class="btn btn-cc-report d-flex align-items-center gap-2 position-relative">
         <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M5 6.66667H0V5H5V0H6.66667V5H11.6667V6.66667H6.66667V11.6667H5V6.66667Z" fill="#765100"/>
         </svg>
@@ -453,38 +326,48 @@
       </a>
     </section>
 
-    <section class="stats-grid">
-      <div class="stat-card">
-        <span class="stat-label">Total</span>
-        <span class="stat-value">18</span>
-      </div>
-      <div class="stat-card">
-        <span class="stat-label">Diproses</span>
-        <div class="stat-value-row">
-          <span class="stat-value">2</span>
-          <span class="stat-dot dot-amber"></span>
+    <!-- Stats -->
+    <section class="row g-3 mb-4">
+      <div class="col-12 col-sm-6 col-lg-3">
+        <div class="cc-stat-card p-3 h-100">
+          <div class="cc-stat-label mb-2">Total</div>
+          <div class="cc-stat-value">18</div>
         </div>
       </div>
-      <div class="stat-card">
-        <span class="stat-label">Selesai</span>
-        <div class="stat-value-row">
-          <span class="stat-value">15</span>
-          <span class="stat-dot dot-green"></span>
+      <div class="col-12 col-sm-6 col-lg-3">
+        <div class="cc-stat-card p-3 h-100">
+          <div class="cc-stat-label mb-2">Diproses</div>
+          <div class="d-flex align-items-center gap-2">
+            <span class="cc-stat-value">2</span>
+            <span class="cc-dot dot-amber"></span>
+          </div>
         </div>
       </div>
-      <div class="stat-card">
-        <span class="stat-label">Ditolak</span>
-        <div class="stat-value-row">
-          <span class="stat-value">1</span>
-          <span class="stat-dot dot-red"></span>
+      <div class="col-12 col-sm-6 col-lg-3">
+        <div class="cc-stat-card p-3 h-100">
+          <div class="cc-stat-label mb-2">Selesai</div>
+          <div class="d-flex align-items-center gap-2">
+            <span class="cc-stat-value">15</span>
+            <span class="cc-dot dot-green"></span>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-sm-6 col-lg-3">
+        <div class="cc-stat-card p-3 h-100">
+          <div class="cc-stat-label mb-2">Ditolak</div>
+          <div class="d-flex align-items-center gap-2">
+            <span class="cc-stat-value">1</span>
+            <span class="cc-dot dot-red"></span>
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="reports-card">
-      <div class="reports-header">
+    <!-- Reports -->
+    <section class="cc-reports-card">
+      <div class="cc-reports-header d-flex align-items-center justify-content-between">
         <h2>Laporan Terbaru</h2>
-        <a href="riwayat.html" class="see-all-link">
+        <a href="riwayat.html" class="cc-see-all d-flex align-items-center gap-1">
           Lihat Semua
           <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M8.11667 6H0V4.66667H8.11667L4.38333 0.933333L5.33333 0L10.6667 5.33333L5.33333 10.6667L4.38333 9.73333L8.11667 6Z" fill="#000F37"/>
@@ -492,60 +375,63 @@
         </a>
       </div>
 
-      <table class="reports-table">
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Tanggal</th>
-            <th>Kategori</th>
-            <th>Status</th>
-            <th class="col-action">Aksi</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td class="report-id">LP-0738</td>
-            <td>23/04/24</td>
-            <td>Proyektor</td>
-            <td>
-              <span class="status-badge status-diproses">
-                <span class="stat-dot dot-amber"></span>
-                Diproses
-              </span>
-            </td>
-            <td class="col-action"><a href="detaillaporan.html" class="btn-detail">Detail</a></td>
-          </tr>
-          <tr>
-            <td class="report-id">LP-0737</td>
-            <td>22/04/24</td>
-            <td>wifi</td>
-            <td>
-              <span class="status-badge status-selesai">
-                <span class="stat-dot dot-green"></span>
-                Selesai
-              </span>
-            </td>
-            <td class="col-action"><a href="detaillaporan.html" class="btn-detail">Detail</a></td>
-          </tr>
-          <tr>
-            <td class="report-id">LP-0736</td>
-            <td>21/04/24</td>
-            <td>Pintu Toilet</td>
-            <td>
-              <span class="status-badge status-ditolak">
-                <span class="stat-dot dot-red"></span>
-                Ditolak
-              </span>
-            </td>
-            <td class="col-action"><a href="detaillaporan.html" class="btn-detail">Detail</a></td>
-          </tr>
-        </tbody>
-      </table>
+      <div class="table-responsive">
+        <table class="table cc-table mb-0">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Tanggal</th>
+              <th>Kategori</th>
+              <th>Status</th>
+              <th class="text-end">Aksi</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="cc-report-id">LP-0738</td>
+              <td>23/04/24</td>
+              <td>Proyektor</td>
+              <td>
+                <span class="cc-badge badge-diproses">
+                  <span class="cc-dot cc-dot-sm dot-amber"></span>
+                  Diproses
+                </span>
+              </td>
+              <td class="text-end"><a href="detaillaporan.html" class="btn btn-cc-detail">Detail</a></td>
+            </tr>
+            <tr>
+              <td class="cc-report-id">LP-0737</td>
+              <td>22/04/24</td>
+              <td>wifi</td>
+              <td>
+                <span class="cc-badge badge-selesai">
+                  <span class="cc-dot cc-dot-sm dot-green"></span>
+                  Selesai
+                </span>
+              </td>
+              <td class="text-end"><a href="detaillaporan.html" class="btn btn-cc-detail">Detail</a></td>
+            </tr>
+            <tr>
+              <td class="cc-report-id">LP-0736</td>
+              <td>21/04/24</td>
+              <td>Pintu Toilet</td>
+              <td>
+                <span class="cc-badge badge-ditolak">
+                  <span class="cc-dot cc-dot-sm dot-red"></span>
+                  Ditolak
+                </span>
+              </td>
+              <td class="text-end"><a href="detaillaporan.html" class="btn btn-cc-detail">Detail</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </section>
   </main>
 
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script>
-    document.querySelector('.icon-button[aria-label="Notifikasi"]').addEventListener('click', function () {
+    document.getElementById('btnNotifikasi').addEventListener('click', function () {
       window.location.href = 'notifikasi.html';
     });
   </script>
