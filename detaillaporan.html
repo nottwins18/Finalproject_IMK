@@ -129,24 +129,21 @@
   .main-content {
     max-width: 1280px;
     margin: 0 auto;
-    padding: 32px 53px 64px;
+    padding: 32px 53px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
   }
 
+  /* Header section */
   .page-header {
-    margin-bottom: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
   }
 
-  .page-eyebrow {
-    display: block;
-    color: #000f37;
-    font-size: 13px;
-    font-weight: 700;
-    letter-spacing: 0.65px;
-    text-transform: uppercase;
-  }
-
-  .page-title {
-    margin: 3px 0 0;
+  .page-header h1 {
+    margin: 0;
     color: #151c27;
     font-size: 32px;
     font-weight: 600;
@@ -154,57 +151,51 @@
     letter-spacing: -0.64px;
   }
 
-  .page-subtitle {
-    margin: 1px 0 0;
+  .page-header p {
+    margin: 0;
     color: #45464e;
     font-size: 16px;
     font-weight: 400;
     line-height: 150%;
   }
 
-  .detail-grid {
-    display: grid;
-    grid-template-columns: 1fr 384px;
-    align-items: start;
-    gap: 24px;
-  }
-
-  .detail-main {
+  /* Photo placeholder card */
+  .photo-card {
     display: flex;
-    flex-direction: column;
-    gap: 24px;
-  }
-
-  .image-placeholder {
-    display: flex;
-    height: 325px;
-    align-items: center;
+    width: 578px;
+    max-width: 100%;
+    aspect-ratio: 281 / 158;
     justify-content: center;
+    align-items: center;
     border-radius: 14px;
     background: #e7eefe;
+    overflow: hidden;
   }
 
-  .image-placeholder-icon {
+  .photo-icon {
     display: flex;
-    padding: 24px;
-    align-items: center;
+    width: 88px;
+    height: 90px;
     justify-content: center;
+    align-items: center;
     border-radius: 9999px;
     background: #e2e8f8;
   }
 
-  .detail-card {
+  /* Info cards */
+  .info-card {
     display: flex;
-    flex-direction: column;
-    gap: 16px;
     padding: 24px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
     border-radius: 14px;
     border: 1px solid #c5c6cf;
     background: #fff;
     box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
   }
 
-  .detail-card h2 {
+  .info-card h2 {
     margin: 0;
     color: #151c27;
     font-size: 24px;
@@ -213,7 +204,7 @@
     letter-spacing: -0.24px;
   }
 
-  .detail-card p {
+  .description-text {
     margin: 0;
     color: #45464e;
     font-size: 16px;
@@ -223,9 +214,13 @@
 
   /* Timeline */
   .timeline {
+    list-style: none;
+    margin: 0;
+    padding: 0;
     display: flex;
     flex-direction: column;
     gap: 24px;
+    width: 100%;
   }
 
   .timeline-item {
@@ -233,7 +228,8 @@
     padding-left: 32px;
   }
 
-  .timeline-marker {
+  .timeline-item::before {
+    content: "";
     position: absolute;
     left: 0;
     top: 4px;
@@ -241,43 +237,44 @@
     height: 16px;
     border-radius: 9999px;
     border: 4px solid #f9f9ff;
-    background: #000f37;
-  }
-
-  .timeline-item.is-past .timeline-marker {
     background: #c5c6cf;
   }
 
-  .timeline-line {
+  .timeline-item:not(:last-child)::after {
+    content: "";
     position: absolute;
     left: 7px;
-    top: 20px;
+    top: 24px;
+    bottom: -24px;
     width: 2px;
-    height: calc(100% + 4px);
     background: #e5e7eb;
+  }
+
+  .timeline-item.active::before {
+    background: #000f37;
   }
 
   .timeline-time {
     color: #45464e;
     font-size: 12px;
-    font-weight: 700;
+    font-weight: 400;
     line-height: 133.333%;
   }
 
-  .timeline-item.is-past .timeline-time {
-    font-weight: 400;
+  .timeline-item.active .timeline-time {
+    font-weight: 700;
   }
 
   .timeline-title {
-    margin-top: 4px;
+    margin: 4px 0 0;
     color: #151c27;
     font-size: 16px;
-    font-weight: 700;
+    font-weight: 500;
     line-height: 150%;
   }
 
-  .timeline-item.is-past .timeline-title {
-    font-weight: 500;
+  .timeline-item.active .timeline-title {
+    font-weight: 700;
   }
 
   .timeline-desc {
@@ -286,129 +283,6 @@
     font-size: 14px;
     font-weight: 400;
     line-height: 142.857%;
-  }
-
-  /* Info panel */
-  .info-panel {
-    display: flex;
-    flex-direction: column;
-    gap: 32px;
-    padding: 24px;
-    border-radius: 14px;
-    border: 1px solid #c5c6cf;
-    background: #fff;
-    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-  }
-
-  .info-panel-heading {
-    margin: 0;
-    padding-bottom: 16px;
-    border-bottom: 1px solid #c5c6cf;
-    color: #000f37;
-    font-size: 16px;
-    font-weight: 700;
-    line-height: 150%;
-  }
-
-  .info-rows {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-  }
-
-  .info-row {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-
-  .info-row-label {
-    color: #45464e;
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 150%;
-  }
-
-  .info-row-value {
-    color: #151c27;
-    font-size: 16px;
-    font-weight: 700;
-    line-height: 150%;
-  }
-
-  .info-row-value.with-dot {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-  }
-
-  .info-dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 9999px;
-  }
-
-  .dot-amber {
-    background: #f4be61;
-  }
-
-  .status-normal {
-    color: #765100;
-  }
-
-  .status-diproses {
-    color: #7e5700;
-  }
-
-  .info-panel-actions {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
-
-  .btn-primary {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    padding: 12px 0;
-    border: none;
-    border-radius: 12px;
-    background: #16254d;
-    color: #fff;
-    font-family: inherit;
-    font-size: 16px;
-    font-weight: 700;
-    line-height: 150%;
-    cursor: pointer;
-  }
-
-  .btn-primary:hover {
-    background: #0f1a38;
-  }
-
-  .btn-outline-danger {
-    padding: 12px 0;
-    border-radius: 12px;
-    border: 1px solid #ba1a1a;
-    background: #fff;
-    color: #ba1a1a;
-    text-align: center;
-    font-family: inherit;
-    font-size: 16px;
-    font-weight: 700;
-    line-height: 150%;
-    cursor: pointer;
-  }
-
-  .btn-outline-danger:hover {
-    background: #fdf0f0;
-  }
-
-  @media (max-width: 900px) {
-    .detail-grid {
-      grid-template-columns: 1fr;
-    }
   }
 </style>
 </head>
@@ -438,111 +312,43 @@
 
   <main class="main-content">
     <div class="page-header">
-      <span class="page-eyebrow">IT Support</span>
-      <h1 class="page-title">Detail Laporan LP-0738</h1>
-      <p class="page-subtitle">Dibuat 23 April 2024</p>
+      <h1>Detail Laporan LP-0738</h1>
+      <p>Dibuat 23 April 2024</p>
     </div>
 
-    <div class="detail-grid">
-      <div class="detail-main">
-        <div class="image-placeholder">
-          <div class="image-placeholder-icon">
-            <svg width="40" height="32" viewBox="0 0 40 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M20 24.5C22.5 24.5 24.625 23.625 26.375 21.875C28.125 20.125 29 18 29 15.5C29 13 28.125 10.875 26.375 9.125C24.625 7.375 22.5 6.5 20 6.5C17.5 6.5 15.375 7.375 13.625 9.125C11.875 10.875 11 13 11 15.5C11 18 11.875 20.125 13.625 21.875C15.375 23.625 17.5 24.5 20 24.5ZM20 20.5C18.6 20.5 17.4167 20.0167 16.45 19.05C15.4833 18.0833 15 16.9 15 15.5C15 14.1 15.4833 12.9167 16.45 11.95C17.4167 10.9833 18.6 10.5 20 10.5C21.4 10.5 22.5833 10.9833 23.55 11.95C24.5167 12.9167 25 14.1 25 15.5C25 16.9 24.5167 18.0833 23.55 19.05C22.5833 20.0167 21.4 20.5 20 20.5ZM4 31.5C2.9 31.5 1.95833 31.1083 1.175 30.325C0.391667 29.5417 0 28.6 0 27.5V3.5C0 2.4 0.391667 1.45833 1.175 0.675C1.95833 -0.108333 2.9 -0.5 4 -0.5H10.3L14 -4.5H26L29.7 -0.5H36C37.1 -0.5 38.0417 -0.108333 38.825 0.675C39.6083 1.45833 40 2.4 40 3.5V27.5C40 28.6 39.6083 29.5417 38.825 30.325C38.0417 31.1083 37.1 31.5 36 31.5H4Z" fill="#000F37"/>
-            </svg>
-          </div>
-        </div>
-
-        <div class="detail-card">
-          <h2>Deskripsi Masalah</h2>
-          <p>
-            Proyektor di ruang 304 tidak menyala saat perkuliahan. Sudah dicoba untuk menyambungkan
-            ulang kabel HDMI, namun tetap tidak ada respons dari perangkat. Lampu indikator pada unit
-            proyektor berkedip merah.
-          </p>
-        </div>
-
-        <div class="detail-card">
-          <h2>Riwayat Status</h2>
-          <div class="timeline">
-            <div class="timeline-item">
-              <div class="timeline-line"></div>
-              <div class="timeline-marker"></div>
-              <span class="timeline-time">23/04 11:10</span>
-              <div class="timeline-title">Diproses tim IT Support</div>
-              <p class="timeline-desc">Teknisi sedang menuju lokasi untuk pengecekan fisik.</p>
-            </div>
-            <div class="timeline-item is-past">
-              <div class="timeline-marker"></div>
-              <span class="timeline-time">23/04 10:35</span>
-              <div class="timeline-title">Laporan dibuat</div>
-              <p class="timeline-desc">Laporan berhasil diterima oleh sistem.</p>
-            </div>
-          </div>
-        </div>
+    <div class="photo-card">
+      <div class="photo-icon">
+        <svg width="40" height="42" viewBox="0 0 88 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M44 53C46.5 53 48.625 52.125 50.375 50.375C52.125 48.625 53 46.5 53 44C53 41.5 52.125 39.375 50.375 37.625C48.625 35.875 46.5 35 44 35C41.5 35 39.375 35.875 37.625 37.625C35.875 39.375 35 41.5 35 44C35 46.5 35.875 48.625 37.625 50.375C39.375 52.125 41.5 53 44 53ZM44 49C42.6 49 41.4167 48.5167 40.45 47.55C39.4833 46.5833 39 45.4 39 44C39 42.6 39.4833 41.4167 40.45 40.45C41.4167 39.4833 42.6 39 44 39C45.4 39 46.5833 39.4833 47.55 40.45C48.5167 41.4167 49 42.6 49 44C49 45.4 48.5167 46.5833 47.55 47.55C46.5833 48.5167 45.4 49 44 49ZM28 60C26.9 60 25.9583 59.6083 25.175 58.825C24.3917 58.0417 24 57.1 24 56V32C24 30.9 24.3917 29.9583 25.175 29.175C25.9583 28.3917 26.9 28 28 28H34.3L38 24H50L53.7 28H60C61.1 28 62.0417 28.3917 62.825 29.175C63.6083 29.9583 64 30.9 64 32V56C64 57.1 63.6083 58.0417 62.825 58.825C62.0417 59.6083 61.1 60 60 60H28ZM28 56H60V32H51.9L48.25 28H39.75L36.1 32H28V56Z" fill="#000F37"/>
+        </svg>
       </div>
+    </div>
 
-      <aside class="info-panel">
-        <h2 class="info-panel-heading">Informasi Laporan</h2>
+    <div class="info-card">
+      <h2>Deskripsi Masalah</h2>
+      <p class="description-text">Proyektor di ruang 304 tidak menyala saat perkuliahan. Sudah dicoba untuk menyambungkan ulang kabel HDMI, namun tetap tidak ada respons dari perangkat. Lampu indikator pada unit proyektor berkedip merah.</p>
+    </div>
 
-        <div class="info-rows">
-          <div class="info-row">
-            <span class="info-row-label">Dibuat oleh</span>
-            <span class="info-row-value">Winda</span>
-          </div>
-          <div class="info-row">
-            <span class="info-row-label">Kategori</span>
-            <span class="info-row-value">IT Support</span>
-          </div>
-          <div class="info-row">
-            <span class="info-row-label">Lokasi</span>
-            <span class="info-row-value">Gedung A - Lt.2</span>
-          </div>
-          <div class="info-row">
-            <span class="info-row-label">Prioritas</span>
-            <span class="info-row-value with-dot status-normal">
-              <span class="info-dot dot-amber"></span>
-              Normal
-            </span>
-          </div>
-        </div>
-
-        <div class="info-rows">
-          <div class="info-row">
-            <span class="info-row-label">Status</span>
-            <span class="info-row-value with-dot status-diproses">
-              <span class="info-dot dot-amber"></span>
-              Diproses
-            </span>
-          </div>
-        </div>
-
-        <div class="info-panel-actions">
-          <button type="button" class="btn-primary" id="btn-ubah-laporan">
-            <svg width="14" height="14" viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M1.16667 9.33333H1.99792L7.7 3.63125L6.86875 2.8L1.16667 8.50208V9.33333ZM0 10.5V8.02083L7.7 0.335417C7.81667 0.228472 7.94549 0.145833 8.08646 0.0875C8.22743 0.0291667 8.37569 0 8.53125 0C8.68681 0 8.8375 0.0291667 8.98333 0.0875C9.12917 0.145833 9.25556 0.233333 9.3625 0.35L10.1646 1.16667C10.2812 1.27361 10.3663 1.4 10.4198 1.54583C10.4733 1.69167 10.5 1.8375 10.5 1.98333C10.5 2.13889 10.4733 2.28715 10.4198 2.42812C10.3663 2.5691 10.2812 2.69792 10.1646 2.81458L2.47917 10.5H0Z" fill="white"/>
-            </svg>
-            Ubah Laporan
-          </button>
-          <button type="button" class="btn-outline-danger" id="btn-batalkan-laporan">Batalkan Laporan</button>
-        </div>
-      </aside>
+    <div class="info-card">
+      <h2>Riwayat Status</h2>
+      <ul class="timeline">
+        <li class="timeline-item active">
+          <span class="timeline-time">23/04 11:10</span>
+          <p class="timeline-title">Diproses tim IT Support</p>
+          <p class="timeline-desc">Teknisi sedang menuju lokasi untuk pengecekan fisik.</p>
+        </li>
+        <li class="timeline-item">
+          <span class="timeline-time">23/04 10:35</span>
+          <p class="timeline-title">Laporan dibuat</p>
+          <p class="timeline-desc">Laporan berhasil diterima oleh sistem.</p>
+        </li>
+      </ul>
     </div>
   </main>
 
   <script>
     document.querySelector('.icon-button[aria-label="Notifikasi"]').addEventListener('click', function () {
       window.location.href = 'notifikasi.html';
-    });
-
-    document.getElementById('btn-ubah-laporan').addEventListener('click', function () {
-      window.location.href = 'buatlaporan.html';
-    });
-
-    document.getElementById('btn-batalkan-laporan').addEventListener('click', function () {
-      if (confirm('Apakah Anda yakin ingin membatalkan laporan ini?')) {
-        window.location.href = 'riwayat.html';
-      }
     });
   </script>
 </body>
