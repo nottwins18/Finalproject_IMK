@@ -583,5 +583,43 @@
       <a href="#">Kontak Kami</a>
     </div>
   </footer>
+
+  <script>
+    document.querySelector('.icon-button[aria-label="Notifikasi"]').addEventListener('click', function () {
+      window.location.href = 'notifikasi.html';
+    });
+
+    var searchInput = document.querySelector('.search-input');
+    var statusSelect = document.querySelector('.status-select select');
+    var rows = document.querySelectorAll('.reports-table tbody tr');
+
+    function applyFilters() {
+      var query = searchInput.value.trim().toLowerCase();
+      var status = statusSelect.value;
+
+      rows.forEach(function (row) {
+        var id = row.querySelector('.report-id').textContent.toLowerCase();
+        var kategori = row.children[3].textContent.toLowerCase();
+        var rowStatus = row.querySelector('.status-badge').textContent.trim();
+
+        var matchesQuery = !query || id.includes(query) || kategori.includes(query);
+        var matchesStatus = status === 'Semua Status' || rowStatus === status;
+
+        row.style.display = matchesQuery && matchesStatus ? '' : 'none';
+      });
+    }
+
+    searchInput.addEventListener('input', applyFilters);
+    statusSelect.addEventListener('change', applyFilters);
+
+    document.querySelectorAll('.page-btn:not([aria-label])').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        document.querySelectorAll('.page-btn.active').forEach(function (b) {
+          b.classList.remove('active');
+        });
+        btn.classList.add('active');
+      });
+    });
+  </script>
 </body>
 </html>

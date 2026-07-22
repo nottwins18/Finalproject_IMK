@@ -197,5 +197,18 @@
   </div>
 
   <p class="login-footer">© 2024 CampusCare University Facility Management</p>
+
+  <script>
+    document.querySelector('.login-form').addEventListener('submit', function (e) {
+      e.preventDefault();
+      var email = document.getElementById('email').value.trim();
+      var password = document.getElementById('password').value.trim();
+      if (!email || !password) {
+        alert('Mohon isi email dan kata sandi.');
+        return;
+      }
+      window.location.href = 'beranda.html';
+    });
+  </script>
 </body>
 </html>

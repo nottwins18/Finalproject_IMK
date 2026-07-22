@@ -425,5 +425,13 @@
       <a href="#">Kontak Kami</a>
     </div>
   </footer>
+
+  <script>
+    document.querySelector('.btn-mark-read').addEventListener('click', function () {
+      document.querySelectorAll('.notification-item').forEach(function (item) {
+        item.classList.add('is-read');
+      });
+    });
+  </script>
 </body>
 </html>

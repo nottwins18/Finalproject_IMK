@@ -384,5 +384,22 @@
       </button>
     </div>
   </main>
+
+  <script>
+    document.querySelector('.icon-button[aria-label="Notifikasi"]').addEventListener('click', function () {
+      window.location.href = 'notifikasi.html';
+    });
+
+    document.querySelector('.btn-next').addEventListener('click', function (e) {
+      e.preventDefault();
+      var lokasi = document.getElementById('lokasi').value.trim();
+      var ringkasan = document.getElementById('ringkasan').value.trim();
+      if (!lokasi || !ringkasan) {
+        alert('Mohon lengkapi lokasi kejadian dan ringkasan masalah.');
+        return;
+      }
+      window.location.href = 'konfirmasilaporan.html';
+    });
+  </script>
 </body>
 </html>
