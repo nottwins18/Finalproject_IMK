@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>CampusCare - Masuk</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 32px;
+    background: #16254d;
+    font-family: "Inter", -apple-system, Roboto, Helvetica, sans-serif;
+    padding: 24px;
+  }
+
+  .login-card {
+    width: 420px;
+    max-width: 100%;
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 18px;
+    background: #fff;
+    box-shadow: 0 20px 50px 0 rgba(22, 37, 77, 0.15);
+  }
+
+  .login-logo {
+    width: 64px;
+    height: 64px;
+    margin-bottom: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 12px;
+    background: #16254d;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+  }
+
+  .login-logo span {
+    color: #fff;
+    font-size: 32px;
+    font-weight: 600;
+    letter-spacing: -0.64px;
+  }
+
+  .login-title {
+    margin: 0;
+    color: #000f37;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 130%;
+    letter-spacing: -0.6px;
+  }
+
+  .login-subtitle {
+    margin: 4px 0 0;
+    color: #45464e;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 150%;
+  }
+
+  .login-form {
+    width: 100%;
+    margin-top: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .form-field {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .form-field label {
+    margin-bottom: 8px;
+    color: #45464e;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.13px;
+  }
+
+  .form-field input {
+    width: 100%;
+    height: 48px;
+    padding: 13px 16px;
+    border-radius: 12px;
+    border: 1px solid #c5c6cf;
+    background: #fff;
+    color: #000f37;
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: 400;
+  }
+
+  .form-field input::placeholder {
+    color: #75767f;
+  }
+
+  .form-field input:focus {
+    outline: none;
+    border-color: #16254d;
+  }
+
+  .forgot-password {
+    align-self: flex-end;
+    margin-top: 8px;
+    color: #16254d;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .forgot-password:hover {
+    text-decoration: underline;
+  }
+
+  .login-button {
+    width: 100%;
+    height: 52px;
+    margin-top: 12px;
+    border: none;
+    border-radius: 12px;
+    background: #16254d;
+    color: #fff;
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  .login-button:hover {
+    background: #101c3d;
+  }
+
+  .signup-prompt {
+    margin: 16px 0 0;
+    color: #45464e;
+    font-size: 14px;
+    font-weight: 400;
+    text-align: center;
+  }
+
+  .signup-prompt a {
+    color: #b8860b;
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .signup-prompt a:hover {
+    text-decoration: underline;
+  }
+
+  .login-footer {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 13px;
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+  <div class="login-card">
+    <div class="login-logo"><span>C</span></div>
+    <h1 class="login-title">CampusCare</h1>
+    <p class="login-subtitle">Selamat datang kembali</p>
+
+    <form class="login-form">
+      <div class="form-field">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="winda@example.com" autocomplete="email" required />
+      </div>
+
+      <div class="form-field">
+        <label for="password">Kata Sandi</label>
+        <input type="password" id="password" name="password" placeholder="••••••••" autocomplete="current-password" required />
+        <a href="#" class="forgot-password">Lupa Kata Sandi?</a>
+      </div>
+
+      <button type="submit" class="login-button">Masuk</button>
+    </form>
+
+    <p class="signup-prompt">Belum punya akun? <a href="#">Hubungi Admin</a></p>
+  </div>
+
+  <p class="login-footer">© 2024 CampusCare University Facility Management</p>
+</body>
+</html>
