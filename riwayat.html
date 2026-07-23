@@ -18,6 +18,10 @@
     --cc-bg-soft: #f0f3ff;
   }
 
+  html {
+    scrollbar-gutter: stable;
+  }
+
   body {
     font-family: "Inter", -apple-system, Roboto, Helvetica, sans-serif;
     background: #fff;
@@ -88,6 +92,20 @@
     font-size: 13px;
     font-weight: 700;
     cursor: pointer;
+  }
+
+  /* Page header */
+  .cc-page-back {
+    width: 36px;
+    height: 36px;
+    border: none;
+    border-radius: 9999px;
+    background: none;
+    color: var(--cc-navy-dark);
+  }
+
+  .cc-page-back:hover {
+    background: var(--cc-bg-soft);
   }
 
   /* Page content */
@@ -194,9 +212,16 @@
   <main class="container py-4 py-lg-5" style="max-width: 1280px;">
     <div class="d-flex flex-column gap-4">
 
-      <div>
-        <div class="text-uppercase fw-bold" style="font-size:13px;letter-spacing:0.65px;color:var(--cc-navy-dark);">Semua Laporan</div>
-        <h1 class="fw-semibold mb-0" style="font-size:32px;color:#151c27;letter-spacing:-0.64px;">Riwayat Laporan</h1>
+      <div class="d-flex align-items-center gap-3">
+        <button class="cc-page-back d-flex align-items-center justify-content-center flex-shrink-0" onclick="window.history.back()" aria-label="Kembali">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M3.825 9L9.425 14.6L8 16L0 8L8 0L9.425 1.4L3.825 7H16V9H3.825Z" fill="#000F37"/>
+          </svg>
+        </button>
+        <div>
+          <div class="text-uppercase fw-bold" style="font-size:13px;letter-spacing:0.65px;color:var(--cc-navy-dark);">Semua Laporan</div>
+          <h1 class="fw-semibold mb-0" style="font-size:32px;color:#151c27;letter-spacing:-0.64px;">Riwayat Laporan</h1>
+        </div>
       </div>
 
       <div class="d-flex align-items-center gap-3 flex-wrap">
