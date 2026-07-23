@@ -16,6 +16,17 @@
     --cc-border: #c5c6cf;
     --cc-border-light: #e4e4e7;
     --cc-bg-soft: #f0f3ff;
+    --cc-blue: #2563eb;
+    --cc-blue-bg: #eff6ff;
+    --cc-yellow: #eab308;
+    --cc-yellow-bg: #fef9c3;
+    --cc-green: #22c55e;
+    --cc-green-bg: #dcfce7;
+    --cc-red: #ef4444;
+    --cc-red-bg: #fee2e2;
+    --cc-gray-600: #6b7280;
+    --cc-gray-400: #9ca3af;
+    --cc-gray-900: #111827;
   }
 
   html {
@@ -94,48 +105,121 @@
     cursor: pointer;
   }
 
-  /* Page header */
-  .cc-page-back {
-    width: 36px;
-    height: 36px;
-    border: none;
-    border-radius: 9999px;
-    background: none;
-    color: var(--cc-navy-dark);
+  /* Page heading */
+  .cc-back-link {
+    width: 40px;
+    height: 40px;
+    color: #000;
+    flex-shrink: 0;
   }
 
-  .cc-page-back:hover {
-    background: var(--cc-bg-soft);
+  .cc-back-link:hover {
+    opacity: 0.7;
   }
 
-  /* Page content */
-  .form-control::placeholder { color: #6b7280; }
-
-  .form-control-lg-custom {
-    padding-top: 18px;
-    padding-bottom: 18px;
-    font-size: 16px;
+  .cc-page-title {
+    color: #151c27;
+    font-size: 32px;
+    font-weight: 600;
+    letter-spacing: -0.64px;
   }
 
-  .form-select-custom {
-    padding-top: 16px;
-    padding-bottom: 16px;
-    font-size: 16px;
-    min-width: 200px;
+  /* Filters section */
+  .cc-filters {
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
   }
 
-  .table thead tr { background: var(--cc-bg-soft); }
+  .cc-search-input {
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    padding: 11px 12px 12px 40px;
+    font-size: 14px;
+    color: #1e293b;
+  }
 
-  .table thead th {
-    color: #75767f;
-    font-size: 13px;
+  .cc-search-input::placeholder {
+    color: #6b7280;
+  }
+
+  .cc-search-input:focus {
+    box-shadow: none;
+    border-color: var(--cc-blue);
+  }
+
+  .cc-search-icon {
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+  }
+
+  .btn-reset {
+    border: 1px solid #cbd5e1;
+    color: #334155;
+    font-size: 14px;
     font-weight: 500;
-    letter-spacing: 0.65px;
-    text-transform: uppercase;
-    border-bottom-color: var(--cc-border);
+    padding: 10px 16px;
+    border-radius: 8px;
+    white-space: nowrap;
   }
 
-  .report-id { color: var(--cc-navy-dark); font-weight: 700; }
+  .btn-reset:hover {
+    background: #f8fafc;
+    color: #334155;
+  }
+
+  /* Table */
+  .cc-table-card {
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .cc-table {
+    margin-bottom: 0;
+  }
+
+  .cc-table thead th {
+    color: #64748b;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+    padding: 16px 24px;
+    border-bottom: 1px solid #e2e8f0;
+    white-space: nowrap;
+  }
+
+  .cc-table tbody td {
+    padding: 23px 24px;
+    vertical-align: middle;
+    border-top: 1px solid #f1f5f9;
+    font-size: 14px;
+  }
+
+  .cc-table tbody tr {
+    border-left: 4px solid transparent;
+  }
+
+  .cc-table tbody tr.status-diproses { border-left-color: var(--cc-yellow); }
+  .cc-table tbody tr.status-selesai { border-left-color: var(--cc-green); }
+  .cc-table tbody tr.status-ditolak { border-left-color: var(--cc-red); }
+
+  .cc-report-link {
+    color: var(--cc-blue);
+    font-weight: 500;
+  }
+
+  .cc-report-title {
+    color: #1e293b;
+    font-weight: 500;
+  }
+
+  .cc-cell-muted {
+    color: #475569;
+  }
 
   .dot {
     width: 6px;
@@ -144,28 +228,97 @@
     display: inline-block;
   }
 
-  .dot-amber { background: #d38a00; }
-  .dot-green { background: #1e7b34; }
-  .dot-red { background: #b42318; }
+  .dot-amber { background: var(--cc-yellow); }
+  .dot-green { background: var(--cc-green); }
+  .dot-red { background: var(--cc-red); }
 
-  .badge-diproses { background: #fff8e1; color: #7e5700; }
-  .badge-selesai { background: #e7f8ed; color: #1e7b34; }
-  .badge-ditolak { background: #fdeceb; color: #b42318; }
+  .badge-diproses { background: var(--cc-yellow-bg); color: #a16207; }
+  .badge-selesai { background: var(--cc-green-bg); color: #166534; }
+  .badge-ditolak { background: var(--cc-red-bg); color: #991b1b; }
 
   .btn-detail {
-    border: 1px solid var(--cc-border);
-    color: var(--cc-navy-dark);
-    font-weight: 700;
+    border: 1px solid #cbd5e1;
+    color: #334155;
+    font-weight: 400;
+    font-size: 14px;
+    padding: 6px 12px;
+    border-radius: 4px;
+  }
+
+  .btn-detail:hover { background: var(--cc-bg-soft); color: #334155; }
+
+  .btn-row-menu {
+    width: 20px;
+    height: 20px;
+    border: none;
+    background: none;
+    color: #94a3b8;
+  }
+
+  /* Pagination */
+  .cc-pagination-bar {
+    border-top: 1px solid #e2e8f0;
+    padding: 16px 24px;
+  }
+
+  .cc-pagination-info {
+    color: #64748b;
     font-size: 14px;
   }
 
-  .btn-detail:hover { background: var(--cc-bg-soft); color: var(--cc-navy-dark); }
+  .cc-page-btn {
+    width: 32px;
+    height: 32px;
+    border: 1px solid #cbd5e1;
+    border-radius: 4px;
+    background: #fff;
+    color: #475569;
+    font-size: 14px;
+    font-weight: 500;
+  }
 
-  .page-link { color: #151c27; }
+  .cc-page-btn:hover {
+    background: #f8fafc;
+  }
 
-  .page-item.active .page-link {
-    background-color: var(--cc-navy-dark);
-    border-color: var(--cc-navy-dark);
+  .cc-page-btn.active {
+    background: #1e3a8a;
+    border-color: #1e3a8a;
+    color: #fff;
+  }
+
+  .cc-page-size-select {
+    border: 1px solid #cbd5e1;
+    border-radius: 4px;
+    color: #64748b;
+    font-size: 14px;
+    padding: 5px 10px;
+  }
+
+  .cc-page-size-select:focus {
+    box-shadow: none;
+    border-color: var(--cc-blue);
+  }
+
+  /* Help banner */
+  .cc-help-banner {
+    border: 1px solid #dbeafe;
+    background: rgba(239, 246, 255, 0.5);
+    border-radius: 12px;
+    padding: 16px;
+  }
+
+  .cc-help-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 4px;
+    background: #dbeafe;
+    flex-shrink: 0;
+  }
+
+  .cc-help-text {
+    color: #475569;
+    font-size: 14px;
   }
 </style>
 </head>
@@ -212,118 +365,229 @@
   <main class="container py-4 py-lg-5" style="max-width: 1280px;">
     <div class="d-flex flex-column gap-4">
 
+      <!-- Heading -->
       <div class="d-flex align-items-center gap-3">
-        <button class="cc-page-back d-flex align-items-center justify-content-center flex-shrink-0" onclick="window.history.back()" aria-label="Kembali">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M3.825 9L9.425 14.6L8 16L0 8L8 0L9.425 1.4L3.825 7H16V9H3.825Z" fill="#000F37"/>
+        <a href="beranda.html" class="cc-back-link d-flex align-items-center justify-content-center">
+          <svg width="24" height="24" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M33.3333 18.3331V21.6665H13.3333L22.5 30.8331L20.1333 33.1998L6.93335 19.9998L20.1333 6.7998L22.5 9.16647L13.3333 18.3331H33.3333Z" fill="black"/>
           </svg>
-        </button>
-        <div>
-          <div class="text-uppercase fw-bold" style="font-size:13px;letter-spacing:0.65px;color:var(--cc-navy-dark);">Semua Laporan</div>
-          <h1 class="fw-semibold mb-0" style="font-size:32px;color:#151c27;letter-spacing:-0.64px;">Riwayat Laporan</h1>
-        </div>
+        </a>
+        <h1 class="cc-page-title mb-0">Riwayat Laporan</h1>
       </div>
 
-      <div class="d-flex align-items-center gap-3 flex-wrap">
-        <div class="input-group flex-grow-1" style="min-width:240px;">
-          <span class="input-group-text bg-white">
-            <svg width="18" height="24" viewBox="0 0 18 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M16.6 18L10.3 11.7C9.8 12.1 9.225 12.4167 8.575 12.65C7.925 12.8833 7.23333 13 6.5 13C4.68333 13 3.14583 12.3708 1.8875 11.1125C0.629167 9.85417 0 8.31667 0 6.5C0 4.68333 0.629167 3.14583 1.8875 1.8875C3.14583 0.629167 4.68333 0 6.5 0C8.31667 0 9.85417 0.629167 11.1125 1.8875C12.3708 3.14583 13 4.68333 13 6.5C13 7.23333 12.8833 7.925 12.65 8.575C12.4167 9.225 12.1 9.8 11.7 10.3L18 16.6L16.6 18ZM6.5 11C7.75 11 8.8125 10.5625 9.6875 9.6875C10.5625 8.8125 11 7.75 11 6.5C11 5.25 10.5625 4.1875 9.6875 3.3125C8.8125 2.4375 7.75 2 6.5 2C5.25 2 4.1875 2.4375 3.3125 3.3125C2.4375 4.1875 2 5.25 2 6.5C2 7.75 2.4375 8.8125 3.3125 9.6875C4.1875 10.5625 5.25 11 6.5 11Z" fill="#75767F"/>
+      <!-- Filters -->
+      <div class="cc-filters d-flex flex-wrap align-items-end gap-3 p-3">
+        <div class="flex-grow-1 position-relative">
+          <span class="position-absolute cc-search-icon d-flex">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M2.25 8.25C2.25 11.5615 4.93851 14.25 8.25 14.25C11.5615 14.25 14.25 11.5615 14.25 8.25C14.25 4.93851 11.5615 2.25 8.25 2.25C4.93851 2.25 2.25 4.93851 2.25 8.25" stroke="#94A3B8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M15.75 15.7498L12.4875 12.4873" stroke="#94A3B8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
           </span>
-          <input type="text" class="form-control form-control-lg-custom" placeholder="Cari berdasarkan ID atau kategori..." id="searchInput">
+          <input type="text" class="form-control cc-search-input w-100" placeholder="Cari berdasarkan ID, judul, kategori, atau lokasi..." />
         </div>
-
-        <select class="form-select form-select-custom" id="statusSelect" style="width:auto;">
-          <option>Semua Status</option>
-          <option>Diproses</option>
-          <option>Selesai</option>
-          <option>Ditolak</option>
-        </select>
+        <button type="button" class="btn btn-reset d-flex align-items-center gap-2">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M2 8C2 11.3115 4.68851 14 8 14C11.3115 14 14 11.3115 14 8C14 4.68851 11.3115 2 8 2C6.32263 2.00631 4.71265 2.66082 3.50667 3.82667L2 5.33333" stroke="#334155" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M2 2V5.33333H5.33333" stroke="#334155" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Reset Filter
+        </button>
       </div>
 
-      <div class="card border rounded-4 shadow-sm overflow-hidden">
+      <!-- Table -->
+      <div class="cc-table-card">
         <div class="table-responsive">
-          <table class="table table-hover align-middle mb-0">
+          <table class="table cc-table">
             <thead>
               <tr>
-                <th>No</th>
-                <th>Tanggal</th>
-                <th>ID</th>
+                <th>ID Laporan</th>
+                <th>Judul Laporan</th>
                 <th>Kategori</th>
+                <th>Lokasi</th>
                 <th>Status</th>
-                <th class="text-end">Aksi</th>
+                <th>Tanggal Dibuat</th>
+                <th>Aksi</th>
               </tr>
             </thead>
-            <tbody id="reportsBody">
-              <tr>
-                <td>1</td>
-                <td>23/04/24</td>
-                <td class="report-id">LP-0738</td>
-                <td>IT Support</td>
+            <tbody>
+              <tr class="status-diproses">
+                <td><a href="detaillaporan.html" class="cc-report-link">LP-0738</a></td>
+                <td class="cc-report-title">Proyektor di ruang kelas 201 tidak berfungsi.</td>
+                <td class="cc-cell-muted">Proyektor</td>
+                <td class="cc-cell-muted">Gedung A, Lt. 2</td>
                 <td>
-                  <span class="badge rounded-pill badge-diproses fw-bold d-inline-flex align-items-center gap-2">
+                  <span class="badge rounded-pill badge-diproses fw-medium d-inline-flex align-items-center gap-2 py-1 px-2">
                     <span class="dot dot-amber"></span>Diproses
                   </span>
                 </td>
-                <td class="text-end"><a href="detaillaporan.html" class="btn btn-outline-secondary btn-sm rounded-pill btn-detail">Detail</a></td>
-              </tr>
-              <tr>
-                <td>2</td>
-                <td>22/04/24</td>
-                <td class="report-id">LP-0737</td>
-                <td>HR</td>
+                <td class="cc-cell-muted">23/04/2024 14:32</td>
                 <td>
-                  <span class="badge rounded-pill badge-selesai fw-bold d-inline-flex align-items-center gap-2">
+                  <div class="d-flex align-items-center gap-2">
+                    <a href="detaillaporan.html" class="btn btn-detail">Detail</a>
+                  </div>
+                </td>
+              </tr>
+              <tr class="status-selesai">
+                <td><a href="detaillaporan.html" class="cc-report-link">LP-0737</a></td>
+                <td class="cc-report-title">Gagang Pintu Toilet Rusak</td>
+                <td class="cc-cell-muted">Pintu Toilet</td>
+                <td class="cc-cell-muted">Area Parkir Selatan</td>
+                <td>
+                  <span class="badge rounded-pill badge-selesai fw-medium d-inline-flex align-items-center gap-2 py-1 px-2">
                     <span class="dot dot-green"></span>Selesai
                   </span>
                 </td>
-                <td class="text-end"><a href="detaillaporan.html" class="btn btn-outline-secondary btn-sm rounded-pill btn-detail">Detail</a></td>
-              </tr>
-              <tr>
-                <td>3</td>
-                <td>21/04/24</td>
-                <td class="report-id">LP-0736</td>
-                <td>General</td>
+                <td class="cc-cell-muted">22/04/2024 10:15</td>
                 <td>
-                  <span class="badge rounded-pill badge-ditolak fw-bold d-inline-flex align-items-center gap-2">
+                  <div class="d-flex align-items-center gap-2">
+                    <a href="detaillaporan.html" class="btn btn-detail">Detail</a>
+                  </div>
+                </td>
+              </tr>
+              <tr class="status-ditolak">
+                <td><a href="detaillaporan.html" class="cc-report-link">LP-0736</a></td>
+                <td class="cc-report-title">Lampu di koridor gedung padam.</td>
+                <td class="cc-cell-muted">General</td>
+                <td class="cc-cell-muted">Gedung B, Lt. 1</td>
+                <td>
+                  <span class="badge rounded-pill badge-ditolak fw-medium d-inline-flex align-items-center gap-2 py-1 px-2">
                     <span class="dot dot-red"></span>Ditolak
                   </span>
                 </td>
-                <td class="text-end"><a href="detaillaporan.html" class="btn btn-outline-secondary btn-sm rounded-pill btn-detail">Detail</a></td>
-              </tr>
-              <tr>
-                <td>4</td>
-                <td>20/04/24</td>
-                <td class="report-id">LP-0735</td>
-                <td>IT Support</td>
+                <td class="cc-cell-muted">21/04/2024 09:45</td>
                 <td>
-                  <span class="badge rounded-pill badge-diproses fw-bold d-inline-flex align-items-center gap-2">
+                  <div class="d-flex align-items-center gap-2">
+                    <a href="detaillaporan.html" class="btn btn-detail">Detail</a>
+                  </div>
+                </td>
+              </tr>
+              <tr class="status-diproses">
+                <td><a href="detaillaporan.html" class="cc-report-link">LP-0735</a></td>
+                <td class="cc-report-title">Jaringan WiFi di perpustakaan sering terputus.</td>
+                <td class="cc-cell-muted">IT Support</td>
+                <td class="cc-cell-muted">Perpustakaan</td>
+                <td>
+                  <span class="badge rounded-pill badge-diproses fw-medium d-inline-flex align-items-center gap-2 py-1 px-2">
                     <span class="dot dot-amber"></span>Diproses
                   </span>
                 </td>
-                <td class="text-end"><a href="detaillaporan.html" class="btn btn-outline-secondary btn-sm rounded-pill btn-detail">Detail</a></td>
+                <td class="cc-cell-muted">20/04/2024 16:20</td>
+                <td>
+                  <div class="d-flex align-items-center gap-2">
+                    <a href="detaillaporan.html" class="btn btn-detail">Detail</a>
+                  </div>
+                </td>
+              </tr>
+              <tr class="status-selesai">
+                <td><a href="detaillaporan.html" class="cc-report-link">LP-0734</a></td>
+                <td class="cc-report-title">Tempat sampah penuh di area kantin.</td>
+                <td class="cc-cell-muted">Kebersihan</td>
+                <td class="cc-cell-muted">Kantin Utama</td>
+                <td>
+                  <span class="badge rounded-pill badge-selesai fw-medium d-inline-flex align-items-center gap-2 py-1 px-2">
+                    <span class="dot dot-green"></span>Selesai
+                  </span>
+                </td>
+                <td class="cc-cell-muted">19/04/2024 11:08</td>
+                <td>
+                  <div class="d-flex align-items-center gap-2">
+                    <a href="detaillaporan.html" class="btn btn-detail">Detail</a>
+                  </div>
+                </td>
+              </tr>
+              <tr class="status-selesai">
+                <td><a href="detaillaporan.html" class="cc-report-link">LP-0733</a></td>
+                <td class="cc-report-title">Pintu toilet lantai 2 rusak.</td>
+                <td class="cc-cell-muted">Fasilitas</td>
+                <td class="cc-cell-muted">Gedung C, Lt. 2</td>
+                <td>
+                  <span class="badge rounded-pill badge-selesai fw-medium d-inline-flex align-items-center gap-2 py-1 px-2">
+                    <span class="dot dot-green"></span>Selesai
+                  </span>
+                </td>
+                <td class="cc-cell-muted">18/04/2024 08:50</td>
+                <td>
+                  <div class="d-flex align-items-center gap-2">
+                    <a href="detaillaporan.html" class="btn btn-detail">Detail</a>
+                  </div>
+                </td>
+              </tr>
+              <tr class="status-selesai">
+                <td><a href="detaillaporan.html" class="cc-report-link">LP-0732</a></td>
+                <td class="cc-report-title">Komputer di lab 3 lemot.</td>
+                <td class="cc-cell-muted">IT Support</td>
+                <td class="cc-cell-muted">Lab Komputer 3</td>
+                <td>
+                  <span class="badge rounded-pill badge-selesai fw-medium d-inline-flex align-items-center gap-2 py-1 px-2">
+                    <span class="dot dot-green"></span>Selesai
+                  </span>
+                </td>
+                <td class="cc-cell-muted">17/04/2024 15:10</td>
+                <td>
+                  <div class="d-flex align-items-center gap-2">
+                    <a href="detaillaporan.html" class="btn btn-detail">Detail</a>
+                  </div>
+                </td>
               </tr>
             </tbody>
           </table>
         </div>
 
-        <div class="d-flex align-items-center justify-content-between flex-wrap gap-2 p-3">
-          <span class="text-secondary small">Menampilkan 1-4 dari 15 laporan</span>
-          <nav aria-label="Navigasi halaman">
-            <ul class="pagination pagination-sm mb-0">
-              <li class="page-item">
-                <button class="page-link" aria-label="Halaman sebelumnya">&laquo;</button>
-              </li>
-              <li class="page-item active"><button class="page-link">1</button></li>
-              <li class="page-item"><button class="page-link">2</button></li>
-              <li class="page-item"><button class="page-link">3</button></li>
-              <li class="page-item">
-                <button class="page-link" aria-label="Halaman berikutnya">&raquo;</button>
-              </li>
-            </ul>
-          </nav>
+        <!-- Pagination -->
+        <div class="cc-pagination-bar d-flex flex-wrap align-items-center justify-content-between gap-3">
+          <span class="cc-pagination-info">Menampilkan 1-7 dari 18 laporan</span>
+
+          <div class="d-flex align-items-center gap-1">
+            <button type="button" class="cc-page-btn d-flex align-items-center justify-content-center" aria-label="Halaman pertama">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M7.33333 11.3337L4 8.00033L7.33333 4.66699" stroke="#94A3B8" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M11.9998 11.3337L8.6665 8.00033L11.9998 4.66699" stroke="#94A3B8" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+            <button type="button" class="cc-page-btn d-flex align-items-center justify-content-center" aria-label="Halaman sebelumnya">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M10 12L6 8L10 4" stroke="#475569" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+            <button type="button" class="cc-page-btn active">1</button>
+            <button type="button" class="cc-page-btn">2</button>
+            <button type="button" class="cc-page-btn">3</button>
+            <button type="button" class="cc-page-btn d-flex align-items-center justify-content-center" aria-label="Halaman berikutnya">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M6 12L10 8L6 4" stroke="#475569" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+            <button type="button" class="cc-page-btn d-flex align-items-center justify-content-center" aria-label="Halaman terakhir">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M8.6665 11.3337L11.9998 8.00033L8.6665 4.66699" stroke="#475569" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M4 11.3337L7.33333 8.00033L4 4.66699" stroke="#475569" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+          </div>
+
+          <div class="d-flex align-items-center gap-2">
+            <span class="cc-pagination-info">Tampilkan</span>
+            <select class="form-select cc-page-size-select" style="width: auto;">
+              <option>10</option>
+              <option>25</option>
+              <option>50</option>
+            </select>
+            <span class="cc-pagination-info">per halaman</span>
+          </div>
         </div>
+      </div>
+
+      <!-- Help banner -->
+      <div class="cc-help-banner d-flex align-items-center gap-3">
+        <div class="cc-help-icon d-flex align-items-center justify-content-center">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4 22H18C19.1038 22 20 21.1038 20 20V7L15 2H6C4.89617 2 4 2.89617 4 4V20C4 21.1038 4.89617 22 6 22H4" stroke="#3B82F6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M14 2V6C14 7.10383 14.8962 8 16 8H20" stroke="#3B82F6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M10 9V13H14" stroke="#3B82F6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <span class="cc-help-text">Gunakan filter atau pencarian untuk menemukan laporan yang Anda butuhkan dengan lebih cepat.</span>
       </div>
 
     </div>
@@ -350,38 +614,6 @@
     });
     document.getElementById('btnAvatar').addEventListener('click', function () {
       window.location.href = 'profil.html';
-    });
-
-    var searchInput = document.getElementById('searchInput');
-    var statusSelect = document.getElementById('statusSelect');
-    var rows = document.querySelectorAll('#reportsBody tr');
-
-    function applyFilters() {
-      var query = searchInput.value.trim().toLowerCase();
-      var status = statusSelect.value;
-
-      rows.forEach(function (row) {
-        var id = row.querySelector('.report-id').textContent.toLowerCase();
-        var kategori = row.children[3].textContent.toLowerCase();
-        var rowStatus = row.querySelector('.badge').textContent.trim();
-
-        var matchesQuery = !query || id.includes(query) || kategori.includes(query);
-        var matchesStatus = status === 'Semua Status' || rowStatus === status;
-
-        row.style.display = matchesQuery && matchesStatus ? '' : 'none';
-      });
-    }
-
-    searchInput.addEventListener('input', applyFilters);
-    statusSelect.addEventListener('change', applyFilters);
-
-    document.querySelectorAll('.pagination .page-item .page-link:not([aria-label])').forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        document.querySelectorAll('.pagination .page-item.active').forEach(function (li) {
-          li.classList.remove('active');
-        });
-        btn.closest('.page-item').classList.add('active');
-      });
     });
   </script>
 </body>
