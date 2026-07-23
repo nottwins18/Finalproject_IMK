@@ -10,50 +10,86 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 <style>
   :root {
-    --brand-navy: #16254d;
-    --brand-navy-dark: #000f37;
+    --cc-navy: #16254d;
+    --cc-navy-dark: #000f37;
+    --cc-text: #45464e;
+    --cc-border: #c5c6cf;
+    --cc-border-light: #e4e4e7;
+    --cc-bg-soft: #f0f3ff;
   }
 
   body {
     font-family: "Inter", -apple-system, Roboto, Helvetica, sans-serif;
+    background: #fff;
   }
 
   a { text-decoration: none; }
 
-  .brand-shell {
-    max-width: 1280px;
-    margin: 0 auto;
-    padding-left: 53px;
-    padding-right: 53px;
+  /* Navbar (matches beranda.html / detaillaporan.html / profilsaya.html exactly) */
+  .cc-navbar {
+    height: 72px;
+    border-bottom: 1px solid var(--cc-border-light);
   }
 
-  @media (max-width: 576px) {
-    .brand-shell { padding-left: 16px; padding-right: 16px; }
+  .cc-brand-mark {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    background: var(--cc-navy);
+    color: #fff;
+    font-size: 16px;
+    font-weight: 700;
   }
 
-  .text-brand-navy-dark { color: var(--brand-navy-dark) !important; }
-  .bg-brand-navy { background-color: var(--brand-navy) !important; }
+  .cc-brand-name {
+    color: var(--cc-navy-dark);
+    font-size: 18px;
+    font-weight: 700;
+  }
 
-  .nav-link {
-    color: #45464e;
+  .cc-nav-link {
+    color: var(--cc-text) !important;
+    font-size: 15px;
     font-weight: 500;
     border-bottom: 2px solid transparent;
-    padding-bottom: 4px;
+    padding-bottom: 4px !important;
   }
 
-  .nav-link:hover { color: var(--brand-navy-dark); }
+  .cc-nav-link:hover {
+    color: var(--cc-navy) !important;
+  }
 
-  .nav-link.active {
-    color: var(--brand-navy-dark) !important;
+  .cc-nav-link.active {
+    color: var(--cc-navy) !important;
     font-weight: 700;
-    border-bottom-color: var(--brand-navy-dark);
+    border-bottom-color: var(--cc-navy);
   }
 
-  .icon-btn {
+  .cc-icon-button {
     width: 36px;
     height: 36px;
+    border: none;
+    border-radius: 9999px;
+    background: none;
+    color: var(--cc-text);
   }
 
+  .cc-icon-button:hover {
+    background: var(--cc-bg-soft);
+  }
+
+  .cc-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 9999px;
+    border: 1px solid var(--cc-border);
+    background: var(--cc-navy);
+    color: #fff;
+    font-size: 13px;
+    font-weight: 700;
+  }
+
+  /* Page content */
   .form-control::placeholder { color: #6b7280; }
 
   .form-control-lg-custom {
@@ -69,7 +105,7 @@
     min-width: 200px;
   }
 
-  .table thead tr { background: #f0f3ff; }
+  .table thead tr { background: var(--cc-bg-soft); }
 
   .table thead th {
     color: #75767f;
@@ -77,10 +113,10 @@
     font-weight: 500;
     letter-spacing: 0.65px;
     text-transform: uppercase;
-    border-bottom-color: #c5c6cf;
+    border-bottom-color: var(--cc-border);
   }
 
-  .report-id { color: var(--brand-navy-dark); font-weight: 700; }
+  .report-id { color: var(--cc-navy-dark); font-weight: 700; }
 
   .dot {
     width: 6px;
@@ -98,162 +134,179 @@
   .badge-ditolak { background: #fdeceb; color: #b42318; }
 
   .btn-detail {
-    border: 1px solid #c5c6cf;
-    color: var(--brand-navy-dark);
+    border: 1px solid var(--cc-border);
+    color: var(--cc-navy-dark);
     font-weight: 700;
     font-size: 14px;
   }
 
-  .btn-detail:hover { background: #f0f3ff; color: var(--brand-navy-dark); }
+  .btn-detail:hover { background: var(--cc-bg-soft); color: var(--cc-navy-dark); }
 
   .page-link { color: #151c27; }
 
   .page-item.active .page-link {
-    background-color: var(--brand-navy-dark);
-    border-color: var(--brand-navy-dark);
+    background-color: var(--cc-navy-dark);
+    border-color: var(--cc-navy-dark);
   }
 </style>
 </head>
 <body class="bg-white">
 
-  <header class="border-bottom">
-    <div class="brand-shell d-flex align-items-center justify-content-between" style="height:72px;">
-      <a href="beranda.html" class="navbar-brand d-flex align-items-center gap-2 m-0">
-        <span class="d-flex align-items-center justify-content-center rounded-2 bg-brand-navy text-white fw-bold" style="width:32px;height:32px;font-size:16px;">C</span>
-        <span class="text-brand-navy-dark fw-bold" style="font-size:18px;">CampusCare</span>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg cc-navbar px-4 px-lg-5">
+    <div class="container-fluid p-0">
+      <a class="navbar-brand d-flex align-items-center gap-2" href="beranda.html">
+        <span class="cc-brand-mark d-flex align-items-center justify-content-center">C</span>
+        <span class="cc-brand-name">CampusCare</span>
       </a>
 
-      <nav class="d-none d-lg-flex align-items-center gap-4">
-        <a href="beranda.html" class="nav-link">Beranda</a>
-        <a href="riwayat.html" class="nav-link active">Riwayat</a>
-        <a href="buatlaporan.html" class="nav-link">Buat Laporan</a>
-      </nav>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#ccNavbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-      <div class="d-flex align-items-center gap-3">
-        <button class="btn btn-light icon-btn rounded-circle d-flex align-items-center justify-content-center p-0" aria-label="Notifikasi" id="notifBtn">
-          <svg width="18" height="20" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M0 17V15H2V8C2 6.61667 2.41667 5.3875 3.25 4.3125C4.08333 3.2375 5.16667 2.53333 6.5 2.2V1.5C6.5 1.08333 6.64583 0.729167 6.9375 0.4375C7.22917 0.145833 7.58333 0 8 0C8.41667 0 8.77083 0.145833 9.0625 0.4375C9.35417 0.729167 9.5 1.08333 9.5 1.5V2.2C10.8333 2.53333 11.9167 3.2375 12.75 4.3125C13.5833 5.3875 14 6.61667 14 8V15H16V17H0ZM8 20C7.45 20 6.97917 19.8042 6.5875 19.4125C6.19583 19.0208 6 18.55 6 18H10C10 18.55 9.80417 19.0208 9.4125 19.4125C9.02083 19.8042 8.55 20 8 20ZM4 15H12V8C12 6.9 11.6083 5.95833 10.825 5.175C10.0417 4.39167 9.1 4 8 4C6.9 4 5.95833 4.39167 5.175 5.175C4.39167 5.95833 4 6.9 4 8V15Z" fill="#45464E"/>
-          </svg>
-        </button>
-        <div class="vr" style="height:24px;"></div>
-        <div class="rounded-circle d-flex align-items-center justify-content-center bg-brand-navy text-white fw-bold" style="width:32px;height:32px;font-size:13px;border:1px solid #c5c6cf;">WN</div>
+      <div class="collapse navbar-collapse" id="ccNavbarNav">
+        <ul class="navbar-nav mx-auto gap-lg-4 mt-3 mt-lg-0">
+          <li class="nav-item">
+            <a class="nav-link cc-nav-link" href="beranda.html">Beranda</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link cc-nav-link active" href="riwayat.html">Riwayat</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link cc-nav-link" href="buatlaporan.html">Buat Laporan</a>
+          </li>
+        </ul>
+
+        <div class="d-flex align-items-center gap-3 mt-3 mt-lg-0">
+          <button class="cc-icon-button d-flex align-items-center justify-content-center" aria-label="Notifikasi" id="notifBtn">
+            <svg width="18" height="20" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M0 17V15H2V8C2 6.61667 2.41667 5.3875 3.25 4.3125C4.08333 3.2375 5.16667 2.53333 6.5 2.2V1.5C6.5 1.08333 6.64583 0.729167 6.9375 0.4375C7.22917 0.145833 7.58333 0 8 0C8.41667 0 8.77083 0.145833 9.0625 0.4375C9.35417 0.729167 9.5 1.08333 9.5 1.5V2.2C10.8333 2.53333 11.9167 3.2375 12.75 4.3125C13.5833 5.3875 14 6.61667 14 8V15H16V17H0ZM8 20C7.45 20 6.97917 19.8042 6.5875 19.4125C6.19583 19.0208 6 18.55 6 18H10C10 18.55 9.80417 19.0208 9.4125 19.4125C9.02083 19.8042 8.55 20 8 20ZM4 15H12V8C12 6.9 11.6083 5.95833 10.825 5.175C10.0417 4.39167 9.1 4 8 4C6.9 4 5.95833 4.39167 5.175 5.175C4.39167 5.95833 4 6.9 4 8V15Z" fill="#45464E"/>
+            </svg>
+          </button>
+          <div class="vr"></div>
+          <div class="cc-avatar d-flex align-items-center justify-content-center" style="cursor:pointer;" onclick="window.location.href='profilsaya.html'">WN</div>
+        </div>
       </div>
     </div>
-  </header>
+  </nav>
 
-  <main class="brand-shell d-flex flex-column gap-4 py-4">
-    <div>
-      <div class="text-uppercase text-brand-navy-dark fw-bold" style="font-size:13px;letter-spacing:0.65px;">Semua Laporan</div>
-      <h1 class="fw-semibold mb-0" style="font-size:32px;color:#151c27;letter-spacing:-0.64px;">Riwayat Laporan</h1>
-    </div>
+  <main class="container py-4 py-lg-5" style="max-width: 1280px;">
+    <div class="d-flex flex-column gap-4">
 
-    <div class="d-flex align-items-center gap-3 flex-wrap">
-      <div class="input-group flex-grow-1" style="min-width:240px;">
-        <span class="input-group-text bg-white">
-          <svg width="18" height="24" viewBox="0 0 18 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M16.6 18L10.3 11.7C9.8 12.1 9.225 12.4167 8.575 12.65C7.925 12.8833 7.23333 13 6.5 13C4.68333 13 3.14583 12.3708 1.8875 11.1125C0.629167 9.85417 0 8.31667 0 6.5C0 4.68333 0.629167 3.14583 1.8875 1.8875C3.14583 0.629167 4.68333 0 6.5 0C8.31667 0 9.85417 0.629167 11.1125 1.8875C12.3708 3.14583 13 4.68333 13 6.5C13 7.23333 12.8833 7.925 12.65 8.575C12.4167 9.225 12.1 9.8 11.7 10.3L18 16.6L16.6 18ZM6.5 11C7.75 11 8.8125 10.5625 9.6875 9.6875C10.5625 8.8125 11 7.75 11 6.5C11 5.25 10.5625 4.1875 9.6875 3.3125C8.8125 2.4375 7.75 2 6.5 2C5.25 2 4.1875 2.4375 3.3125 3.3125C2.4375 4.1875 2 5.25 2 6.5C2 7.75 2.4375 8.8125 3.3125 9.6875C4.1875 10.5625 5.25 11 6.5 11Z" fill="#75767F"/>
-          </svg>
-        </span>
-        <input type="text" class="form-control form-control-lg-custom" placeholder="Cari berdasarkan ID atau kategori..." id="searchInput">
+      <div>
+        <div class="text-uppercase fw-bold" style="font-size:13px;letter-spacing:0.65px;color:var(--cc-navy-dark);">Semua Laporan</div>
+        <h1 class="fw-semibold mb-0" style="font-size:32px;color:#151c27;letter-spacing:-0.64px;">Riwayat Laporan</h1>
       </div>
 
-      <select class="form-select form-select-custom" id="statusSelect" style="width:auto;">
-        <option>Semua Status</option>
-        <option>Diproses</option>
-        <option>Selesai</option>
-        <option>Ditolak</option>
-      </select>
-    </div>
+      <div class="d-flex align-items-center gap-3 flex-wrap">
+        <div class="input-group flex-grow-1" style="min-width:240px;">
+          <span class="input-group-text bg-white">
+            <svg width="18" height="24" viewBox="0 0 18 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M16.6 18L10.3 11.7C9.8 12.1 9.225 12.4167 8.575 12.65C7.925 12.8833 7.23333 13 6.5 13C4.68333 13 3.14583 12.3708 1.8875 11.1125C0.629167 9.85417 0 8.31667 0 6.5C0 4.68333 0.629167 3.14583 1.8875 1.8875C3.14583 0.629167 4.68333 0 6.5 0C8.31667 0 9.85417 0.629167 11.1125 1.8875C12.3708 3.14583 13 4.68333 13 6.5C13 7.23333 12.8833 7.925 12.65 8.575C12.4167 9.225 12.1 9.8 11.7 10.3L18 16.6L16.6 18ZM6.5 11C7.75 11 8.8125 10.5625 9.6875 9.6875C10.5625 8.8125 11 7.75 11 6.5C11 5.25 10.5625 4.1875 9.6875 3.3125C8.8125 2.4375 7.75 2 6.5 2C5.25 2 4.1875 2.4375 3.3125 3.3125C2.4375 4.1875 2 5.25 2 6.5C2 7.75 2.4375 8.8125 3.3125 9.6875C4.1875 10.5625 5.25 11 6.5 11Z" fill="#75767F"/>
+            </svg>
+          </span>
+          <input type="text" class="form-control form-control-lg-custom" placeholder="Cari berdasarkan ID atau kategori..." id="searchInput">
+        </div>
 
-    <div class="card border rounded-4 shadow-sm overflow-hidden">
-      <div class="table-responsive">
-        <table class="table table-hover align-middle mb-0">
-          <thead>
-            <tr>
-              <th>No</th>
-              <th>Tanggal</th>
-              <th>ID</th>
-              <th>Kategori</th>
-              <th>Status</th>
-              <th class="text-end">Aksi</th>
-            </tr>
-          </thead>
-          <tbody id="reportsBody">
-            <tr>
-              <td>1</td>
-              <td>23/04/24</td>
-              <td class="report-id">LP-0738</td>
-              <td>IT Support</td>
-              <td>
-                <span class="badge rounded-pill badge-diproses fw-bold d-inline-flex align-items-center gap-2">
-                  <span class="dot dot-amber"></span>Diproses
-                </span>
-              </td>
-              <td class="text-end"><a href="detaillaporan.html" class="btn btn-outline-secondary btn-sm rounded-pill btn-detail">Detail</a></td>
-            </tr>
-            <tr>
-              <td>2</td>
-              <td>22/04/24</td>
-              <td class="report-id">LP-0737</td>
-              <td>HR</td>
-              <td>
-                <span class="badge rounded-pill badge-selesai fw-bold d-inline-flex align-items-center gap-2">
-                  <span class="dot dot-green"></span>Selesai
-                </span>
-              </td>
-              <td class="text-end"><a href="detaillaporan.html" class="btn btn-outline-secondary btn-sm rounded-pill btn-detail">Detail</a></td>
-            </tr>
-            <tr>
-              <td>3</td>
-              <td>21/04/24</td>
-              <td class="report-id">LP-0736</td>
-              <td>General</td>
-              <td>
-                <span class="badge rounded-pill badge-ditolak fw-bold d-inline-flex align-items-center gap-2">
-                  <span class="dot dot-red"></span>Ditolak
-                </span>
-              </td>
-              <td class="text-end"><a href="detaillaporan.html" class="btn btn-outline-secondary btn-sm rounded-pill btn-detail">Detail</a></td>
-            </tr>
-            <tr>
-              <td>4</td>
-              <td>20/04/24</td>
-              <td class="report-id">LP-0735</td>
-              <td>IT Support</td>
-              <td>
-                <span class="badge rounded-pill badge-diproses fw-bold d-inline-flex align-items-center gap-2">
-                  <span class="dot dot-amber"></span>Diproses
-                </span>
-              </td>
-              <td class="text-end"><a href="detaillaporan.html" class="btn btn-outline-secondary btn-sm rounded-pill btn-detail">Detail</a></td>
-            </tr>
-          </tbody>
-        </table>
+        <select class="form-select form-select-custom" id="statusSelect" style="width:auto;">
+          <option>Semua Status</option>
+          <option>Diproses</option>
+          <option>Selesai</option>
+          <option>Ditolak</option>
+        </select>
       </div>
 
-      <div class="d-flex align-items-center justify-content-between flex-wrap gap-2 p-3">
-        <span class="text-secondary small">Menampilkan 1-4 dari 15 laporan</span>
-        <nav aria-label="Navigasi halaman">
-          <ul class="pagination pagination-sm mb-0">
-            <li class="page-item">
-              <button class="page-link" aria-label="Halaman sebelumnya">&laquo;</button>
-            </li>
-            <li class="page-item active"><button class="page-link">1</button></li>
-            <li class="page-item"><button class="page-link">2</button></li>
-            <li class="page-item"><button class="page-link">3</button></li>
-            <li class="page-item">
-              <button class="page-link" aria-label="Halaman berikutnya">&raquo;</button>
-            </li>
-          </ul>
-        </nav>
+      <div class="card border rounded-4 shadow-sm overflow-hidden">
+        <div class="table-responsive">
+          <table class="table table-hover align-middle mb-0">
+            <thead>
+              <tr>
+                <th>No</th>
+                <th>Tanggal</th>
+                <th>ID</th>
+                <th>Kategori</th>
+                <th>Status</th>
+                <th class="text-end">Aksi</th>
+              </tr>
+            </thead>
+            <tbody id="reportsBody">
+              <tr>
+                <td>1</td>
+                <td>23/04/24</td>
+                <td class="report-id">LP-0738</td>
+                <td>IT Support</td>
+                <td>
+                  <span class="badge rounded-pill badge-diproses fw-bold d-inline-flex align-items-center gap-2">
+                    <span class="dot dot-amber"></span>Diproses
+                  </span>
+                </td>
+                <td class="text-end"><a href="detaillaporan.html" class="btn btn-outline-secondary btn-sm rounded-pill btn-detail">Detail</a></td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>22/04/24</td>
+                <td class="report-id">LP-0737</td>
+                <td>HR</td>
+                <td>
+                  <span class="badge rounded-pill badge-selesai fw-bold d-inline-flex align-items-center gap-2">
+                    <span class="dot dot-green"></span>Selesai
+                  </span>
+                </td>
+                <td class="text-end"><a href="detaillaporan.html" class="btn btn-outline-secondary btn-sm rounded-pill btn-detail">Detail</a></td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>21/04/24</td>
+                <td class="report-id">LP-0736</td>
+                <td>General</td>
+                <td>
+                  <span class="badge rounded-pill badge-ditolak fw-bold d-inline-flex align-items-center gap-2">
+                    <span class="dot dot-red"></span>Ditolak
+                  </span>
+                </td>
+                <td class="text-end"><a href="detaillaporan.html" class="btn btn-outline-secondary btn-sm rounded-pill btn-detail">Detail</a></td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td>20/04/24</td>
+                <td class="report-id">LP-0735</td>
+                <td>IT Support</td>
+                <td>
+                  <span class="badge rounded-pill badge-diproses fw-bold d-inline-flex align-items-center gap-2">
+                    <span class="dot dot-amber"></span>Diproses
+                  </span>
+                </td>
+                <td class="text-end"><a href="detaillaporan.html" class="btn btn-outline-secondary btn-sm rounded-pill btn-detail">Detail</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="d-flex align-items-center justify-content-between flex-wrap gap-2 p-3">
+          <span class="text-secondary small">Menampilkan 1-4 dari 15 laporan</span>
+          <nav aria-label="Navigasi halaman">
+            <ul class="pagination pagination-sm mb-0">
+              <li class="page-item">
+                <button class="page-link" aria-label="Halaman sebelumnya">&laquo;</button>
+              </li>
+              <li class="page-item active"><button class="page-link">1</button></li>
+              <li class="page-item"><button class="page-link">2</button></li>
+              <li class="page-item"><button class="page-link">3</button></li>
+              <li class="page-item">
+                <button class="page-link" aria-label="Halaman berikutnya">&raquo;</button>
+              </li>
+            </ul>
+          </nav>
+        </div>
       </div>
+
     </div>
   </main>
 
   <footer class="border-top">
-    <div class="brand-shell d-flex align-items-center justify-content-between flex-wrap gap-2 py-3">
+    <div class="container d-flex align-items-center justify-content-between flex-wrap gap-2 py-3" style="max-width: 1280px;">
       <div class="d-flex align-items-center gap-2">
-        <span class="fw-bold text-brand-navy-dark" style="font-size:13px;">CampusCare</span>
+        <span class="fw-bold" style="font-size:13px;color:var(--cc-navy-dark);">CampusCare</span>
         <span class="text-secondary" style="font-size:13px;">© 2024 CampusCare University Facility Management</span>
       </div>
       <div class="d-flex align-items-center gap-4">
