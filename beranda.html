@@ -235,19 +235,25 @@
     font-weight: 700;
   }
 
+  /* Status badges: all three share the same pill shape, padding, and
+     line-height so the Status column lines up cleanly row to row. */
   .cc-badge {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: 6px;
+    min-width: 96px;
     padding: 4px 12px;
     border-radius: 9999px;
     font-size: 12px;
     font-weight: 700;
+    line-height: 1.6;
+    white-space: nowrap;
   }
 
   .badge-diproses { background: #fff8e1; color: #7e5700; }
   .badge-selesai  { background: #e7f8ed; color: #1e7b34; }
-  .badge-ditolak  { color: #b42318; padding: 4px 0; }
+  .badge-ditolak  { background: #fdecea; color: #b42318; }
 
   .btn-cc-detail {
     border-radius: 9999px;
