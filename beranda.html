@@ -7,18 +7,31 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 <style>
   :root {
     --cc-navy: #16254d;
     --cc-navy-dark: #000f37;
+    --cc-hero: #1a2b56;
     --cc-text: #45464e;
     --cc-border: #c5c6cf;
     --cc-border-light: #e4e4e7;
     --cc-bg-soft: #f0f3ff;
-    --cc-amber: #f4be61;
-    --cc-green: #35b26a;
-    --cc-red: #e6483f;
+    --cc-blue: #2563eb;
+    --cc-blue-bg: #eff6ff;
+    --cc-yellow: #eab308;
+    --cc-yellow-bg: #fef9c3;
+    --cc-green: #22c55e;
+    --cc-green-bg: #dcfce7;
+    --cc-red: #ef4444;
+    --cc-red-bg: #fee2e2;
+    --cc-gray-600: #6b7280;
+    --cc-gray-400: #9ca3af;
+    --cc-gray-900: #111827;
+  }
+
+  html {
+    scrollbar-gutter: stable;
   }
 
   body {
@@ -26,7 +39,9 @@
     background: #fff;
   }
 
-  /* Navbar */
+  a { text-decoration: none; }
+
+  /* Navbar (matches riwayat.html exactly) */
   .cc-navbar {
     height: 72px;
     border-bottom: 1px solid var(--cc-border-light);
@@ -93,183 +108,207 @@
 
   /* Hero */
   .cc-hero {
-    background: var(--cc-navy);
-    border-radius: 14px;
-    box-shadow: 0 4px 20px -2px rgba(22, 37, 77, 0.06);
+    border-radius: 16px;
+    padding: 40px;
+    background: var(--cc-hero);
     overflow: hidden;
-    position: relative;
   }
 
-  .cc-hero-decoration {
-    position: absolute;
-    right: -60px;
-    top: 50%;
-    transform: translateY(-50%);
-    opacity: 0.1;
-    pointer-events: none;
-  }
-
-  .cc-hero h1 {
+  .cc-hero-title {
     color: #fff;
-    font-size: 32px;
-    font-weight: 600;
-    letter-spacing: -0.64px;
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 40px;
   }
 
   .cc-hero-subtitle {
-    color: #7f8dbb;
-    font-size: 16px;
-    opacity: 0.9;
+    color: #d1d5db;
+    font-size: 18px;
+    line-height: 28px;
+    max-width: 480px;
   }
 
-  .btn-cc-report {
-    background: transparent;
-    color: #765100;
-    font-weight: 600;
-    font-size: 14px;
-    letter-spacing: 0.28px;
-    border-radius: 10px;
+  .cc-hero-cta {
+    padding: 14px 24px;
+    border-radius: 12px;
+    background: #fff;
+    color: var(--cc-hero);
+    font-size: 16px;
+    font-weight: 700;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+    border: none;
     white-space: nowrap;
   }
 
-  .btn-cc-report:hover {
-    background: rgba(255, 255, 255, 0.08);
-    color: #765100;
+  .cc-hero-cta:hover {
+    color: var(--cc-hero);
+    opacity: 0.9;
   }
 
   /* Stat cards */
   .cc-stat-card {
-    border-radius: 14px;
-    border: 1px solid var(--cc-border);
-    box-shadow: 0 4px 20px -2px rgba(22, 37, 77, 0.06);
+    border: 1px solid #f3f4f6;
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  }
+
+  .cc-stat-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 9999px;
+    flex-shrink: 0;
   }
 
   .cc-stat-label {
-    color: var(--cc-text);
-    font-size: 13px;
+    color: var(--cc-gray-600);
+    font-size: 14px;
     font-weight: 500;
-    letter-spacing: 0.65px;
-    text-transform: uppercase;
   }
 
   .cc-stat-value {
-    color: var(--cc-navy-dark);
-    font-size: 32px;
-    font-weight: 600;
-    letter-spacing: -0.64px;
-  }
-
-  .cc-dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 9999px;
-    display: inline-block;
-  }
-
-  .cc-dot-sm {
-    width: 6px;
-    height: 6px;
-  }
-
-  .dot-amber { background: var(--cc-amber); }
-  .dot-green { background: var(--cc-green); }
-  .dot-red { background: var(--cc-red); }
-
-  /* Reports card */
-  .cc-reports-card {
-    border-radius: 14px;
-    border: 1px solid var(--cc-border-light);
-    box-shadow: 0 4px 20px -2px rgba(22, 37, 77, 0.06);
-    overflow: hidden;
-  }
-
-  .cc-reports-header {
-    padding: 24px 32px;
-    border-bottom: 1px solid var(--cc-border-light);
-  }
-
-  .cc-reports-header h2 {
-    color: var(--cc-navy-dark);
-    font-size: 20px;
+    color: var(--cc-gray-900);
+    font-size: 30px;
     font-weight: 700;
-    margin: 0;
+    line-height: 36px;
   }
 
-  .cc-see-all {
-    color: var(--cc-navy-dark) !important;
-    font-size: 14px;
-    font-weight: 700;
-  }
-
-  .cc-see-all:hover {
-    text-decoration: underline;
-  }
-
-  .cc-table thead tr {
-    background: var(--cc-bg-soft);
-  }
-
-  .cc-table th {
-    color: var(--cc-text);
-    font-size: 13px;
-    font-weight: 500;
-    letter-spacing: 0.13px;
-    text-transform: uppercase;
-    padding: 16px 32px;
-    border: none;
-  }
-
-  .cc-table td {
-    color: var(--cc-text);
-    font-size: 16px;
-    padding: 18px 32px;
-    vertical-align: middle;
-    border-bottom: 1px solid var(--cc-border-light);
-  }
-
-  .cc-table tbody tr:last-child td {
-    border-bottom: none;
-  }
-
-  .cc-report-id {
-    color: var(--cc-navy-dark);
-    font-weight: 700;
-  }
-
-  .cc-badge {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 6px;
-    min-width: 96px;
-    padding: 4px 12px;
-    border-radius: 9999px;
+  .cc-stat-caption {
+    color: var(--cc-gray-400);
     font-size: 12px;
+  }
+
+  /* Dashboard panels */
+  .cc-panel {
+    border: 1px solid #f3f4f6;
+    border-radius: 16px;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    padding: 24px;
+  }
+
+  .cc-panel-title {
+    color: var(--cc-gray-900);
+    font-size: 18px;
     font-weight: 700;
-    line-height: 1.6;
+  }
+
+  .cc-panel-link {
+    color: var(--cc-blue);
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  .cc-activity-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 9999px;
+    flex-shrink: 0;
+  }
+
+  .cc-activity-title {
+    color: var(--cc-gray-900);
+    font-size: 16px;
+    font-weight: 500;
+  }
+
+  .cc-activity-meta {
+    color: var(--cc-gray-600);
+    font-size: 14px;
+  }
+
+  .cc-activity-time {
+    color: var(--cc-gray-400);
+    font-size: 14px;
     white-space: nowrap;
   }
 
-  .badge-diproses { background: #fff8e1; color: #7e5700; }
-  .badge-selesai  { background: #e7f8ed; color: #1e7b34; }
-  .badge-ditolak  { background: #fdecea; color: #b42318; }
-
-  .btn-cc-detail {
-    border-radius: 9999px;
-    border: 1px solid var(--cc-border);
-    background: #fff;
-    color: var(--cc-navy-dark);
-    font-size: 14px;
-    font-weight: 700;
-    padding: 8px 20px;
+  /* Report list items */
+  .cc-report-item {
+    border: 1px solid #f3f4f6;
+    border-left: 4px solid transparent;
+    border-radius: 12px;
+    padding: 16px;
   }
 
-  .btn-cc-detail:hover {
+  .cc-report-item.status-diproses { border-left-color: var(--cc-yellow); }
+  .cc-report-item.status-selesai { border-left-color: var(--cc-green); }
+  .cc-report-item.status-ditolak { border-left-color: var(--cc-red); }
+
+  .cc-report-id {
+    color: var(--cc-gray-900);
+    font-size: 16px;
+    font-weight: 700;
+  }
+
+  .cc-report-date {
+    color: var(--cc-gray-600);
+    font-size: 14px;
+  }
+
+  .cc-report-name {
+    color: var(--cc-gray-900);
+    font-size: 16px;
+    font-weight: 500;
+  }
+
+  .cc-report-category {
+    color: var(--cc-gray-600);
+    font-size: 14px;
+  }
+
+  .dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    display: inline-block;
+  }
+
+  .dot-amber { background: var(--cc-yellow); }
+  .dot-green { background: var(--cc-green); }
+  .dot-red { background: var(--cc-red); }
+
+  .badge-diproses { background: var(--cc-yellow-bg); color: var(--cc-yellow); }
+  .badge-selesai { background: var(--cc-green-bg); color: var(--cc-green); }
+  .badge-ditolak { background: var(--cc-red-bg); color: var(--cc-red); }
+
+  .btn-detail {
+    border: 1px solid #e5e7eb;
+    color: #374151;
+    font-weight: 500;
+    font-size: 14px;
+  }
+
+  .btn-detail:hover { background: var(--cc-bg-soft); color: #374151; }
+
+  /* Callout */
+  .cc-callout {
     background: var(--cc-bg-soft);
+    border-radius: 16px;
+    padding: 32px;
+  }
+
+  .cc-callout-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 9999px;
+    background: var(--cc-blue);
+    flex-shrink: 0;
+  }
+
+  .cc-callout-title {
+    color: var(--cc-gray-900);
+    font-size: 20px;
+    font-weight: 700;
+  }
+
+  .cc-callout-text {
+    color: #4b5563;
+    font-size: 16px;
   }
 </style>
 </head>
-<body>
+<body class="bg-white">
+
   <!-- Navbar -->
   <nav class="navbar navbar-expand-lg cc-navbar px-4 px-lg-5">
     <div class="container-fluid p-0">
@@ -309,129 +348,242 @@
   </nav>
 
   <main class="container py-4 py-lg-5" style="max-width: 1280px;">
-    <!-- Hero -->
-    <section class="cc-hero d-flex flex-column flex-md-row align-items-md-center justify-content-md-between gap-3 p-4 mb-4">
-      <svg class="cc-hero-decoration" width="406" height="406" viewBox="0 0 406 406" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M299.336 76.2021C327.101 92.618 347.976 122.004 359.528 153.823C371.282 185.439 373.714 219.486 360.338 247.049C346.963 274.409 317.779 295.283 287.987 310.888C258.195 326.493 227.593 336.627 196.788 344.733C165.983 352.84 134.772 358.92 107.818 346.963C80.8634 335.005 57.9623 305.011 48.0317 272.99C38.1011 240.969 40.9384 207.124 53.909 178.548C66.6769 149.77 89.578 126.058 114.506 108.629C139.636 91.1994 166.793 79.8501 200.03 83.4981C233.267 87.1461 271.571 87.1461 299.336 76.2021Z" fill="white"/>
-      </svg>
+    <div class="d-flex flex-column gap-4">
 
-      <div class="position-relative">
-        <div class="d-flex align-items-end gap-2">
-          <h1 class="mb-0">Halo, Alexis!</h1>
-          <span style="font-size: 32px; line-height: 120%;">👋</span>
+      <!-- Hero -->
+      <div class="cc-hero d-flex align-items-center justify-content-between flex-wrap gap-3">
+        <div class="d-flex flex-column gap-3">
+          <h1 class="cc-hero-title mb-0 d-flex align-items-center gap-2">Halo, Alexis! <span>👋</span></h1>
+          <p class="cc-hero-subtitle mb-0">Terima kasih telah membantu menjaga fasilitas kampus tetap nyaman untuk semua.</p>
         </div>
-        <p class="cc-hero-subtitle mb-0">Ringkasan laporan fasilitas kampus</p>
-      </div>
-
-      <a href="buatlaporan.html" class="btn btn-cc-report d-flex align-items-center gap-2 position-relative">
-        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M5 6.66667H0V5H5V0H6.66667V5H11.6667V6.66667H6.66667V11.6667H5V6.66667Z" fill="#765100"/>
-        </svg>
-        Buat Laporan
-      </a>
-    </section>
-
-    <!-- Stats -->
-    <section class="row g-3 mb-4">
-      <div class="col-12 col-sm-6 col-lg-3">
-        <div class="cc-stat-card p-3 h-100">
-          <div class="cc-stat-label mb-2">Total</div>
-          <div class="cc-stat-value">18</div>
-        </div>
-      </div>
-      <div class="col-12 col-sm-6 col-lg-3">
-        <div class="cc-stat-card p-3 h-100">
-          <div class="cc-stat-label mb-2">Diproses</div>
-          <div class="d-flex align-items-center gap-2">
-            <span class="cc-stat-value">2</span>
-            <span class="cc-dot dot-amber"></span>
-          </div>
-        </div>
-      </div>
-      <div class="col-12 col-sm-6 col-lg-3">
-        <div class="cc-stat-card p-3 h-100">
-          <div class="cc-stat-label mb-2">Selesai</div>
-          <div class="d-flex align-items-center gap-2">
-            <span class="cc-stat-value">15</span>
-            <span class="cc-dot dot-green"></span>
-          </div>
-        </div>
-      </div>
-      <div class="col-12 col-sm-6 col-lg-3">
-        <div class="cc-stat-card p-3 h-100">
-          <div class="cc-stat-label mb-2">Ditolak</div>
-          <div class="d-flex align-items-center gap-2">
-            <span class="cc-stat-value">1</span>
-            <span class="cc-dot dot-red"></span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Reports -->
-    <section class="cc-reports-card">
-      <div class="cc-reports-header d-flex align-items-center justify-content-between">
-        <h2>Laporan Terbaru</h2>
-        <a href="riwayat.html" class="cc-see-all d-flex align-items-center gap-1">
-          Lihat Semua
-          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M8.11667 6H0V4.66667H8.11667L4.38333 0.933333L5.33333 0L10.6667 5.33333L5.33333 10.6667L4.38333 9.73333L8.11667 6Z" fill="#000F37"/>
+        <a href="buatlaporan.html" class="cc-hero-cta btn d-flex align-items-center gap-2">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M9.99967 3.33301V16.6663M16.6663 9.99967H3.33301" stroke="#1A2B56" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
+          Buat Laporan
         </a>
       </div>
 
-      <div class="table-responsive">
-        <table class="table cc-table mb-0">
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Tanggal</th>
-              <th>Kategori</th>
-              <th>Status</th>
-              <th class="text-end">Aksi</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td class="cc-report-id">LP-0738</td>
-              <td>23/04/24</td>
-              <td>Proyektor</td>
-              <td>
-                <span class="cc-badge badge-diproses">
-                  <span class="cc-dot cc-dot-sm dot-amber"></span>
-                  Diproses
-                </span>
-              </td>
-              <td class="text-end"><a href="detaillaporan.html" class="btn btn-cc-detail">Detail</a></td>
-            </tr>
-            <tr>
-              <td class="cc-report-id">LP-0737</td>
-              <td>22/04/24</td>
-              <td>wifi</td>
-              <td>
-                <span class="cc-badge badge-selesai">
-                  <span class="cc-dot cc-dot-sm dot-green"></span>
-                  Selesai
-                </span>
-              </td>
-              <td class="text-end"><a href="detaillaporan.html" class="btn btn-cc-detail">Detail</a></td>
-            </tr>
-            <tr>
-              <td class="cc-report-id">LP-0736</td>
-              <td>21/04/24</td>
-              <td>Pintu Toilet</td>
-              <td>
-                <span class="cc-badge badge-ditolak">
-                  <span class="cc-dot cc-dot-sm dot-red"></span>
-                  Ditolak
-                </span>
-              </td>
-              <td class="text-end"><a href="detaillaporan.html" class="btn btn-cc-detail">Detail</a></td>
-            </tr>
-          </tbody>
-        </table>
+      <!-- Stat cards -->
+      <div class="row g-3 g-lg-4">
+        <div class="col-6 col-lg-3">
+          <div class="cc-stat-card d-flex align-items-center justify-content-between h-100">
+            <div class="d-flex align-items-center gap-3">
+              <div class="cc-stat-icon d-flex align-items-center justify-content-center" style="background: var(--cc-blue-bg);">
+                <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M5.59961 5.5998C5.59961 4.05341 6.85321 2.7998 8.39961 2.7998H14.82C15.5626 2.79996 16.2746 3.09507 16.7996 3.6202L21.5792 8.3998C22.1043 8.92478 22.3995 9.63686 22.3996 10.3794V22.3998C22.3996 23.9462 21.146 25.1998 19.5996 25.1998H8.39961C6.85321 25.1998 5.59961 23.9462 5.59961 22.3998V5.5998M8.39961 13.9998C8.39961 13.2266 9.02641 12.5998 9.79961 12.5998H18.1996C18.9723 12.5998 19.5996 13.2271 19.5996 13.9998C19.5996 14.7725 18.9723 15.3998 18.1996 15.3998H9.79961C9.02641 15.3998 8.39961 14.773 8.39961 13.9998M9.79961 18.1998C9.02693 18.1998 8.39961 18.8271 8.39961 19.5998C8.39961 20.3725 9.02693 20.9998 9.79961 20.9998H18.1996C18.9723 20.9998 19.5996 20.3725 19.5996 19.5998C19.5996 18.8271 18.9723 18.1998 18.1996 18.1998H9.79961Z" fill="#2563EB"/>
+                </svg>
+              </div>
+              <div class="d-flex flex-column gap-1">
+                <span class="cc-stat-label">Total Laporan</span>
+                <span class="cc-stat-value">18</span>
+                <span class="cc-stat-caption">Semua laporan</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-6 col-lg-3">
+          <div class="cc-stat-card d-flex align-items-center justify-content-between h-100">
+            <div class="d-flex align-items-center gap-3">
+              <div class="cc-stat-icon d-flex align-items-center justify-content-center" style="background: var(--cc-yellow-bg);">
+                <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M14 9.33333V14L17.5 17.5M24.5 14C24.5 19.7951 19.7951 24.5 14 24.5C8.20489 24.5 3.5 19.7951 3.5 14C3.5 8.20489 8.20489 3.5 14 3.5C19.7951 3.5 24.5 8.20489 24.5 14" stroke="#EAB308" stroke-width="2.33333" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div class="d-flex flex-column gap-1">
+                <span class="cc-stat-label">Diproses</span>
+                <span class="cc-stat-value">2</span>
+                <span class="cc-stat-caption">11.1% dari total</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-6 col-lg-3">
+          <div class="cc-stat-card d-flex align-items-center justify-content-between h-100">
+            <div class="d-flex align-items-center gap-3">
+              <div class="cc-stat-icon d-flex align-items-center justify-content-center" style="background: var(--cc-green-bg);">
+                <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M5.83301 15.167L10.4997 19.8337L22.1663 8.16699" stroke="#22C55E" stroke-width="2.33333" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div class="d-flex flex-column gap-1">
+                <span class="cc-stat-label">Selesai</span>
+                <span class="cc-stat-value">15</span>
+                <span class="cc-stat-caption">83.3% dari total</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-6 col-lg-3">
+          <div class="cc-stat-card d-flex align-items-center justify-content-between h-100">
+            <div class="d-flex align-items-center gap-3">
+              <div class="cc-stat-icon d-flex align-items-center justify-content-center" style="background: var(--cc-red-bg);">
+                <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M7 21L21 7M7 7L21 21" stroke="#EF4444" stroke-width="2.33333" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div class="d-flex flex-column gap-1">
+                <span class="cc-stat-label">Ditolak</span>
+                <span class="cc-stat-value">1</span>
+                <span class="cc-stat-caption">5.6% dari total</span>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-    </section>
+
+      <!-- Main dashboard area -->
+      <div class="row g-3 g-lg-4">
+        <div class="col-lg-5">
+          <div class="cc-panel d-flex flex-column gap-4 h-100">
+            <div class="d-flex align-items-center justify-content-between">
+              <div class="d-flex align-items-center gap-2">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M10.8333 5.83301H17.5M17.5 5.83301V12.4997M17.5 5.83301L10.8333 12.4997L7.5 9.16634L2.5 14.1663" stroke="#2563EB" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span class="cc-panel-title">Aktivitas Terbaru</span>
+              </div>
+              <a href="riwayat.html" class="cc-panel-link d-flex align-items-center gap-1">
+                Lihat semua aktivitas
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M9.33333 3.33301L14 7.99967M14 7.99967L9.33333 12.6663M14 7.99967H2" stroke="#2563EB" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </a>
+            </div>
+
+            <div class="d-flex flex-column gap-4">
+              <div class="d-flex align-items-start justify-content-between gap-2">
+                <div class="d-flex align-items-start gap-3">
+                  <div class="cc-activity-icon d-flex align-items-center justify-content-center" style="background: var(--cc-yellow-bg);">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M10 6.66667V10L12.5 12.5M17.5 10C17.5 14.1394 14.1394 17.5 10 17.5C5.86064 17.5 2.5 14.1394 2.5 10C2.5 5.86064 5.86064 2.5 10 2.5C14.1394 2.5 17.5 5.86064 17.5 10" stroke="#EAB308" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </div>
+                  <div class="d-flex flex-column gap-1">
+                    <span class="cc-activity-title">Laporan LP-0738 sedang diproses</span>
+                    <span class="cc-activity-meta">Kategori: IT Support</span>
+                  </div>
+                </div>
+                <span class="cc-activity-time">2 jam yang lalu</span>
+              </div>
+
+              <div class="d-flex align-items-start justify-content-between gap-2">
+                <div class="d-flex align-items-start gap-3">
+                  <div class="cc-activity-icon d-flex align-items-center justify-content-center" style="background: var(--cc-green-bg);">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M4.16699 10.833L7.50033 14.1663L15.8337 5.83301" stroke="#22C55E" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </div>
+                  <div class="d-flex flex-column gap-1">
+                    <span class="cc-activity-title">Laporan LP-0737 telah selesai</span>
+                    <span class="cc-activity-meta">Kategori: HR</span>
+                  </div>
+                </div>
+                <span class="cc-activity-time">5 jam yang lalu</span>
+              </div>
+
+              <div class="d-flex align-items-start justify-content-between gap-2">
+                <div class="d-flex align-items-start gap-3">
+                  <div class="cc-activity-icon d-flex align-items-center justify-content-center" style="background: var(--cc-blue-bg);">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path fill-rule="evenodd" clip-rule="evenodd" d="M4 4C4 2.89617 4.89617 2 6 2H10.586C11.1164 2.00011 11.625 2.2109 12 2.586L15.414 6C15.7891 6.37499 15.9999 6.88361 16 7.414V16C16 17.1038 15.1038 18 14 18H6C4.89617 18 4 17.1038 4 16V4M6 10C6 9.44808 6.44808 9 7 9H13C13.5519 9 14 9.44808 14 10C14 10.5519 13.5519 11 13 11H7C6.44808 11 6 10.5519 6 10M7 13C6.44808 13 6 13.4481 6 14C6 14.5519 6.44808 15 7 15H13C13.5519 15 14 14.5519 14 14C14 13.4481 13.5519 13 13 13H7Z" fill="#2563EB"/>
+                    </svg>
+                  </div>
+                  <div class="d-flex flex-column gap-1">
+                    <span class="cc-activity-title">Laporan baru LP-0739 dibuat</span>
+                    <span class="cc-activity-meta">Kategori: General</span>
+                  </div>
+                </div>
+                <span class="cc-activity-time">1 hari yang lalu</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-7">
+          <div class="cc-panel d-flex flex-column gap-4 h-100">
+            <div class="d-flex align-items-center justify-content-between">
+              <div class="d-flex align-items-center gap-2">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M7.50033 10H12.5003M7.50033 13.3333H12.5003M14.167 17.5H5.83366C4.91318 17.5 4.16699 16.7538 4.16699 15.8333V4.16667C4.16699 3.24619 4.91318 2.5 5.83366 2.5H10.4887C10.7097 2.50005 10.9216 2.58788 11.0778 2.74417L15.5895 7.25583C15.7458 7.41208 15.8336 7.624 15.8337 7.845V15.8333C15.8337 16.7538 15.0875 17.5 14.167 17.5Z" stroke="#2563EB" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span class="cc-panel-title">Laporan Terakhir</span>
+              </div>
+              <a href="riwayat.html" class="cc-panel-link d-flex align-items-center gap-1">
+                Lihat semua laporan
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M9.33333 3.33301L14 7.99967M14 7.99967L9.33333 12.6663M14 7.99967H2" stroke="#2563EB" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </a>
+            </div>
+
+            <div class="d-flex flex-column gap-3">
+              <div class="cc-report-item status-diproses d-flex align-items-center justify-content-between flex-wrap gap-2">
+                <div class="d-flex flex-column gap-1">
+                  <span class="cc-report-id">LP-0738</span>
+                  <span class="cc-report-date">23/04/24</span>
+                </div>
+                <div class="d-flex flex-column gap-1">
+                  <span class="cc-report-name">Proyektor</span>
+                  <span class="cc-report-category">IT Support</span>
+                </div>
+                <span class="badge rounded-pill badge-diproses fw-medium d-inline-flex align-items-center gap-2 py-2 px-3">
+                  <span class="dot dot-amber"></span>Diproses
+                </span>
+                <a href="detaillaporan.html" class="btn btn-outline-secondary btn-sm rounded-2 btn-detail">Detail</a>
+              </div>
+
+              <div class="cc-report-item status-selesai d-flex align-items-center justify-content-between flex-wrap gap-2">
+                <div class="d-flex flex-column gap-1">
+                  <span class="cc-report-id">LP-0737</span>
+                  <span class="cc-report-date">22/04/24</span>
+                </div>
+                <div class="d-flex flex-column gap-1">
+                  <span class="cc-report-name">wifi</span>
+                  <span class="cc-report-category">HR</span>
+                </div>
+                <span class="badge rounded-pill badge-selesai fw-medium d-inline-flex align-items-center gap-2 py-2 px-3">
+                  <span class="dot dot-green"></span>Selesai
+                </span>
+                <a href="detaillaporan.html" class="btn btn-outline-secondary btn-sm rounded-2 btn-detail">Detail</a>
+              </div>
+
+              <div class="cc-report-item status-ditolak d-flex align-items-center justify-content-between flex-wrap gap-2">
+                <div class="d-flex flex-column gap-1">
+                  <span class="cc-report-id">LP-0736</span>
+                  <span class="cc-report-date">21/04/24</span>
+                </div>
+                <div class="d-flex flex-column gap-1">
+                  <span class="cc-report-name">Pintu Toilet</span>
+                  <span class="cc-report-category">General</span>
+                </div>
+                <span class="badge rounded-pill badge-ditolak fw-medium d-inline-flex align-items-center gap-2 py-2 px-3">
+                  <span class="dot dot-red"></span>Ditolak
+                </span>
+                <a href="detaillaporan.html" class="btn btn-outline-secondary btn-sm rounded-2 btn-detail">Detail</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Callout -->
+      <div class="cc-callout d-flex align-items-center gap-3">
+        <div class="cc-callout-icon d-flex align-items-center justify-content-center">
+          <svg width="28" height="28" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 16.0004L14.6667 18.6671L20 13.3338M27.4907 7.97911C23.2748 8.203 19.1423 6.74526 16 3.92578C12.8577 6.74526 8.7252 8.203 4.50934 7.97911C4.17005 9.2926 3.9989 10.6438 4.00001 12.0004C4.00001 19.4551 9.09867 25.7204 16 27.4964C22.9013 25.7204 28 19.4564 28 12.0004C28 10.6111 27.8227 9.26445 27.4907 7.97911Z" stroke="white" stroke-width="2.66667" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="d-flex flex-column gap-2">
+          <span class="cc-callout-title">Bersama kita jaga fasilitas kampus!</span>
+          <span class="cc-callout-text">Laporkan kerusakan atau masalah fasilitas dengan mudah dan cepat.</span>
+        </div>
+      </div>
+
+    </div>
   </main>
 
   <footer class="border-top">
@@ -447,7 +599,6 @@
       </div>
     </div>
   </footer>
-
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script>
