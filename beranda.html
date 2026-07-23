@@ -88,6 +88,7 @@
     color: #fff;
     font-size: 13px;
     font-weight: 700;
+    cursor: pointer;
   }
 
   /* Hero */
@@ -235,8 +236,6 @@
     font-weight: 700;
   }
 
-  /* Status badges: all three share the same pill shape, padding, and
-     line-height so the Status column lines up cleanly row to row. */
   .cc-badge {
     display: inline-flex;
     align-items: center;
@@ -303,7 +302,7 @@
             </svg>
           </button>
           <div class="vr"></div>
-          <div class="cc-avatar d-flex align-items-center justify-content-center">WN</div>
+          <div class="cc-avatar d-flex align-items-center justify-content-center" id="btnAvatar" title="Profil Saya">WN</div>
         </div>
       </div>
     </div>
@@ -439,6 +438,9 @@
   <script>
     document.getElementById('btnNotifikasi').addEventListener('click', function () {
       window.location.href = 'notifikasi.html';
+    });
+    document.getElementById('btnAvatar').addEventListener('click', function () {
+      window.location.href = 'profil.html';
     });
   </script>
 </body>

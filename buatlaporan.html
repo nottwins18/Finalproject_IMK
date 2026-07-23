@@ -85,6 +85,7 @@
     color: #fff;
     font-size: 13px;
     font-weight: 700;
+    cursor: pointer;
   }
 
   /* Form */
@@ -225,7 +226,7 @@
             </svg>
           </button>
           <div class="vr"></div>
-          <div class="cc-avatar d-flex align-items-center justify-content-center">WN</div>
+          <div class="cc-avatar d-flex align-items-center justify-content-center" id="btnAvatar" title="Profil Saya">WN</div>
         </div>
       </div>
     </div>
@@ -291,6 +292,9 @@
   <script>
     document.getElementById('btnNotifikasi').addEventListener('click', function () {
       window.location.href = 'notifikasi.html';
+    });
+    document.getElementById('btnAvatar').addEventListener('click', function () {
+      window.location.href = 'profil.html';
     });
 
     document.getElementById('formLaporan').addEventListener('submit', function (e) {
