@@ -138,7 +138,7 @@
 
   .cc-upload-dropzone {
     display: flex;
-    height: 293px;
+    min-height: 293px;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -148,6 +148,11 @@
     background: #fff;
     cursor: pointer;
     position: relative;
+    padding: 16px;
+  }
+
+  .cc-upload-dropzone.has-files {
+    justify-content: flex-start;
   }
 
   .cc-upload-input {
@@ -178,6 +183,79 @@
     font-size: 13px;
     font-weight: 500;
     letter-spacing: 0.13px;
+  }
+
+  .cc-upload-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .cc-preview-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(96px, 1fr));
+    gap: 12px;
+    width: 100%;
+  }
+
+  .cc-preview-item {
+    position: relative;
+    aspect-ratio: 1 / 1;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid var(--cc-border);
+    background: #f4f5f7;
+  }
+
+  .cc-preview-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .cc-preview-remove {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    width: 22px;
+    height: 22px;
+    border-radius: 9999px;
+    background: rgba(0, 15, 55, 0.75);
+    color: #fff;
+    border: none;
+    font-size: 12px;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+  }
+
+  .cc-preview-remove:hover {
+    background: #000f37;
+  }
+
+  .cc-add-more {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 1 / 1;
+    border-radius: 8px;
+    border: 2px dashed var(--cc-border);
+    color: var(--cc-navy-dark);
+    font-size: 24px;
+    font-weight: 600;
+    cursor: pointer;
+    position: relative;
+  }
+
+  .cc-upload-count {
+    color: var(--cc-text);
+    font-size: 12px;
+    font-weight: 500;
+    align-self: flex-start;
   }
 
   .btn-cc-next {
@@ -266,18 +344,24 @@
 
         <div class="col-12 col-md-6">
           <label class="cc-form-label form-label" for="gambar">Upload Gambar</label>
-          <label class="cc-upload-dropzone" for="gambar">
+          <div class="cc-upload-dropzone" id="uploadDropzone">
             <input class="cc-upload-input" type="file" id="gambar" name="gambar" accept="image/*" multiple />
-            <div class="cc-upload-icon">
-              <svg width="33" height="24" viewBox="0 0 33 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M8.25 24C5.975 24 4.03125 23.2125 2.41875 21.6375C0.80625 20.0625 0 18.1375 0 15.8625C0 13.9125 0.5875 12.175 1.7625 10.65C2.9375 9.125 4.475 8.15 6.375 7.725C7 5.425 8.25 3.5625 10.125 2.1375C12 0.7125 14.125 0 16.5 0C19.425 0 21.9062 1.01875 23.9438 3.05625C25.9813 5.09375 27 7.575 27 10.5C28.725 10.7 30.1562 11.4437 31.2938 12.7312C32.4313 14.0188 33 15.525 33 17.25C33 19.125 32.3438 20.7188 31.0312 22.0312C29.7188 23.3438 28.125 24 26.25 24H18C17.175 24 16.4688 23.7062 15.8813 23.1187C15.2938 22.5312 15 21.825 15 21V13.275L12.6 15.6L10.5 13.5L16.5 7.5L22.5 13.5L20.4 15.6L18 13.275V21H26.25C27.3 21 28.1875 20.6375 28.9125 19.9125C29.6375 19.1875 30 18.3 30 17.25C30 16.2 29.6375 15.3125 28.9125 14.5875C28.1875 13.8625 27.3 13.5 26.25 13.5H24V10.5C24 8.425 23.2687 6.65625 21.8062 5.19375C20.3438 3.73125 18.575 3 16.5 3C14.425 3 12.6562 3.73125 11.1938 5.19375C9.73125 6.65625 9 8.425 9 10.5H8.25C6.8 10.5 5.5625 11.0125 4.5375 12.0375C3.5125 13.0625 3 14.3 3 15.75C3 17.2 3.5125 18.4375 4.5375 19.4625C5.5625 20.4875 6.8 21 8.25 21H12V24H8.25Z" fill="#000F37"/>
-              </svg>
+
+            <div class="cc-upload-placeholder" id="uploadPlaceholder">
+              <div class="cc-upload-icon">
+                <svg width="33" height="24" viewBox="0 0 33 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M8.25 24C5.975 24 4.03125 23.2125 2.41875 21.6375C0.80625 20.0625 0 18.1375 0 15.8625C0 13.9125 0.5875 12.175 1.7625 10.65C2.9375 9.125 4.475 8.15 6.375 7.725C7 5.425 8.25 3.5625 10.125 2.1375C12 0.7125 14.125 0 16.5 0C19.425 0 21.9062 1.01875 23.9438 3.05625C25.9813 5.09375 27 7.575 27 10.5C28.725 10.7 30.1562 11.4437 31.2938 12.7312C32.4313 14.0188 33 15.525 33 17.25C33 19.125 32.3438 20.7188 31.0312 22.0312C29.7188 23.3438 28.125 24 26.25 24H18C17.175 24 16.4688 23.7062 15.8813 23.1187C15.2938 22.5312 15 21.825 15 21V13.275L12.6 15.6L10.5 13.5L16.5 7.5L22.5 13.5L20.4 15.6L18 13.275V21H26.25C27.3 21 28.1875 20.6375 28.9125 19.9125C29.6375 19.1875 30 18.3 30 17.25C30 16.2 29.6375 15.3125 28.9125 14.5875C28.1875 13.8625 27.3 13.5 26.25 13.5H24V10.5C24 8.425 23.2687 6.65625 21.8062 5.19375C20.3438 3.73125 18.575 3 16.5 3C14.425 3 12.6562 3.73125 11.1938 5.19375C9.73125 6.65625 9 8.425 9 10.5H8.25C6.8 10.5 5.5625 11.0125 4.5375 12.0375C3.5125 13.0625 3 14.3 3 15.75C3 17.2 3.5125 18.4375 4.5375 19.4625C5.5625 20.4875 6.8 21 8.25 21H12V24H8.25Z" fill="#000F37"/>
+                </svg>
+              </div>
+              <div class="text-center">
+                <div class="cc-upload-title">Klik atau seret gambar ke sini</div>
+                <div class="cc-upload-subtitle">Maks. 5 file (10 MB)</div>
+              </div>
             </div>
-            <div class="text-center">
-              <div class="cc-upload-title">Klik atau seret gambar ke sini</div>
-              <div class="cc-upload-subtitle">Maks. 5 file (10 MB)</div>
-            </div>
-          </label>
+
+            <div class="cc-upload-count d-none" id="uploadCount"></div>
+            <div class="cc-preview-grid d-none" id="previewGrid"></div>
+          </div>
         </div>
       </div>
 
@@ -313,6 +397,89 @@
     });
     document.getElementById('btnAvatar').addEventListener('click', function () {
       window.location.href = 'profil.html';
+    });
+
+    // ---- Upload gambar & preview ----
+    var fileInput = document.getElementById('gambar');
+    var dropzone = document.getElementById('uploadDropzone');
+    var placeholder = document.getElementById('uploadPlaceholder');
+    var previewGrid = document.getElementById('previewGrid');
+    var uploadCount = document.getElementById('uploadCount');
+    var MAX_FILES = 5;
+    var selectedFiles = [];
+
+    function renderPreview() {
+      previewGrid.innerHTML = '';
+
+      if (selectedFiles.length === 0) {
+        placeholder.classList.remove('d-none');
+        previewGrid.classList.add('d-none');
+        uploadCount.classList.add('d-none');
+        dropzone.classList.remove('has-files');
+        return;
+      }
+
+      placeholder.classList.add('d-none');
+      previewGrid.classList.remove('d-none');
+      uploadCount.classList.remove('d-none');
+      dropzone.classList.add('has-files');
+      uploadCount.textContent = selectedFiles.length + ' dari ' + MAX_FILES + ' foto dipilih';
+
+      selectedFiles.forEach(function (file, index) {
+        var item = document.createElement('div');
+        item.className = 'cc-preview-item';
+
+        var img = document.createElement('img');
+        img.src = URL.createObjectURL(file);
+        img.alt = file.name;
+        img.onload = function () {
+          URL.revokeObjectURL(img.src);
+        };
+        item.appendChild(img);
+
+        var removeBtn = document.createElement('button');
+        removeBtn.type = 'button';
+        removeBtn.className = 'cc-preview-remove';
+        removeBtn.setAttribute('aria-label', 'Hapus foto');
+        removeBtn.textContent = '\u2715';
+        removeBtn.addEventListener('click', function (e) {
+          e.preventDefault();
+          e.stopPropagation();
+          selectedFiles.splice(index, 1);
+          syncFileInput();
+          renderPreview();
+        });
+        item.appendChild(removeBtn);
+
+        previewGrid.appendChild(item);
+      });
+
+      if (selectedFiles.length < MAX_FILES) {
+        var addMore = document.createElement('label');
+        addMore.className = 'cc-add-more';
+        addMore.setAttribute('for', 'gambar');
+        addMore.textContent = '+';
+        previewGrid.appendChild(addMore);
+      }
+    }
+
+    function syncFileInput() {
+      var dataTransfer = new DataTransfer();
+      selectedFiles.forEach(function (file) {
+        dataTransfer.items.add(file);
+      });
+      fileInput.files = dataTransfer.files;
+    }
+
+    fileInput.addEventListener('change', function (e) {
+      var newFiles = Array.prototype.slice.call(e.target.files);
+      newFiles.forEach(function (file) {
+        if (selectedFiles.length < MAX_FILES && file.type.indexOf('image/') === 0) {
+          selectedFiles.push(file);
+        }
+      });
+      syncFileInput();
+      renderPreview();
     });
 
     document.getElementById('formLaporan').addEventListener('submit', function (e) {
