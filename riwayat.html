@@ -589,7 +589,7 @@
         </div>
 
         <div class="cc-pagination-bar d-flex flex-wrap align-items-center justify-content-between gap-3">
-          <span class="cc-pagination-info" id="paginationInfo">Menampilkan 1-7 dari 18 laporan</span>
+          <span class="cc-pagination-info" id="paginationInfo">Menampilkan 1-5 dari 18 laporan</span>
 
           <div class="d-flex align-items-center gap-1" id="paginationControls">
             <button type="button" class="cc-page-btn d-flex align-items-center justify-content-center"
@@ -631,10 +631,9 @@
             <span class="cc-pagination-info">Tampilkan</span>
             <select aria-label="Pilih jumlah per halaman" id="pageSizeSelect"
               class="form-select form-select-sm cc-page-size-select" style="width:72px;">
-              <option value="7" selected>7</option>
+              <option value="5" selected>5</option>
               <option value="10">10</option>
-              <option value="25">25</option>
-              <option value="50">50</option>
+              <option value="15">15</option>
             </select>
             <span class="cc-pagination-info">per halaman</span>
           </div>
@@ -705,7 +704,7 @@
     ];
 
     var currentPage = 1;
-    var pageSize = 7;
+    var pageSize = 5;
     var filteredReports = reports;
 
     var tbody = document.getElementById('reportTableBody');
