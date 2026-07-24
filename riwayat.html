@@ -1,330 +1,486 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>CampusCare - Riwayat Laporan</title>
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-<style>
-  :root {
-    --cc-navy: #16254d;
-    --cc-navy-dark: #000f37;
-    --cc-text: #45464e;
-    --cc-border: #c5c6cf;
-    --cc-border-light: #e4e4e7;
-    --cc-bg-soft: #f0f3ff;
-    --cc-blue: #2563eb;
-    --cc-blue-bg: #eff6ff;
-    --cc-yellow: #eab308;
-    --cc-yellow-bg: #fef9c3;
-    --cc-green: #22c55e;
-    --cc-green-bg: #dcfce7;
-    --cc-red: #ef4444;
-    --cc-red-bg: #fee2e2;
-    --cc-gray-600: #6b7280;
-    --cc-gray-400: #9ca3af;
-    --cc-gray-900: #111827;
-  }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CampusCare - Riwayat Laporan</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    :root {
+      --cc-navy: #16254d;
+      --cc-navy-dark: #000f37;
+      --cc-text: #45464e;
+      --cc-border: #c5c6cf;
+      --cc-border-light: #e4e4e7;
+      --cc-bg-soft: #f0f3ff;
+      --cc-blue: #2563eb;
+      --cc-blue-bg: #eff6ff;
+      --cc-yellow: #eab308;
+      --cc-yellow-bg: #fef9c3;
+      --cc-green: #22c55e;
+      --cc-green-bg: #dcfce7;
+      --cc-red: #ef4444;
+      --cc-red-bg: #fee2e2;
+      --cc-gray-600: #6b7280;
+      --cc-gray-400: #9ca3af;
+      --cc-gray-900: #111827;
+    }
 
-  html {
-    scrollbar-gutter: stable;
-  }
+    html {
+      scrollbar-gutter: stable;
+    }
 
-  body {
-    font-family: "Inter", -apple-system, Roboto, Helvetica, sans-serif;
-    background: #fff;
-  }
+    * {
+      box-sizing: border-box;
+    }
 
-  a { text-decoration: none; }
+    body {
+      font-family: "Inter", -apple-system, Roboto, Helvetica, sans-serif;
+      background: #fff;
+      overflow-x: hidden;
+    }
 
-  /* Navbar (matches beranda.html exactly) */
-  .cc-navbar {
-    height: 72px;
-    border-bottom: 1px solid var(--cc-border-light);
-  }
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
 
-  .cc-brand-mark {
-    width: 32px;
-    height: 32px;
-    border-radius: 8px;
-    background: var(--cc-navy);
-    color: #fff;
-    font-size: 16px;
-    font-weight: 700;
-  }
+    .container,
+    .container-fluid {
+      width: 100%;
+      max-width: 100%;
+    }
 
-  .cc-brand-name {
-    color: var(--cc-navy-dark);
-    font-size: 18px;
-    font-weight: 700;
-  }
+    .navbar-nav {
+      flex-wrap: wrap;
+    }
 
-  .cc-nav-link {
-    color: var(--cc-text) !important;
-    font-size: 15px;
-    font-weight: 500;
-    border-bottom: 2px solid transparent;
-    padding-bottom: 4px !important;
-  }
+    .navbar-collapse {
+      width: 100%;
+      background: #fff;
+    }
 
-  .cc-nav-link:hover {
-    color: var(--cc-navy) !important;
-  }
+    .navbar-toggler {
+      z-index: 1031;
+      position: relative;
+    }
 
-  .cc-nav-link.active {
-    color: var(--cc-navy) !important;
-    font-weight: 700;
-    border-bottom-color: var(--cc-navy);
-  }
+    .navbar-toggler:focus {
+      box-shadow: none;
+      outline: 2px solid var(--cc-blue);
+      outline-offset: 2px;
+    }
 
-  .cc-icon-button {
-    width: 36px;
-    height: 36px;
-    border: none;
-    border-radius: 9999px;
-    background: none;
-    color: var(--cc-text);
-  }
+    @media (max-width: 991.98px) {
+      .navbar-collapse {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: #fff;
+        border-bottom: 1px solid var(--cc-border-light);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      }
+    }
 
-  .cc-icon-button:hover {
-    background: var(--cc-bg-soft);
-  }
+    .cc-navbar {
+      min-height: 72px;
+      height: auto;
+      padding-top: 12px;
+      padding-bottom: 12px;
+      position: relative;
+      z-index: 1030;
+    }
 
-  .cc-avatar {
-    width: 32px;
-    height: 32px;
-    border-radius: 9999px;
-    border: 1px solid var(--cc-border);
-    background: var(--cc-navy);
-    color: #fff;
-    font-size: 13px;
-    font-weight: 700;
-    cursor: pointer;
-  }
+    .cc-navbar .container-fluid {
+      align-items: center;
+    }
 
-  /* Page heading */
-  .cc-back-link {
-    width: 40px;
-    height: 40px;
-    color: #000;
-    flex-shrink: 0;
-  }
+    main {
+      position: relative;
+      z-index: 1;
+    }
 
-  .cc-back-link:hover {
-    opacity: 0.7;
-  }
+    .cc-navbar .navbar-nav,
+    .cc-navbar .d-flex.align-items-center.gap-3 {
+      min-width: 0;
+    }
 
-  .cc-page-title {
-    color: #151c27;
-    font-size: 32px;
-    font-weight: 600;
-    letter-spacing: -0.64px;
-  }
+    @media (max-width: 991.98px) {
+      .cc-navbar .navbar-nav {
+        justify-content: center;
+        gap: 0.75rem 1rem;
+      }
 
-  /* Filters section */
-  .cc-filters {
-    border: 1px solid #e2e8f0;
-    border-radius: 12px;
-    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-  }
+      .cc-navbar .d-flex.align-items-center.gap-3 {
+        justify-content: center;
+        width: 100%;
+        margin-top: 0.75rem;
+      }
 
-  .cc-search-input {
-    border: 1px solid #cbd5e1;
-    border-radius: 8px;
-    padding: 11px 12px 12px 40px;
-    font-size: 14px;
-    color: #1e293b;
-  }
+      .cc-navbar .vr {
+        display: none;
+      }
+    }
 
-  .cc-search-input::placeholder {
-    color: #6b7280;
-  }
+    @media (max-width: 767.98px) {
+      .cc-navbar {
+        padding-left: 1rem;
+        padding-right: 1rem;
+      }
 
-  .cc-search-input:focus {
-    box-shadow: none;
-    border-color: var(--cc-blue);
-  }
+      .cc-navbar .navbar-nav {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+      }
 
-  .cc-search-icon {
-    left: 12px;
-    top: 50%;
-    transform: translateY(-50%);
-    pointer-events: none;
-  }
+      .cc-navbar .nav-item {
+        width: 100%;
+        text-align: center;
+      }
 
-  .btn-reset {
-    border: 1px solid #cbd5e1;
-    color: #334155;
-    font-size: 14px;
-    font-weight: 500;
-    padding: 10px 16px;
-    border-radius: 8px;
-    white-space: nowrap;
-  }
+      .cc-navbar .cc-nav-link {
+        display: inline-block;
+      }
 
-  .btn-reset:hover {
-    background: #f8fafc;
-    color: #334155;
-  }
+      main,
+      .container,
+      .container-fluid {
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+      }
+    }
 
-  /* Table */
-  .cc-table-card {
-    border: 1px solid #e2e8f0;
-    border-radius: 12px;
-    overflow: hidden;
-  }
+    @media (max-width: 575.98px) {
+      .cc-page-title {
+        font-size: clamp(1.4rem, 4.5vw, 2rem);
+        line-height: 1.2;
+      }
 
-  .cc-table {
-    margin-bottom: 0;
-  }
+      .cc-filters {
+        padding: 1rem;
+      }
+    }
 
-  .cc-table thead th {
-    color: #64748b;
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 0.6px;
-    text-transform: uppercase;
-    padding: 16px 24px;
-    border-bottom: 1px solid #e2e8f0;
-    white-space: nowrap;
-  }
+    a {
+      text-decoration: none;
+    }
 
-  .cc-table tbody td {
-    padding: 23px 24px;
-    vertical-align: middle;
-    border-top: 1px solid #f1f5f9;
-    font-size: 14px;
-  }
+    .cc-navbar {
+      height: 72px;
+      border-bottom: 1px solid var(--cc-border-light);
+    }
 
-  .cc-table tbody tr {
-    border-left: 4px solid transparent;
-  }
+    .cc-brand-mark {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      background: var(--cc-navy);
+      color: #fff;
+      font-size: 16px;
+      font-weight: 700;
+    }
 
-  .cc-table tbody tr.status-diproses { border-left-color: var(--cc-yellow); }
-  .cc-table tbody tr.status-selesai { border-left-color: var(--cc-green); }
-  .cc-table tbody tr.status-ditolak { border-left-color: var(--cc-red); }
+    .cc-brand-name {
+      color: var(--cc-navy-dark);
+      font-size: 18px;
+      font-weight: 700;
+    }
 
-  .cc-report-link {
-    color: var(--cc-blue);
-    font-weight: 500;
-  }
+    .cc-nav-link {
+      color: var(--cc-text) !important;
+      font-size: 15px;
+      font-weight: 500;
+      border-bottom: 2px solid transparent;
+      padding-bottom: 4px !important;
+    }
 
-  .cc-report-title {
-    color: #1e293b;
-    font-weight: 500;
-  }
+    .cc-nav-link:hover {
+      color: var(--cc-navy) !important;
+    }
 
-  .cc-cell-muted {
-    color: #475569;
-  }
+    .cc-nav-link.active {
+      color: var(--cc-navy) !important;
+      font-weight: 700;
+      border-bottom-color: var(--cc-navy);
+    }
 
-  .dot {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    display: inline-block;
-  }
+    .cc-icon-button {
+      width: 36px;
+      height: 36px;
+      border: none;
+      border-radius: 9999px;
+      background: none;
+      color: var(--cc-text);
+    }
 
-  .dot-amber { background: var(--cc-yellow); }
-  .dot-green { background: var(--cc-green); }
-  .dot-red { background: var(--cc-red); }
+    .cc-icon-button:hover {
+      background: var(--cc-bg-soft);
+    }
 
-  .badge-diproses { background: var(--cc-yellow-bg); color: #a16207; }
-  .badge-selesai { background: var(--cc-green-bg); color: #166534; }
-  .badge-ditolak { background: var(--cc-red-bg); color: #991b1b; }
+    .cc-avatar {
+      width: 32px;
+      height: 32px;
+      border-radius: 9999px;
+      border: 1px solid var(--cc-border);
+      background: var(--cc-navy);
+      color: #fff;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+    }
 
-  .btn-detail {
-    border: 1px solid #cbd5e1;
-    color: #334155;
-    font-weight: 400;
-    font-size: 14px;
-    padding: 6px 12px;
-    border-radius: 4px;
-  }
+    .cc-back-link {
+      width: 40px;
+      height: 40px;
+      color: #000;
+      flex-shrink: 0;
+    }
 
-  .btn-detail:hover { background: var(--cc-bg-soft); color: #334155; }
+    .cc-back-link:hover {
+      opacity: 0.7;
+    }
 
-  .btn-row-menu {
-    width: 20px;
-    height: 20px;
-    border: none;
-    background: none;
-    color: #94a3b8;
-  }
+    .cc-page-title {
+      color: #151c27;
+      font-size: 32px;
+      font-weight: 600;
+      letter-spacing: -0.64px;
+    }
 
-  /* Pagination */
-  .cc-pagination-bar {
-    border-top: 1px solid #e2e8f0;
-    padding: 16px 24px;
-  }
+    .cc-filters {
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    }
 
-  .cc-pagination-info {
-    color: #64748b;
-    font-size: 14px;
-  }
+    .cc-search-input {
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      padding: 11px 12px 12px 40px;
+      font-size: 14px;
+      color: #1e293b;
+    }
 
-  .cc-page-btn {
-    width: 32px;
-    height: 32px;
-    border: 1px solid #cbd5e1;
-    border-radius: 4px;
-    background: #fff;
-    color: #475569;
-    font-size: 14px;
-    font-weight: 500;
-  }
+    .cc-search-input::placeholder {
+      color: #6b7280;
+    }
 
-  .cc-page-btn:hover {
-    background: #f8fafc;
-  }
+    .cc-search-input:focus {
+      box-shadow: none;
+      border-color: var(--cc-blue);
+    }
 
-  .cc-page-btn.active {
-    background: #1e3a8a;
-    border-color: #1e3a8a;
-    color: #fff;
-  }
+    .cc-search-icon {
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      pointer-events: none;
+    }
 
-  .cc-page-size-select {
-    border: 1px solid #cbd5e1;
-    border-radius: 4px;
-    color: #64748b;
-    font-size: 14px;
-    padding: 5px 10px;
-  }
+    .btn-reset {
+      border: 1px solid #cbd5e1;
+      color: #334155;
+      font-size: 14px;
+      font-weight: 500;
+      padding: 10px 16px;
+      border-radius: 8px;
+      white-space: nowrap;
+    }
 
-  .cc-page-size-select:focus {
-    box-shadow: none;
-    border-color: var(--cc-blue);
-  }
+    .btn-reset:hover {
+      background: #f8fafc;
+      color: #334155;
+    }
 
-  /* Help banner */
-  .cc-help-banner {
-    border: 1px solid #dbeafe;
-    background: rgba(239, 246, 255, 0.5);
-    border-radius: 12px;
-    padding: 16px;
-  }
+    .cc-table-card {
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      overflow: hidden;
+    }
 
-  .cc-help-icon {
-    width: 48px;
-    height: 48px;
-    border-radius: 4px;
-    background: #dbeafe;
-    flex-shrink: 0;
-  }
+    .cc-table {
+      margin-bottom: 0;
+    }
 
-  .cc-help-text {
-    color: #475569;
-    font-size: 14px;
-  }
-</style>
+    .cc-table thead th {
+      color: #64748b;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.6px;
+      text-transform: uppercase;
+      padding: 16px 24px;
+      border-bottom: 1px solid #e2e8f0;
+      white-space: nowrap;
+    }
+
+    .cc-table tbody td {
+      padding: 23px 24px;
+      vertical-align: middle;
+      border-top: 1px solid #f1f5f9;
+      font-size: 14px;
+    }
+
+    .cc-table tbody tr {
+      border-left: 4px solid transparent;
+    }
+
+    .cc-table tbody tr.status-diproses {
+      border-left-color: var(--cc-yellow);
+    }
+
+    .cc-table tbody tr.status-selesai {
+      border-left-color: var(--cc-green);
+    }
+
+    .cc-table tbody tr.status-ditolak {
+      border-left-color: var(--cc-red);
+    }
+
+    .cc-report-link {
+      color: var(--cc-blue);
+      font-weight: 500;
+    }
+
+    .cc-report-title {
+      color: #1e293b;
+      font-weight: 500;
+    }
+
+    .cc-cell-muted {
+      color: #475569;
+    }
+
+    .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      display: inline-block;
+    }
+
+    .dot-amber {
+      background: var(--cc-yellow);
+    }
+
+    .dot-green {
+      background: var(--cc-green);
+    }
+
+    .dot-red {
+      background: var(--cc-red);
+    }
+
+    .badge-diproses {
+      background: var(--cc-yellow-bg);
+      color: #a16207;
+    }
+
+    .badge-selesai {
+      background: var(--cc-green-bg);
+      color: #166534;
+    }
+
+    .badge-ditolak {
+      background: var(--cc-red-bg);
+      color: #991b1b;
+    }
+
+    .btn-detail {
+      border: 1px solid #cbd5e1;
+      color: #334155;
+      font-weight: 400;
+      font-size: 14px;
+      padding: 6px 12px;
+      border-radius: 4px;
+    }
+
+    .btn-detail:hover {
+      background: var(--cc-bg-soft);
+      color: #334155;
+    }
+
+    .btn-row-menu {
+      width: 20px;
+      height: 20px;
+      border: none;
+      background: none;
+      color: #94a3b8;
+    }
+
+    .cc-pagination-bar {
+      border-top: 1px solid #e2e8f0;
+      padding: 16px 24px;
+    }
+
+    .cc-pagination-info {
+      color: #64748b;
+      font-size: 14px;
+    }
+
+    .cc-page-btn {
+      width: 32px;
+      height: 32px;
+      border: 1px solid #cbd5e1;
+      border-radius: 4px;
+      background: #fff;
+      color: #475569;
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .cc-page-btn:hover {
+      background: #f8fafc;
+    }
+
+    .cc-page-btn.active {
+      background: #1e3a8a;
+      border-color: #1e3a8a;
+      color: #fff;
+    }
+
+    .cc-page-size-select {
+      border: 1px solid #cbd5e1;
+      border-radius: 4px;
+      color: #64748b;
+      font-size: 14px;
+      padding: 5px 10px;
+    }
+
+    .cc-page-size-select:focus {
+      box-shadow: none;
+      border-color: var(--cc-blue);
+    }
+
+    .cc-help-banner {
+      border: 1px solid #dbeafe;
+      background: rgba(239, 246, 255, 0.5);
+      border-radius: 12px;
+      padding: 16px;
+    }
+
+    .cc-help-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 4px;
+      background: #dbeafe;
+      flex-shrink: 0;
+    }
+
+    .cc-help-text {
+      color: #475569;
+      font-size: 14px;
+    }
+  </style>
 </head>
+
 <body class="bg-white">
 
-  <!-- Navbar -->
   <nav class="navbar navbar-expand-lg cc-navbar px-4 px-lg-5">
     <div class="container-fluid p-0">
       <a class="navbar-brand d-flex align-items-center gap-2" href="beranda.html">
@@ -350,13 +506,17 @@
         </ul>
 
         <div class="d-flex align-items-center gap-3 mt-3 mt-lg-0">
-          <button class="cc-icon-button d-flex align-items-center justify-content-center" aria-label="Notifikasi" id="btnNotifikasi">
+          <button class="cc-icon-button d-flex align-items-center justify-content-center" aria-label="Notifikasi"
+            id="btnNotifikasi">
             <svg width="18" height="20" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M0 17V15H2V8C2 6.61667 2.41667 5.3875 3.25 4.3125C4.08333 3.2375 5.16667 2.53333 6.5 2.2V1.5C6.5 1.08333 6.64583 0.729167 6.9375 0.4375C7.22917 0.145833 7.58333 0 8 0C8.41667 0 8.77083 0.145833 9.0625 0.4375C9.35417 0.729167 9.5 1.08333 9.5 1.5V2.2C10.8333 2.53333 11.9167 3.2375 12.75 4.3125C13.5833 5.3875 14 6.61667 14 8V15H16V17H0ZM8 20C7.45 20 6.97917 19.8042 6.5875 19.4125C6.19583 19.0208 6 18.55 6 18H10C10 18.55 9.80417 19.0208 9.4125 19.4125C9.02083 19.8042 8.55 20 8 20ZM4 15H12V8C12 6.9 11.6083 5.95833 10.825 5.175C10.0417 4.39167 9.1 4 8 4C6.9 4 5.95833 4.39167 5.175 5.175C4.39167 5.95833 4 6.9 4 8V15Z" fill="#45464E"/>
+              <path
+                d="M0 17V15H2V8C2 6.61667 2.41667 5.3875 3.25 4.3125C4.08333 3.2375 5.16667 2.53333 6.5 2.2V1.5C6.5 1.08333 6.64583 0.729167 6.9375 0.4375C7.22917 0.145833 7.58333 0 8 0C8.41667 0 8.77083 0.145833 9.0625 0.4375C9.35417 0.729167 9.5 1.08333 9.5 1.5V2.2C10.8333 2.53333 11.9167 3.2375 12.75 4.3125C13.5833 5.3875 14 6.61667 14 8V15H16V17H0ZM8 20C7.45 20 6.97917 19.8042 6.5875 19.4125C6.19583 19.0208 6 18.55 6 18H10C10 18.55 9.80417 19.0208 9.4125 19.4125C9.02083 19.8042 8.55 20 8 20ZM4 15H12V8C12 6.9 11.6083 5.95833 10.825 5.175C10.0417 4.39167 9.1 4 8 4C6.9 4 5.95833 4.39167 5.175 5.175C4.39167 5.95833 4 6.9 4 8V15Z"
+                fill="#45464E" />
             </svg>
           </button>
           <div class="vr"></div>
-          <div class="cc-avatar d-flex align-items-center justify-content-center" id="btnAvatar" title="Profil Saya">WN</div>
+          <div class="cc-avatar d-flex align-items-center justify-content-center" id="btnAvatar" title="Profil Saya">AR
+          </div>
         </div>
       </div>
     </div>
@@ -365,37 +525,43 @@
   <main class="container py-4 py-lg-5" style="max-width: 1280px;">
     <div class="d-flex flex-column gap-4">
 
-      <!-- Heading -->
       <div class="d-flex align-items-center gap-3">
         <a href="beranda.html" class="cc-back-link d-flex align-items-center justify-content-center">
           <svg width="24" height="24" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M33.3333 18.3331V21.6665H13.3333L22.5 30.8331L20.1333 33.1998L6.93335 19.9998L20.1333 6.7998L22.5 9.16647L13.3333 18.3331H33.3333Z" fill="black"/>
+            <path
+              d="M33.3333 18.3331V21.6665H13.3333L22.5 30.8331L20.1333 33.1998L6.93335 19.9998L20.1333 6.7998L22.5 9.16647L13.3333 18.3331H33.3333Z"
+              fill="black" />
           </svg>
         </a>
         <h1 class="cc-page-title mb-0">Riwayat Laporan</h1>
       </div>
 
-      <!-- Filters -->
       <div class="cc-filters d-flex flex-wrap align-items-end gap-3 p-3">
         <div class="flex-grow-1 position-relative">
           <span class="position-absolute cc-search-icon d-flex">
             <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M2.25 8.25C2.25 11.5615 4.93851 14.25 8.25 14.25C11.5615 14.25 14.25 11.5615 14.25 8.25C14.25 4.93851 11.5615 2.25 8.25 2.25C4.93851 2.25 2.25 4.93851 2.25 8.25" stroke="#94A3B8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M15.75 15.7498L12.4875 12.4873" stroke="#94A3B8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <path
+                d="M2.25 8.25C2.25 11.5615 4.93851 14.25 8.25 14.25C11.5615 14.25 14.25 11.5615 14.25 8.25C14.25 4.93851 11.5615 2.25 8.25 2.25C4.93851 2.25 2.25 4.93851 2.25 8.25"
+                stroke="#94A3B8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+              <path d="M15.75 15.7498L12.4875 12.4873" stroke="#94A3B8" stroke-width="1.5" stroke-linecap="round"
+                stroke-linejoin="round" />
             </svg>
           </span>
-          <input type="text" class="form-control cc-search-input w-100" placeholder="Cari berdasarkan ID, judul, kategori, atau lokasi..." />
+          <input type="text" class="form-control cc-search-input w-100"
+            placeholder="Cari berdasarkan ID, judul, kategori, atau lokasi..." />
         </div>
         <button type="button" class="btn btn-reset d-flex align-items-center gap-2">
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M2 8C2 11.3115 4.68851 14 8 14C11.3115 14 14 11.3115 14 8C14 4.68851 11.3115 2 8 2C6.32263 2.00631 4.71265 2.66082 3.50667 3.82667L2 5.33333" stroke="#334155" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M2 2V5.33333H5.33333" stroke="#334155" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
+            <path
+              d="M2 8C2 11.3115 4.68851 14 8 14C11.3115 14 14 11.3115 14 8C14 4.68851 11.3115 2 8 2C6.32263 2.00631 4.71265 2.66082 3.50667 3.82667L2 5.33333"
+              stroke="#334155" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M2 2V5.33333H5.33333" stroke="#334155" stroke-width="1.33333" stroke-linecap="round"
+              stroke-linejoin="round" />
           </svg>
           Reset Filter
         </button>
       </div>
 
-      <!-- Table -->
       <div class="cc-table-card">
         <div class="table-responsive">
           <table class="table cc-table">
@@ -417,7 +583,8 @@
                 <td class="cc-cell-muted">Proyektor</td>
                 <td class="cc-cell-muted">Gedung A, Lt. 2</td>
                 <td>
-                  <span class="badge rounded-pill badge-diproses fw-medium d-inline-flex align-items-center gap-2 py-1 px-2">
+                  <span
+                    class="badge rounded-pill badge-diproses fw-medium d-inline-flex align-items-center gap-2 py-1 px-2">
                     <span class="dot dot-amber"></span>Diproses
                   </span>
                 </td>
@@ -434,7 +601,8 @@
                 <td class="cc-cell-muted">Pintu Toilet</td>
                 <td class="cc-cell-muted">Area Parkir Selatan</td>
                 <td>
-                  <span class="badge rounded-pill badge-selesai fw-medium d-inline-flex align-items-center gap-2 py-1 px-2">
+                  <span
+                    class="badge rounded-pill badge-selesai fw-medium d-inline-flex align-items-center gap-2 py-1 px-2">
                     <span class="dot dot-green"></span>Selesai
                   </span>
                 </td>
@@ -451,7 +619,8 @@
                 <td class="cc-cell-muted">General</td>
                 <td class="cc-cell-muted">Gedung B, Lt. 1</td>
                 <td>
-                  <span class="badge rounded-pill badge-ditolak fw-medium d-inline-flex align-items-center gap-2 py-1 px-2">
+                  <span
+                    class="badge rounded-pill badge-ditolak fw-medium d-inline-flex align-items-center gap-2 py-1 px-2">
                     <span class="dot dot-red"></span>Ditolak
                   </span>
                 </td>
@@ -468,7 +637,8 @@
                 <td class="cc-cell-muted">IT Support</td>
                 <td class="cc-cell-muted">Perpustakaan</td>
                 <td>
-                  <span class="badge rounded-pill badge-diproses fw-medium d-inline-flex align-items-center gap-2 py-1 px-2">
+                  <span
+                    class="badge rounded-pill badge-diproses fw-medium d-inline-flex align-items-center gap-2 py-1 px-2">
                     <span class="dot dot-amber"></span>Diproses
                   </span>
                 </td>
@@ -485,7 +655,8 @@
                 <td class="cc-cell-muted">Kebersihan</td>
                 <td class="cc-cell-muted">Kantin Utama</td>
                 <td>
-                  <span class="badge rounded-pill badge-selesai fw-medium d-inline-flex align-items-center gap-2 py-1 px-2">
+                  <span
+                    class="badge rounded-pill badge-selesai fw-medium d-inline-flex align-items-center gap-2 py-1 px-2">
                     <span class="dot dot-green"></span>Selesai
                   </span>
                 </td>
@@ -502,7 +673,8 @@
                 <td class="cc-cell-muted">Fasilitas</td>
                 <td class="cc-cell-muted">Gedung C, Lt. 2</td>
                 <td>
-                  <span class="badge rounded-pill badge-selesai fw-medium d-inline-flex align-items-center gap-2 py-1 px-2">
+                  <span
+                    class="badge rounded-pill badge-selesai fw-medium d-inline-flex align-items-center gap-2 py-1 px-2">
                     <span class="dot dot-green"></span>Selesai
                   </span>
                 </td>
@@ -519,7 +691,8 @@
                 <td class="cc-cell-muted">IT Support</td>
                 <td class="cc-cell-muted">Lab Komputer 3</td>
                 <td>
-                  <span class="badge rounded-pill badge-selesai fw-medium d-inline-flex align-items-center gap-2 py-1 px-2">
+                  <span
+                    class="badge rounded-pill badge-selesai fw-medium d-inline-flex align-items-center gap-2 py-1 px-2">
                     <span class="dot dot-green"></span>Selesai
                   </span>
                 </td>
@@ -534,60 +707,73 @@
           </table>
         </div>
 
-        <!-- Pagination -->
         <div class="cc-pagination-bar d-flex flex-wrap align-items-center justify-content-between gap-3">
           <span class="cc-pagination-info">Menampilkan 1-7 dari 18 laporan</span>
 
           <div class="d-flex align-items-center gap-1">
-            <button type="button" class="cc-page-btn d-flex align-items-center justify-content-center" aria-label="Halaman pertama">
+            <button type="button" class="cc-page-btn d-flex align-items-center justify-content-center"
+              aria-label="Halaman pertama">
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M7.33333 11.3337L4 8.00033L7.33333 4.66699" stroke="#94A3B8" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M11.9998 11.3337L8.6665 8.00033L11.9998 4.66699" stroke="#94A3B8" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M7.33333 11.3337L4 8.00033L7.33333 4.66699" stroke="#94A3B8" stroke-width="1.33333"
+                  stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M11.9998 11.3337L8.6665 8.00033L11.9998 4.66699" stroke="#94A3B8" stroke-width="1.33333"
+                  stroke-linecap="round" stroke-linejoin="round" />
               </svg>
             </button>
-            <button type="button" class="cc-page-btn d-flex align-items-center justify-content-center" aria-label="Halaman sebelumnya">
+            <button type="button" class="cc-page-btn d-flex align-items-center justify-content-center"
+              aria-label="Halaman sebelumnya">
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M10 12L6 8L10 4" stroke="#475569" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M10 12L6 8L10 4" stroke="#475569" stroke-width="1.33333" stroke-linecap="round"
+                  stroke-linejoin="round" />
               </svg>
             </button>
             <button type="button" class="cc-page-btn active">1</button>
             <button type="button" class="cc-page-btn">2</button>
             <button type="button" class="cc-page-btn">3</button>
-            <button type="button" class="cc-page-btn d-flex align-items-center justify-content-center" aria-label="Halaman berikutnya">
+            <button type="button" class="cc-page-btn d-flex align-items-center justify-content-center"
+              aria-label="Halaman berikutnya">
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M6 12L10 8L6 4" stroke="#475569" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M6 12L10 8L6 4" stroke="#475569" stroke-width="1.33333" stroke-linecap="round"
+                  stroke-linejoin="round" />
               </svg>
             </button>
-            <button type="button" class="cc-page-btn d-flex align-items-center justify-content-center" aria-label="Halaman terakhir">
+            <button type="button" class="cc-page-btn d-flex align-items-center justify-content-center"
+              aria-label="Halaman terakhir">
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M8.6665 11.3337L11.9998 8.00033L8.6665 4.66699" stroke="#475569" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M4 11.3337L7.33333 8.00033L4 4.66699" stroke="#475569" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M8.6665 11.3337L11.9998 8.00033L8.6665 4.66699" stroke="#475569" stroke-width="1.33333"
+                  stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M4 11.3337L7.33333 8.00033L4 4.66699" stroke="#475569" stroke-width="1.33333"
+                  stroke-linecap="round" stroke-linejoin="round" />
               </svg>
             </button>
           </div>
 
           <div class="d-flex align-items-center gap-2">
             <span class="cc-pagination-info">Tampilkan</span>
-            <select class="form-select cc-page-size-select" style="width: auto;">
-              <option>10</option>
-              <option>25</option>
-              <option>50</option>
+            <select aria-label="Pilih jumlah per halaman" class="form-select form-select-sm cc-page-size-select"
+              style="width:72px;">
+              <option value="10" selected>10</option>
+              <option value="25">25</option>
+              <option value="50">50</option>
             </select>
             <span class="cc-pagination-info">per halaman</span>
           </div>
         </div>
       </div>
 
-      <!-- Help banner -->
       <div class="cc-help-banner d-flex align-items-center gap-3">
         <div class="cc-help-icon d-flex align-items-center justify-content-center">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M4 22H18C19.1038 22 20 21.1038 20 20V7L15 2H6C4.89617 2 4 2.89617 4 4V20C4 21.1038 4.89617 22 6 22H4" stroke="#3B82F6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M14 2V6C14 7.10383 14.8962 8 16 8H20" stroke="#3B82F6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M10 9V13H14" stroke="#3B82F6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path
+              d="M4 22H18C19.1038 22 20 21.1038 20 20V7L15 2H6C4.89617 2 4 2.89617 4 4V20C4 21.1038 4.89617 22 6 22H4"
+              stroke="#3B82F6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M14 2V6C14 7.10383 14.8962 8 16 8H20" stroke="#3B82F6" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round" />
+            <path d="M10 9V13H14" stroke="#3B82F6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
           </svg>
         </div>
-        <span class="cc-help-text">Gunakan filter atau pencarian untuk menemukan laporan yang Anda butuhkan dengan lebih cepat.</span>
+        <span class="cc-help-text">Gunakan filter atau pencarian untuk menemukan laporan yang Anda butuhkan dengan lebih
+          cepat.</span>
       </div>
 
     </div>
@@ -617,4 +803,5 @@
     });
   </script>
 </body>
+
 </html>

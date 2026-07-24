@@ -228,6 +228,10 @@
     border-left: 4px solid transparent;
     border-radius: 12px;
     padding: 16px;
+    display: grid;
+    grid-template-columns: 96px minmax(0, 1fr) 116px 84px;
+    align-items: center;
+    column-gap: 16px;
   }
 
   .cc-report-item.status-diproses { border-left-color: var(--cc-yellow); }
@@ -249,11 +253,23 @@
     color: var(--cc-gray-900);
     font-size: 16px;
     font-weight: 500;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   .cc-report-category {
     color: var(--cc-gray-600);
     font-size: 14px;
+  }
+
+  .cc-report-badge {
+    justify-self: start;
+    white-space: nowrap;
+  }
+
+  .cc-report-item .btn-detail {
+    justify-self: end;
   }
 
   .dot {
@@ -305,6 +321,19 @@
     color: #4b5563;
     font-size: 16px;
   }
+
+  /* Small screens: collapse the fixed-column grid back to a stacked layout
+     so labels/badges/buttons don't get cramped */
+  @media (max-width: 576px) {
+    .cc-report-item {
+      grid-template-columns: 1fr 1fr;
+      row-gap: 12px;
+    }
+    .cc-report-item > div:first-child { grid-column: 1 / 2; }
+    .cc-report-item > div:nth-child(2) { grid-column: 1 / -1; }
+    .cc-report-badge { grid-column: 1 / 2; justify-self: start; }
+    .cc-report-item .btn-detail { grid-column: 2 / 3; justify-self: end; }
+  }
 </style>
 </head>
 <body class="bg-white">
@@ -341,7 +370,7 @@
             </svg>
           </button>
           <div class="vr"></div>
-          <div class="cc-avatar d-flex align-items-center justify-content-center" id="btnAvatar" title="Profil Saya">WN</div>
+          <div class="cc-avatar d-flex align-items-center justify-content-center" id="btnAvatar" title="Profil Saya">AR</div>
         </div>
       </div>
     </div>
@@ -521,7 +550,7 @@
             </div>
 
             <div class="d-flex flex-column gap-3">
-              <div class="cc-report-item status-diproses d-flex align-items-center justify-content-between flex-wrap gap-2">
+              <div class="cc-report-item status-diproses">
                 <div class="d-flex flex-column gap-1">
                   <span class="cc-report-id">LP-0738</span>
                   <span class="cc-report-date">23/04/24</span>
@@ -530,13 +559,13 @@
                   <span class="cc-report-name">Proyektor</span>
                   <span class="cc-report-category">IT Support</span>
                 </div>
-                <span class="badge rounded-pill badge-diproses fw-medium d-inline-flex align-items-center gap-2 py-2 px-3">
+                <span class="badge rounded-pill badge-diproses fw-medium d-inline-flex align-items-center gap-2 py-2 px-3 cc-report-badge">
                   <span class="dot dot-amber"></span>Diproses
                 </span>
                 <a href="detaillaporan.html" class="btn btn-outline-secondary btn-sm rounded-2 btn-detail">Detail</a>
               </div>
 
-              <div class="cc-report-item status-selesai d-flex align-items-center justify-content-between flex-wrap gap-2">
+              <div class="cc-report-item status-selesai">
                 <div class="d-flex flex-column gap-1">
                   <span class="cc-report-id">LP-0737</span>
                   <span class="cc-report-date">22/04/24</span>
@@ -545,13 +574,13 @@
                   <span class="cc-report-name">wifi</span>
                   <span class="cc-report-category">HR</span>
                 </div>
-                <span class="badge rounded-pill badge-selesai fw-medium d-inline-flex align-items-center gap-2 py-2 px-3">
+                <span class="badge rounded-pill badge-selesai fw-medium d-inline-flex align-items-center gap-2 py-2 px-3 cc-report-badge">
                   <span class="dot dot-green"></span>Selesai
                 </span>
                 <a href="detaillaporan.html" class="btn btn-outline-secondary btn-sm rounded-2 btn-detail">Detail</a>
               </div>
 
-              <div class="cc-report-item status-ditolak d-flex align-items-center justify-content-between flex-wrap gap-2">
+              <div class="cc-report-item status-ditolak">
                 <div class="d-flex flex-column gap-1">
                   <span class="cc-report-id">LP-0736</span>
                   <span class="cc-report-date">21/04/24</span>
@@ -560,7 +589,7 @@
                   <span class="cc-report-name">Pintu Toilet</span>
                   <span class="cc-report-category">General</span>
                 </div>
-                <span class="badge rounded-pill badge-ditolak fw-medium d-inline-flex align-items-center gap-2 py-2 px-3">
+                <span class="badge rounded-pill badge-ditolak fw-medium d-inline-flex align-items-center gap-2 py-2 px-3 cc-report-badge">
                   <span class="dot dot-red"></span>Ditolak
                 </span>
                 <a href="detaillaporan.html" class="btn btn-outline-secondary btn-sm rounded-2 btn-detail">Detail</a>
