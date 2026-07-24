@@ -444,6 +444,15 @@
       color: #fff;
     }
 
+    .cc-page-btn:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    .cc-page-btn:disabled:hover {
+      background: #fff;
+    }
+
     .cc-page-size-select {
       border: 1px solid #cbd5e1;
       border-radius: 4px;
@@ -474,6 +483,13 @@
 
     .cc-help-text {
       color: #475569;
+      font-size: 14px;
+    }
+
+    .cc-empty-state {
+      padding: 48px 24px;
+      text-align: center;
+      color: #64748b;
       font-size: 14px;
     }
   </style>
@@ -547,10 +563,10 @@
                 stroke-linejoin="round" />
             </svg>
           </span>
-          <input type="text" class="form-control cc-search-input w-100"
+          <input type="text" id="searchInput" class="form-control cc-search-input w-100"
             placeholder="Cari berdasarkan ID, judul, kategori, atau lokasi..." />
         </div>
-        <button type="button" class="btn btn-reset d-flex align-items-center gap-2">
+        <button type="button" id="btnResetFilter" class="btn btn-reset d-flex align-items-center gap-2">
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path
               d="M2 8C2 11.3115 4.68851 14 8 14C11.3115 14 14 11.3115 14 8C14 4.68851 11.3115 2 8 2C6.32263 2.00631 4.71265 2.66082 3.50667 3.82667L2 5.33333"
@@ -576,143 +592,18 @@
                 <th>Aksi</th>
               </tr>
             </thead>
-            <tbody>
-              <tr class="status-diproses">
-                <td><a href="detaillaporan.html" class="cc-report-link">LP-0738</a></td>
-                <td class="cc-report-title">Proyektor di ruang kelas 201 tidak berfungsi.</td>
-                <td class="cc-cell-muted">Proyektor</td>
-                <td class="cc-cell-muted">Gedung A, Lt. 2</td>
-                <td>
-                  <span
-                    class="badge rounded-pill badge-diproses fw-medium d-inline-flex align-items-center gap-2 py-1 px-2">
-                    <span class="dot dot-amber"></span>Diproses
-                  </span>
-                </td>
-                <td class="cc-cell-muted">23/04/2024 14:32</td>
-                <td>
-                  <div class="d-flex align-items-center gap-2">
-                    <a href="detaillaporan.html" class="btn btn-detail">Detail</a>
-                  </div>
-                </td>
-              </tr>
-              <tr class="status-selesai">
-                <td><a href="detaillaporan.html" class="cc-report-link">LP-0737</a></td>
-                <td class="cc-report-title">Gagang Pintu Toilet Rusak</td>
-                <td class="cc-cell-muted">Pintu Toilet</td>
-                <td class="cc-cell-muted">Area Parkir Selatan</td>
-                <td>
-                  <span
-                    class="badge rounded-pill badge-selesai fw-medium d-inline-flex align-items-center gap-2 py-1 px-2">
-                    <span class="dot dot-green"></span>Selesai
-                  </span>
-                </td>
-                <td class="cc-cell-muted">22/04/2024 10:15</td>
-                <td>
-                  <div class="d-flex align-items-center gap-2">
-                    <a href="detaillaporan.html" class="btn btn-detail">Detail</a>
-                  </div>
-                </td>
-              </tr>
-              <tr class="status-ditolak">
-                <td><a href="detaillaporan.html" class="cc-report-link">LP-0736</a></td>
-                <td class="cc-report-title">Lampu di koridor gedung padam.</td>
-                <td class="cc-cell-muted">General</td>
-                <td class="cc-cell-muted">Gedung B, Lt. 1</td>
-                <td>
-                  <span
-                    class="badge rounded-pill badge-ditolak fw-medium d-inline-flex align-items-center gap-2 py-1 px-2">
-                    <span class="dot dot-red"></span>Ditolak
-                  </span>
-                </td>
-                <td class="cc-cell-muted">21/04/2024 09:45</td>
-                <td>
-                  <div class="d-flex align-items-center gap-2">
-                    <a href="detaillaporan.html" class="btn btn-detail">Detail</a>
-                  </div>
-                </td>
-              </tr>
-              <tr class="status-diproses">
-                <td><a href="detaillaporan.html" class="cc-report-link">LP-0735</a></td>
-                <td class="cc-report-title">Jaringan WiFi di perpustakaan sering terputus.</td>
-                <td class="cc-cell-muted">IT Support</td>
-                <td class="cc-cell-muted">Perpustakaan</td>
-                <td>
-                  <span
-                    class="badge rounded-pill badge-diproses fw-medium d-inline-flex align-items-center gap-2 py-1 px-2">
-                    <span class="dot dot-amber"></span>Diproses
-                  </span>
-                </td>
-                <td class="cc-cell-muted">20/04/2024 16:20</td>
-                <td>
-                  <div class="d-flex align-items-center gap-2">
-                    <a href="detaillaporan.html" class="btn btn-detail">Detail</a>
-                  </div>
-                </td>
-              </tr>
-              <tr class="status-selesai">
-                <td><a href="detaillaporan.html" class="cc-report-link">LP-0734</a></td>
-                <td class="cc-report-title">Tempat sampah penuh di area kantin.</td>
-                <td class="cc-cell-muted">Kebersihan</td>
-                <td class="cc-cell-muted">Kantin Utama</td>
-                <td>
-                  <span
-                    class="badge rounded-pill badge-selesai fw-medium d-inline-flex align-items-center gap-2 py-1 px-2">
-                    <span class="dot dot-green"></span>Selesai
-                  </span>
-                </td>
-                <td class="cc-cell-muted">19/04/2024 11:08</td>
-                <td>
-                  <div class="d-flex align-items-center gap-2">
-                    <a href="detaillaporan.html" class="btn btn-detail">Detail</a>
-                  </div>
-                </td>
-              </tr>
-              <tr class="status-selesai">
-                <td><a href="detaillaporan.html" class="cc-report-link">LP-0733</a></td>
-                <td class="cc-report-title">Pintu toilet lantai 2 rusak.</td>
-                <td class="cc-cell-muted">Fasilitas</td>
-                <td class="cc-cell-muted">Gedung C, Lt. 2</td>
-                <td>
-                  <span
-                    class="badge rounded-pill badge-selesai fw-medium d-inline-flex align-items-center gap-2 py-1 px-2">
-                    <span class="dot dot-green"></span>Selesai
-                  </span>
-                </td>
-                <td class="cc-cell-muted">18/04/2024 08:50</td>
-                <td>
-                  <div class="d-flex align-items-center gap-2">
-                    <a href="detaillaporan.html" class="btn btn-detail">Detail</a>
-                  </div>
-                </td>
-              </tr>
-              <tr class="status-selesai">
-                <td><a href="detaillaporan.html" class="cc-report-link">LP-0732</a></td>
-                <td class="cc-report-title">Komputer di lab 3 lemot.</td>
-                <td class="cc-cell-muted">IT Support</td>
-                <td class="cc-cell-muted">Lab Komputer 3</td>
-                <td>
-                  <span
-                    class="badge rounded-pill badge-selesai fw-medium d-inline-flex align-items-center gap-2 py-1 px-2">
-                    <span class="dot dot-green"></span>Selesai
-                  </span>
-                </td>
-                <td class="cc-cell-muted">17/04/2024 15:10</td>
-                <td>
-                  <div class="d-flex align-items-center gap-2">
-                    <a href="detaillaporan.html" class="btn btn-detail">Detail</a>
-                  </div>
-                </td>
-              </tr>
+            <tbody id="reportTableBody">
+              <!-- rows are rendered by JavaScript -->
             </tbody>
           </table>
         </div>
 
         <div class="cc-pagination-bar d-flex flex-wrap align-items-center justify-content-between gap-3">
-          <span class="cc-pagination-info">Menampilkan 1-7 dari 18 laporan</span>
+          <span class="cc-pagination-info" id="paginationInfo">Menampilkan 1-7 dari 18 laporan</span>
 
-          <div class="d-flex align-items-center gap-1">
+          <div class="d-flex align-items-center gap-1" id="paginationControls">
             <button type="button" class="cc-page-btn d-flex align-items-center justify-content-center"
-              aria-label="Halaman pertama">
+              aria-label="Halaman pertama" id="btnFirstPage">
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M7.33333 11.3337L4 8.00033L7.33333 4.66699" stroke="#94A3B8" stroke-width="1.33333"
                   stroke-linecap="round" stroke-linejoin="round" />
@@ -721,24 +612,22 @@
               </svg>
             </button>
             <button type="button" class="cc-page-btn d-flex align-items-center justify-content-center"
-              aria-label="Halaman sebelumnya">
+              aria-label="Halaman sebelumnya" id="btnPrevPage">
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M10 12L6 8L10 4" stroke="#475569" stroke-width="1.33333" stroke-linecap="round"
                   stroke-linejoin="round" />
               </svg>
             </button>
-            <button type="button" class="cc-page-btn active">1</button>
-            <button type="button" class="cc-page-btn">2</button>
-            <button type="button" class="cc-page-btn">3</button>
+            <span id="pageNumbers" class="d-flex align-items-center gap-1"></span>
             <button type="button" class="cc-page-btn d-flex align-items-center justify-content-center"
-              aria-label="Halaman berikutnya">
+              aria-label="Halaman berikutnya" id="btnNextPage">
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M6 12L10 8L6 4" stroke="#475569" stroke-width="1.33333" stroke-linecap="round"
                   stroke-linejoin="round" />
               </svg>
             </button>
             <button type="button" class="cc-page-btn d-flex align-items-center justify-content-center"
-              aria-label="Halaman terakhir">
+              aria-label="Halaman terakhir" id="btnLastPage">
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M8.6665 11.3337L11.9998 8.00033L8.6665 4.66699" stroke="#475569" stroke-width="1.33333"
                   stroke-linecap="round" stroke-linejoin="round" />
@@ -750,9 +639,10 @@
 
           <div class="d-flex align-items-center gap-2">
             <span class="cc-pagination-info">Tampilkan</span>
-            <select aria-label="Pilih jumlah per halaman" class="form-select form-select-sm cc-page-size-select"
-              style="width:72px;">
-              <option value="10" selected>10</option>
+            <select aria-label="Pilih jumlah per halaman" id="pageSizeSelect"
+              class="form-select form-select-sm cc-page-size-select" style="width:72px;">
+              <option value="7" selected>7</option>
+              <option value="10">10</option>
               <option value="25">25</option>
               <option value="50">50</option>
             </select>
@@ -801,6 +691,167 @@
     document.getElementById('btnAvatar').addEventListener('click', function () {
       window.location.href = 'profil.html';
     });
+
+    // ---- Data laporan (18 total, sesuai kartu ringkasan di beranda) ----
+    var reports = [
+      { id: 'LP-0738', title: 'Proyektor di ruang kelas 201 tidak berfungsi.', category: 'Proyektor', location: 'Gedung A, Lt. 2', status: 'diproses', statusLabel: 'Diproses', date: '23/04/2024 14:32' },
+      { id: 'LP-0737', title: 'Gagang Pintu Toilet Rusak', category: 'Pintu Toilet', location: 'Area Parkir Selatan', status: 'selesai', statusLabel: 'Selesai', date: '22/04/2024 10:15' },
+      { id: 'LP-0736', title: 'Lampu di koridor gedung padam.', category: 'General', location: 'Gedung B, Lt. 1', status: 'ditolak', statusLabel: 'Ditolak', date: '21/04/2024 09:45' },
+      { id: 'LP-0735', title: 'Jaringan WiFi di perpustakaan sering terputus.', category: 'IT Support', location: 'Perpustakaan', status: 'diproses', statusLabel: 'Diproses', date: '20/04/2024 16:20' },
+      { id: 'LP-0734', title: 'Tempat sampah penuh di area kantin.', category: 'Kebersihan', location: 'Kantin Utama', status: 'selesai', statusLabel: 'Selesai', date: '19/04/2024 11:08' },
+      { id: 'LP-0733', title: 'Pintu toilet lantai 2 rusak.', category: 'Fasilitas', location: 'Gedung C, Lt. 2', status: 'selesai', statusLabel: 'Selesai', date: '18/04/2024 08:50' },
+      { id: 'LP-0732', title: 'Komputer di lab 3 lemot.', category: 'IT Support', location: 'Lab Komputer 3', status: 'selesai', statusLabel: 'Selesai', date: '17/04/2024 15:10' },
+      { id: 'LP-0731', title: 'AC ruang seminar tidak dingin.', category: 'Fasilitas', location: 'Gedung D, Lt. 3', status: 'selesai', statusLabel: 'Selesai', date: '16/04/2024 13:25' },
+      { id: 'LP-0730', title: 'Keran air di toilet dosen bocor.', category: 'Fasilitas', location: 'Gedung A, Lt. 1', status: 'diproses', statusLabel: 'Diproses', date: '15/04/2024 09:12' },
+      { id: 'LP-0729', title: 'Kursi kuliah patah di ruang 305.', category: 'Fasilitas', location: 'Gedung B, Lt. 3', status: 'selesai', statusLabel: 'Selesai', date: '14/04/2024 10:40' },
+      { id: 'LP-0728', title: 'Lift gedung C sering macet.', category: 'General', location: 'Gedung C, Lt. 1', status: 'ditolak', statusLabel: 'Ditolak', date: '13/04/2024 08:05' },
+      { id: 'LP-0727', title: 'Printer di ruang TU tidak menyala.', category: 'IT Support', location: 'Ruang Tata Usaha', status: 'selesai', statusLabel: 'Selesai', date: '12/04/2024 14:55' },
+      { id: 'LP-0726', title: 'Papan tulis whiteboard tergores parah.', category: 'Fasilitas', location: 'Gedung A, Lt. 3', status: 'selesai', statusLabel: 'Selesai', date: '11/04/2024 09:30' },
+      { id: 'LP-0725', title: 'Lampu parkir motor mati total.', category: 'General', location: 'Area Parkir Motor', status: 'diproses', statusLabel: 'Diproses', date: '10/04/2024 18:00' },
+      { id: 'LP-0724', title: 'Wastafel mampet di toilet mahasiswa.', category: 'Kebersihan', location: 'Gedung B, Lt. 2', status: 'selesai', statusLabel: 'Selesai', date: '09/04/2024 11:20' },
+      { id: 'LP-0723', title: 'Router wifi lab jaringan rusak.', category: 'IT Support', location: 'Lab Jaringan', status: 'selesai', statusLabel: 'Selesai', date: '08/04/2024 15:47' },
+      { id: 'LP-0722', title: 'Jendela ruang kelas 102 pecah.', category: 'Fasilitas', location: 'Gedung A, Lt. 1', status: 'ditolak', statusLabel: 'Ditolak', date: '07/04/2024 07:58' },
+      { id: 'LP-0721', title: 'Speaker aula rusak saat acara.', category: 'General', location: 'Aula Utama', status: 'selesai', statusLabel: 'Selesai', date: '06/04/2024 16:33' }
+    ];
+
+    var currentPage = 1;
+    var pageSize = 7;
+    var filteredReports = reports;
+
+    var tbody = document.getElementById('reportTableBody');
+    var paginationInfo = document.getElementById('paginationInfo');
+    var pageNumbersEl = document.getElementById('pageNumbers');
+    var searchInput = document.getElementById('searchInput');
+    var pageSizeSelect = document.getElementById('pageSizeSelect');
+
+    function badgeClass(status) {
+      if (status === 'diproses') return 'badge-diproses';
+      if (status === 'selesai') return 'badge-selesai';
+      return 'badge-ditolak';
+    }
+
+    function dotClass(status) {
+      if (status === 'diproses') return 'dot-amber';
+      if (status === 'selesai') return 'dot-green';
+      return 'dot-red';
+    }
+
+    function renderTable() {
+      var total = filteredReports.length;
+      var totalPages = Math.max(1, Math.ceil(total / pageSize));
+      if (currentPage > totalPages) currentPage = totalPages;
+      if (currentPage < 1) currentPage = 1;
+
+      var start = (currentPage - 1) * pageSize;
+      var end = Math.min(start + pageSize, total);
+      var pageItems = filteredReports.slice(start, end);
+
+      tbody.innerHTML = '';
+
+      if (pageItems.length === 0) {
+        var emptyRow = document.createElement('tr');
+        var emptyCell = document.createElement('td');
+        emptyCell.colSpan = 7;
+        emptyCell.className = 'cc-empty-state';
+        emptyCell.textContent = 'Tidak ada laporan yang cocok.';
+        emptyRow.appendChild(emptyCell);
+        tbody.appendChild(emptyRow);
+      } else {
+        pageItems.forEach(function (r) {
+          var tr = document.createElement('tr');
+          tr.className = 'status-' + r.status;
+          tr.innerHTML =
+            '<td><a href="detaillaporan.html" class="cc-report-link">' + r.id + '</a></td>' +
+            '<td class="cc-report-title">' + r.title + '</td>' +
+            '<td class="cc-cell-muted">' + r.category + '</td>' +
+            '<td class="cc-cell-muted">' + r.location + '</td>' +
+            '<td><span class="badge rounded-pill ' + badgeClass(r.status) + ' fw-medium d-inline-flex align-items-center gap-2 py-1 px-2"><span class="dot ' + dotClass(r.status) + '"></span>' + r.statusLabel + '</span></td>' +
+            '<td class="cc-cell-muted">' + r.date + '</td>' +
+            '<td><div class="d-flex align-items-center gap-2"><a href="detaillaporan.html" class="btn btn-detail">Detail</a></div></td>';
+          tbody.appendChild(tr);
+        });
+      }
+
+      if (total === 0) {
+        paginationInfo.textContent = 'Menampilkan 0 dari 0 laporan';
+      } else {
+        paginationInfo.textContent = 'Menampilkan ' + (start + 1) + '-' + end + ' dari ' + total + ' laporan';
+      }
+
+      renderPageNumbers(totalPages);
+
+      document.getElementById('btnFirstPage').disabled = currentPage === 1;
+      document.getElementById('btnPrevPage').disabled = currentPage === 1;
+      document.getElementById('btnNextPage').disabled = currentPage === totalPages;
+      document.getElementById('btnLastPage').disabled = currentPage === totalPages;
+    }
+
+    function renderPageNumbers(totalPages) {
+      pageNumbersEl.innerHTML = '';
+      for (var i = 1; i <= totalPages; i++) {
+        var btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'cc-page-btn' + (i === currentPage ? ' active' : '');
+        btn.textContent = i;
+        (function (page) {
+          btn.addEventListener('click', function () {
+            currentPage = page;
+            renderTable();
+          });
+        })(i);
+        pageNumbersEl.appendChild(btn);
+      }
+    }
+
+    document.getElementById('btnFirstPage').addEventListener('click', function () {
+      currentPage = 1;
+      renderTable();
+    });
+    document.getElementById('btnPrevPage').addEventListener('click', function () {
+      currentPage -= 1;
+      renderTable();
+    });
+    document.getElementById('btnNextPage').addEventListener('click', function () {
+      currentPage += 1;
+      renderTable();
+    });
+    document.getElementById('btnLastPage').addEventListener('click', function () {
+      currentPage = Math.ceil(filteredReports.length / pageSize) || 1;
+      renderTable();
+    });
+
+    pageSizeSelect.addEventListener('change', function () {
+      pageSize = parseInt(pageSizeSelect.value, 10);
+      currentPage = 1;
+      renderTable();
+    });
+
+    function applyFilter() {
+      var q = searchInput.value.trim().toLowerCase();
+      if (!q) {
+        filteredReports = reports;
+      } else {
+        filteredReports = reports.filter(function (r) {
+          return r.id.toLowerCase().indexOf(q) !== -1 ||
+            r.title.toLowerCase().indexOf(q) !== -1 ||
+            r.category.toLowerCase().indexOf(q) !== -1 ||
+            r.location.toLowerCase().indexOf(q) !== -1;
+        });
+      }
+      currentPage = 1;
+      renderTable();
+    }
+
+    searchInput.addEventListener('input', applyFilter);
+
+    document.getElementById('btnResetFilter').addEventListener('click', function () {
+      searchInput.value = '';
+      filteredReports = reports;
+      currentPage = 1;
+      renderTable();
+    });
+
+    renderTable();
   </script>
 </body>
 
