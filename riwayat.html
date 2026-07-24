@@ -591,16 +591,7 @@
         <div class="cc-pagination-bar d-flex flex-wrap align-items-center justify-content-between gap-3">
           <span class="cc-pagination-info" id="paginationInfo">Menampilkan 1-5 dari 18 laporan</span>
 
-          <div class="d-flex align-items-center gap-1" id="paginationControls">
-            <button type="button" class="cc-page-btn d-flex align-items-center justify-content-center"
-              aria-label="Halaman pertama" id="btnFirstPage">
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M7.33333 11.3337L4 8.00033L7.33333 4.66699" stroke="#94A3B8" stroke-width="1.33333"
-                  stroke-linecap="round" stroke-linejoin="round" />
-                <path d="M11.9998 11.3337L8.6665 8.00033L11.9998 4.66699" stroke="#94A3B8" stroke-width="1.33333"
-                  stroke-linecap="round" stroke-linejoin="round" />
-              </svg>
-            </button>
+          <div class="d-flex align-items-center gap-1 ms-auto" id="paginationControls">
             <button type="button" class="cc-page-btn d-flex align-items-center justify-content-center"
               aria-label="Halaman sebelumnya" id="btnPrevPage">
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -616,26 +607,6 @@
                   stroke-linejoin="round" />
               </svg>
             </button>
-            <button type="button" class="cc-page-btn d-flex align-items-center justify-content-center"
-              aria-label="Halaman terakhir" id="btnLastPage">
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M8.6665 11.3337L11.9998 8.00033L8.6665 4.66699" stroke="#475569" stroke-width="1.33333"
-                  stroke-linecap="round" stroke-linejoin="round" />
-                <path d="M4 11.3337L7.33333 8.00033L4 4.66699" stroke="#475569" stroke-width="1.33333"
-                  stroke-linecap="round" stroke-linejoin="round" />
-              </svg>
-            </button>
-          </div>
-
-          <div class="d-flex align-items-center gap-2">
-            <span class="cc-pagination-info">Tampilkan</span>
-            <select aria-label="Pilih jumlah per halaman" id="pageSizeSelect"
-              class="form-select form-select-sm cc-page-size-select" style="width:72px;">
-              <option value="5" selected>5</option>
-              <option value="10">10</option>
-              <option value="15">15</option>
-            </select>
-            <span class="cc-pagination-info">per halaman</span>
           </div>
         </div>
       </div>
@@ -711,7 +682,6 @@
     var paginationInfo = document.getElementById('paginationInfo');
     var pageNumbersEl = document.getElementById('pageNumbers');
     var searchInput = document.getElementById('searchInput');
-    var pageSizeSelect = document.getElementById('pageSizeSelect');
 
     function badgeClass(status) {
       if (status === 'diproses') return 'badge-diproses';
@@ -769,10 +739,8 @@
 
       renderPageNumbers(totalPages);
 
-      document.getElementById('btnFirstPage').disabled = currentPage === 1;
       document.getElementById('btnPrevPage').disabled = currentPage === 1;
       document.getElementById('btnNextPage').disabled = currentPage === totalPages;
-      document.getElementById('btnLastPage').disabled = currentPage === totalPages;
     }
 
     function renderPageNumbers(totalPages) {
@@ -792,26 +760,12 @@
       }
     }
 
-    document.getElementById('btnFirstPage').addEventListener('click', function () {
-      currentPage = 1;
-      renderTable();
-    });
     document.getElementById('btnPrevPage').addEventListener('click', function () {
       currentPage -= 1;
       renderTable();
     });
     document.getElementById('btnNextPage').addEventListener('click', function () {
       currentPage += 1;
-      renderTable();
-    });
-    document.getElementById('btnLastPage').addEventListener('click', function () {
-      currentPage = Math.ceil(filteredReports.length / pageSize) || 1;
-      renderTable();
-    });
-
-    pageSizeSelect.addEventListener('change', function () {
-      pageSize = parseInt(pageSizeSelect.value, 10);
-      currentPage = 1;
       renderTable();
     });
 
