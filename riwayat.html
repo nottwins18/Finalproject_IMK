@@ -566,16 +566,6 @@
           <input type="text" id="searchInput" class="form-control cc-search-input w-100"
             placeholder="Cari berdasarkan ID, judul, kategori, atau lokasi..." />
         </div>
-        <button type="button" id="btnResetFilter" class="btn btn-reset d-flex align-items-center gap-2">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path
-              d="M2 8C2 11.3115 4.68851 14 8 14C11.3115 14 14 11.3115 14 8C14 4.68851 11.3115 2 8 2C6.32263 2.00631 4.71265 2.66082 3.50667 3.82667L2 5.33333"
-              stroke="#334155" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" />
-            <path d="M2 2V5.33333H5.33333" stroke="#334155" stroke-width="1.33333" stroke-linecap="round"
-              stroke-linejoin="round" />
-          </svg>
-          Reset Filter
-        </button>
       </div>
 
       <div class="cc-table-card">
@@ -843,13 +833,6 @@
     }
 
     searchInput.addEventListener('input', applyFilter);
-
-    document.getElementById('btnResetFilter').addEventListener('click', function () {
-      searchInput.value = '';
-      filteredReports = reports;
-      currentPage = 1;
-      renderTable();
-    });
 
     renderTable();
   </script>
